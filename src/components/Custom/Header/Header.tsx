@@ -1,8 +1,11 @@
+import Image from "next/image";
+import logo from "../../../../public/assets/logo/black.png";
+
 const Header = () => {
   return (
     <header className="bg-white shadow-md px-4 py-3 flex items-center justify-between">
       <div className="flex items-center space-x-4">
-        <img src="/path/to/logo.png" alt="Logo" className="w-10 h-10" />
+        <Image src={logo} alt="msaffar creation" height={50} width={200} />
         <h1 className="text-lg font-bold">Mr. Saffar Creation</h1>
       </div>
 
