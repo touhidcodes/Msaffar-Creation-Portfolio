@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
           {/* Logo and Company Name */}
           <div className="flex items-center space-x-2 text-xl font-semibold">
-            <span className="text-teal-400">Touhidur Zaman</span>
+            <span className="text-teal-400">M Saffar Creation</span>
           </div>
 
           {/* Navigation Links */}
@@ -57,7 +57,7 @@ export default function Footer() {
 
         {/* Copyright Text */}
         <div className="mt-8 text-center text-sm text-gray-400">
-          &copy; {new Date().getFullYear()} Touhidur Zaman. All rights reserved.
+          &copy; M Saffar Creation. All rights reserved.
         </div>
       </div>
     </footer>
