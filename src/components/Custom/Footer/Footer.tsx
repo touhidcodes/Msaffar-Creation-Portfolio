@@ -12,17 +12,17 @@ export default function Footer() {
 
           {/* Navigation Links */}
           <div className="flex space-x-6 text-sm">
-            <Link href="/">
-              <a className="hover:text-teal-400">Home</a>
+            <Link href="/" className="hover:text-teal-400">
+              Home
             </Link>
-            <Link href="/about">
-              <a className="hover:text-teal-400">About</a>
+            <Link href="/about" className="hover:text-teal-400">
+              About
             </Link>
-            <Link href="/projects">
-              <a className="hover:text-teal-400">Projects</a>
+            <Link href="/projects" className="hover:text-teal-400">
+              Projects
             </Link>
-            <Link href="/contact">
-              <a className="hover:text-teal-400">Contact</a>
+            <Link href="/contact" className="hover:text-teal-400">
+              Contact
             </Link>
           </div>
 
