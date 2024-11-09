@@ -53,6 +53,8 @@ export default function Header() {
           <Link href="#mywork">My Work</Link>
           <Link href="#services">Services</Link>
           <Link href="#resume">Resume</Link>
+          <Link href="#resume">Download</Link>
+          <Link href="#resume">Name</Link>
         </nav>
 
         {/* Icons and Language Switcher */}
