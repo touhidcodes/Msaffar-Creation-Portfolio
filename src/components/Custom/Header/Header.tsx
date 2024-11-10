@@ -39,6 +39,20 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../../public/assets/logo/black.png";
 
+const navbarMenu = (
+  <>
+    <li>
+      <Link href="#mywork">My Work</Link>
+    </li>
+    <li>
+      <Link href="#services">Services</Link>
+    </li>
+    <li>
+      <Link href="#resume">Resume</Link>
+    </li>
+  </>
+);
+
 export default function Header() {
   return (
     <div className="max-w-screen-xl mx-auto">
@@ -125,54 +139,67 @@ export default function Header() {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow font-semibold"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+              {navbarMenu}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          {/* Logo */}
+          <div className="flex items-center">
+            <Image src={logo} alt="Logo" width={150} height={40} />
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+          <ul className="menu menu-horizontal px-1 font-semibold text-xl">
+            {navbarMenu}
           </ul>
         </div>
+
+        {/* Icons and Language Switcher */}
+        <div className="flex items-center gap-4 ml-20">
+          {/* Social Icons */}
+          <Link href="https://t.me/yourhandle" target="_blank">
+            <Image
+              src="/assets/icons/telegram.png"
+              alt="Logo"
+              width={100}
+              height={100}
+            />
+          </Link>
+          <Link href="https://wa.me/yourphonenumber" target="_blank">
+            <Image
+              src="/assets/icons/whatsapp.png"
+              alt="Logo"
+              width={100}
+              height={100}
+            />
+          </Link>
+          <Link href="https://www.behance.net/yourhandle" target="_blank">
+            <Image
+              src="/assets/icons/behance.png"
+              alt="Logo"
+              width={100}
+              height={100}
+            />
+          </Link>
+          {/* Language Switcher */}
+          <div className="flex items-center gap-1">
+            <Link href="/en" className="font-semibold">
+              EN
+            </Link>
+            <span>|</span>
+            <Link href="/bn" className="font-semibold text-gray-500">
+              BN
+            </Link>
+          </div>
+        </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          {/* Start New Project Button */}
+          <button className="btn btn-outline btn-sm flex">
+            <Link href="/start-project" className="items-center justify-center">
+              Start a new project <span>🚀</span>
+            </Link>
+          </button>
         </div>
       </div>
     </div>
