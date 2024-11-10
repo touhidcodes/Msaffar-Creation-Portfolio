@@ -56,68 +56,6 @@ const navbarMenu = (
 export default function Header() {
   return (
     <div className="max-w-screen-xl mx-auto">
-      <header className="flex justify-between items-center py-4 px-8 shadow-md bg-white">
-        {/* Logo */}
-        <div className="flex items-center">
-          <Image src={logo} alt="Logo" width={150} height={40} />
-        </div>
-
-        {/* Nav Links */}
-        <nav className="hidden md:flex gap-6 font-semibold">
-          <Link href="#mywork">My Work</Link>
-          <Link href="#services">Services</Link>
-          <Link href="#resume">Resume</Link>
-        </nav>
-
-        {/* Icons and Language Switcher */}
-        <div className="flex items-center gap-4">
-          {/* Social Icons */}
-          <Link href="https://t.me/yourhandle" target="_blank">
-            <Image
-              src="/assets/icons/telegram.png"
-              alt="Logo"
-              width={40}
-              height={40}
-            />
-          </Link>
-          <Link href="https://wa.me/yourphonenumber" target="_blank">
-            <Image
-              src="/assets/icons/whatsapp.png"
-              alt="Logo"
-              width={40}
-              height={40}
-            />
-          </Link>
-          <Link href="https://www.behance.net/yourhandle" target="_blank">
-            <Image
-              src="/assets/icons/behance.png"
-              alt="Logo"
-              width={40}
-              height={40}
-            />
-          </Link>
-
-          {/* Language Switcher */}
-          <div className="flex items-center gap-1">
-            <Link href="/en" className="font-semibold">
-              EN
-            </Link>
-            <span>|</span>
-            <Link href="/bn" className="font-semibold text-gray-500">
-              BN
-            </Link>
-          </div>
-        </div>
-
-        {/* Start New Project Button */}
-        <Link
-          href="/start-project"
-          className="btn btn-outline btn-sm flex items-center gap-2"
-        >
-          Start a new project <span>🚀</span>
-        </Link>
-      </header>
-
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
@@ -154,7 +92,6 @@ export default function Header() {
             {navbarMenu}
           </ul>
         </div>
-
         {/* Icons and Language Switcher */}
         <div className="flex items-center gap-4 ml-20">
           {/* Social Icons */}
