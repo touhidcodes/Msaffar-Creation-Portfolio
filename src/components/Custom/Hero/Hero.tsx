@@ -1,5 +1,3 @@
-// components/HeroSection.js
-
 import Image from "next/image";
 
 const HeroSection = () => {
@@ -9,7 +7,7 @@ const HeroSection = () => {
         {/* Right Side - Image */}
         <div className="w-full lg:w-1/2 flex justify-center">
           <Image
-            src="/path/to/your/image.jpg" // Replace with your image path
+            src="/path/to/your/image.jpg"
             alt="Hero Image"
             width={600}
             height={400}
@@ -22,7 +20,7 @@ const HeroSection = () => {
           <h1 className="text-5xl font-bold">Bring Your Vision to Life</h1>
           <p className="py-6">
             We create stunning digital experiences that help you connect with
-            your audience, grow your brand, and make a lasting impact. Let’s
+            your audience, grow your brand, and make a lasting impact. Lets
             build something great together.
           </p>
           <button className="btn btn-primary">Get Started</button>
