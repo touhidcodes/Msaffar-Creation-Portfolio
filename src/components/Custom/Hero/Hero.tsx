@@ -1,5 +1,5 @@
 import Image from "next/image";
-import hero from "../../../../public/assets/images/";
+import hero from "../../../../public/assets/logo/image.png";
 
 const HeroSection = () => {
   return (
@@ -8,7 +8,7 @@ const HeroSection = () => {
         {/* Right Side - Image */}
         <div className="w-full lg:w-1/2 flex justify-center">
           <Image
-            src="/path/to/your/image.jpg"
+            src={hero}
             alt="Hero Image"
             width={600}
             height={400}
