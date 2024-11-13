@@ -1,30 +1,29 @@
 import Image from "next/image";
 import hero from "../../../../public/assets/logo/image.png";
+import Button from "@/components/ui/Button/Button";
 
 const HeroSection = () => {
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        {/* Right Side - Image */}
-        <div className="w-full lg:w-1/2 flex justify-center">
-          <Image
-            src={hero}
-            alt="Hero Image"
-            width={600}
-            height={400}
-            className="rounded-lg shadow-2xl"
-          />
-        </div>
+    <div className="hero min-h-screen">
+      <div className="max-w-screen-xl mx-auto lg:px-10">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+          {/* Right Side - Image */}
+          <div className="w-full lg:w-1/2 flex justify-end">
+            <Image src={hero} alt="Hero Image" width={300} height={200} />
+          </div>
 
-        {/* Left Side - Text */}
-        <div className="w-full lg:w-1/2">
-          <h1 className="text-5xl font-bold">Bring Your Vision to Life</h1>
-          <p className="py-6">
-            We create stunning digital experiences that help you connect with
-            your audience, grow your brand, and make a lasting impact. Lets
-            build something great together.
-          </p>
-          <button className="btn btn-primary">Get Started</button>
+          {/* Left Side - Text */}
+          <div className="w-full lg:w-1/2">
+            <h1 className="text-7xl font-bold">
+              Custom Logo & Brand Identity Designer
+            </h1>
+            <p className="py-6">
+              I specialize in creating user-centric solutions that align with
+              business objectives, drawing from a decade of industry expertise
+              across various sectors, Im currently based in Dubai!
+            </p>
+            <Button link="#talk" text="Lets Talk" />
+          </div>
         </div>
       </div>
     </div>
