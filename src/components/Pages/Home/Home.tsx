@@ -1,4 +1,5 @@
 import CentricSection from "@/components/Custom/CentricSection/CentricSection";
+import GrowthSection from "@/components/Custom/GrowthSection/GrowthSection";
 import HeroSection from "@/components/Custom/Hero/Hero";
 
 const HomePage = () => {
@@ -6,6 +7,7 @@ const HomePage = () => {
     <div>
       <HeroSection />
       <CentricSection />
+      <GrowthSection />
     </div>
   );
 };
