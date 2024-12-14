@@ -5,7 +5,7 @@ const GotIdea: React.FC = () => {
   return (
     <section className="py-16 bg-gray-50 flex flex-col items-center text-center">
       {/* Header Section */}
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+      <h2 className="text-3xl md:text-6xl font-bold text-gray-800">
         Got an idea?
       </h2>
       <p className="text-xl md:text-2xl text-gray-600 mt-2">
