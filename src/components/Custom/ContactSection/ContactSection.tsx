@@ -1,10 +1,5 @@
+import { FormData } from "@/types";
 import { useState, ChangeEvent, FormEvent } from "react";
-
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}
 
 const ContactSection = () => {
   const [formData, setFormData] = useState<FormData>({
