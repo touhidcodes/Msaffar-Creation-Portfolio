@@ -9,9 +9,9 @@ export default function Connect() {
           {/* Image Section */}
           <div className="lg:w-1/2">
             <Image
-              src="/connect-image.jpg" // Replace with your image path
+              src="/connect-image.jpg"
               alt="Connect with Us"
-              width={800} // Set the appropriate dimensions
+              width={800}
               height={600}
               className="object-cover h-full w-full"
             />
@@ -42,7 +42,7 @@ export default function Connect() {
               </li>
             </ul>
             <a
-              href="/contact-form" // Update with your contact form route
+              href="/contact-form"
               className="px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition duration-300"
             >
               Go to Contact Form
