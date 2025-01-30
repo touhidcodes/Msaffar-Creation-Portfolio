@@ -29,6 +29,13 @@ export const demoWorkData = [
     technologies: ["React.js", "Firebase", "AOS"],
     link: "#",
   },
+  {
+    id: 5,
+    title: "Dashboard",
+    description: "A platform for music learning during summer vacations.",
+    technologies: ["React.js", "Firebase", "AOS"],
+    link: "#",
+  },
 ];
 
 const MyWork = () => {
