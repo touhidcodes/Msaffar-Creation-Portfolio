@@ -1,4 +1,4 @@
-import { demoWorkData } from "@/Data/Data";
+import { demoWorkData } from "@/data/data";
 import React from "react";
 
 const MyWork = () => {
