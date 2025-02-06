@@ -28,6 +28,20 @@ const blogs: Blog[] = [
       "Understanding TypeScript and its benefits in React applications.",
     link: "/blog/typescript-for-react",
   },
+  {
+    id: 4,
+    title: "TypeScript for React Developers",
+    description:
+      "Understanding TypeScript and its benefits in React applications.",
+    link: "/blog/typescript-for-react",
+  },
+  {
+    id: 5,
+    title: "TypeScript for React Developers",
+    description:
+      "Understanding TypeScript and its benefits in React applications.",
+    link: "/blog/typescript-for-react",
+  },
 ];
 
 const BlogPage: FC = () => {
