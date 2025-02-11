@@ -2,57 +2,91 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { Menu } from "lucide-react";
 import logo from "../../../../public/assets/logo/black.png";
-// import { Icons } from "@/components/icons";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import Button from "@/components/ui/Button/Button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const navigationOptions: { title: string; href: string }[] = [
-  {
-    title: "My Work",
-    href: "/work",
-  },
-  {
-    title: "Services",
-    href: "/services",
-  },
-  {
-    title: "Resume",
-    href: "/resume",
-  },
+  { title: "My Work", href: "/work" },
+  { title: "Services", href: "/services" },
+  { title: "Resume", href: "/resume" },
 ];
 
 export default function Header() {
-  return (
-    <header className="max-w-screen-xl mx-auto flex justify-between items-center py-4 px-6">
-      <Image src={logo} alt="Logo" width={180} height={50} />
+  const [isOpen, setIsOpen] = useState(false);
 
-      <NavigationMenu>
-        <NavigationMenuList>
-          {navigationOptions?.map((nav) => (
-            <NavigationMenuItem key={nav?.title}>
-              <Link href={nav?.href} passHref legacyBehavior>
-                <NavigationMenuLink className="text-xl font-semibold px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-100">
-                  {nav?.title}
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          ))}
-        </NavigationMenuList>
-      </NavigationMenu>
-      <div className="flex items-center gap-4">
+  return (
+    <header className="max-w-screen-xl mx-auto flex justify-between items-center px-3 md:px-0">
+      {/* Logo (Hidden on Mobile) */}
+      <div className="hidden md:block">
+        <Image src={logo} alt="Logo" width={180} height={50} />
+      </div>
+
+      {/* Desktop Navigation */}
+      <nav className="hidden md:flex">
+        <NavigationMenu>
+          <NavigationMenuList className="flex gap-6">
+            {navigationOptions.map((nav) => (
+              <NavigationMenuItem key={nav.title}>
+                <Link href={nav.href} passHref legacyBehavior>
+                  <NavigationMenuLink className="text-xl font-semibold px-4 py-3 rounded-lg transition-all duration-300 hover:bg-gray-100">
+                    {nav.title}
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
+      </nav>
+
+      {/* Mobile Menu and Logo */}
+      <div className="md:hidden flex justify-between items-center w-full">
+        {/* Logo on the Left Side */}
+        <div>
+          <Image src={logo} alt="Logo" width={180} height={50} />
+        </div>
+
+        {/* Mobile Dropdown on the Right Side */}
+        <div className="ml-auto">
+          <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
+            <DropdownMenuTrigger className="p-2 rounded-lg hover:bg-gray-200 transition">
+              <Menu size={28} />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-48 bg-white shadow-lg rounded-lg">
+              {navigationOptions.map((nav) => (
+                <DropdownMenuItem key={nav.title}>
+                  <Link
+                    href={nav.href}
+                    className="block w-full px-4 py-2 hover:bg-gray-100 rounded-md"
+                  >
+                    {nav.title}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </div>
+
+      {/* Social Links (Hidden on Mobile) */}
+      <div className="hidden md:flex items-center gap-4">
         <Link href="https://t.me/yourhandle" target="_blank">
           <Image
             src="/assets/icons/telegram.png"
-            alt="Logo"
+            alt="Telegram"
             width={50}
             height={50}
           />
@@ -60,7 +94,7 @@ export default function Header() {
         <Link href="https://wa.me/yourphonenumber" target="_blank">
           <Image
             src="/assets/icons/whatsapp.png"
-            alt="Logo"
+            alt="WhatsApp"
             width={50}
             height={50}
           />
@@ -68,13 +102,15 @@ export default function Header() {
         <Link href="https://www.behance.net/yourhandle" target="_blank">
           <Image
             src="/assets/icons/behance.png"
-            alt="Logo"
+            alt="Behance"
             width={50}
             height={50}
           />
         </Link>
       </div>
-      <div className="flex items-center gap-2 text-lg font-medium">
+
+      {/* Language Switcher */}
+      <div className="hidden md:flex items-center gap-2 text-lg font-medium">
         <Link href="/" className="text-black font-semibold">
           EN
         </Link>
@@ -83,11 +119,15 @@ export default function Header() {
           BN
         </Link>
       </div>
-      <Button
-        className="border-2 border-black text-black font-bold py-3 px-5 rounded-lg flex items-center gap-1 hover:bg-black hover:text-white transition-all duration-300"
-        link="/start"
-        text=" Start a new project 🚀"
-      />
+
+      {/* Start Project Button */}
+      <div className="hidden md:block">
+        <Button
+          className="border-2 border-black text-black font-bold py-3 px-5 rounded-lg flex items-center gap-1 hover:bg-black hover:text-white transition-all duration-300"
+          link="/start"
+          text="Start a new project 🚀"
+        />
+      </div>
     </header>
   );
 }
