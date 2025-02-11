@@ -1,3 +1,5 @@
+import { Blog } from "@/components/Custom/Blogs/Blogs";
+
 export const demoWorkData = [
   {
     id: 1,
@@ -54,5 +56,42 @@ export const demoWorkData = [
     description: "A platform for music learning during summer vacations.",
     technologies: ["React.js", "Firebase", "AOS"],
     link: "#",
+  },
+];
+
+export const blogsData: Blog[] = [
+  {
+    id: 1,
+    title: "Introduction to Next.js",
+    description: "Learn the basics of Next.js and how to get started with it.",
+    link: "/blog/introduction-to-nextjs",
+  },
+  {
+    id: 2,
+    title: "Tailwind CSS Guide",
+    description:
+      "A comprehensive guide to using Tailwind CSS in your projects.",
+    link: "/blog/tailwind-css-guide",
+  },
+  {
+    id: 3,
+    title: "TypeScript for React Developers",
+    description:
+      "Understanding TypeScript and its benefits in React applications.",
+    link: "/blog/typescript-for-react",
+  },
+  {
+    id: 4,
+    title: "TypeScript for React Developers",
+    description:
+      "Understanding TypeScript and its benefits in React applications.",
+    link: "/blog/typescript-for-react",
+  },
+  {
+    id: 5,
+    title: "TypeScript for React Developers",
+    description:
+      "Understanding TypeScript and its benefits in React applications.",
+    link: "/blog/typescript-for-react",
   },
 ];

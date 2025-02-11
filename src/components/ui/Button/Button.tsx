@@ -1,12 +1,16 @@
 import Link from "next/link";
 
-const Button = ({ text, link }: { text: string; link: string }) => {
+const Button = ({
+  text,
+  link,
+  className,
+}: {
+  text: string;
+  link: string;
+  className: string;
+}) => {
   return (
-    <Link
-      href={link}
-      passHref
-      className="bg-black text-white font-bold py-2 px-4 rounded inline-block"
-    >
+    <Link href={link} passHref className={className}>
       {text}
     </Link>
   );
