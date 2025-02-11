@@ -33,14 +33,14 @@ const navigationOptions: { title: string; href: string }[] = [
 export default function Header() {
   return (
     <header className="max-w-screen-xl mx-auto flex justify-between items-center py-4 px-6">
-      <Image src={logo} alt="Logo" width={150} height={40} />
+      <Image src={logo} alt="Logo" width={180} height={50} />
 
       <NavigationMenu>
-        <NavigationMenuList className="flex gap-6">
+        <NavigationMenuList>
           {navigationOptions?.map((nav) => (
             <NavigationMenuItem key={nav?.title}>
               <Link href={nav?.href} passHref legacyBehavior>
-                <NavigationMenuLink className="text-xl font-semibold">
+                <NavigationMenuLink className="text-xl font-semibold px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-100">
                   {nav?.title}
                 </NavigationMenuLink>
               </Link>
@@ -75,16 +75,16 @@ export default function Header() {
         </Link>
       </div>
       <div className="flex items-center gap-2 text-lg font-medium">
-        <Link href="/en" className="text-black">
+        <Link href="/" className="text-black font-semibold">
           EN
         </Link>
         <span>|</span>
-        <Link href="/bn" className="text-gray-500">
+        <Link href="/" className="text-gray-500 font-semibold">
           BN
         </Link>
       </div>
       <Button
-        className="border-2 border-black text-black font-bold py-2 px-5 rounded-lg flex items-center gap-1 hover:bg-black hover:text-white transition-all duration-300"
+        className="border-2 border-black text-black font-bold py-3 px-5 rounded-lg flex items-center gap-1 hover:bg-black hover:text-white transition-all duration-300"
         link="/start"
         text=" Start a new project 🚀"
       />
