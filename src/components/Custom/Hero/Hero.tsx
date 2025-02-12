@@ -17,10 +17,10 @@ const HeroSection = () => {
               business objectives, drawing from a decade of industry expertise
               across various sectors. I'm currently based in Dubai!
             </p>
-            <div className="mt-4 flex justify-center lg:justify-start">
+            <div className="mt-4 justify-end">
               <Button
-                link="#talk"
                 text="Let's Talk"
+                link="/contact"
                 className="w-fit bg-black border-2 border-black text-white font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-white hover:text-black transition-all duration-300"
               />
             </div>
