@@ -9,8 +9,8 @@ const HomePage = () => {
   return (
     <div>
       <HeroSection />
-      <CentricSection />
       <FeaturedBrands />
+      <CentricSection />
       <GrowthSection />
       <ToolsSkills />
       <GotIdea />

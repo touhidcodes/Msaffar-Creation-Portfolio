@@ -3,12 +3,12 @@ import Marquee from "react-fast-marquee";
 
 const FeaturedBrands: React.FC = () => {
   return (
-    <div className="py-10 bg-gray-50">
+    <div className="px-3 py-6 lg:py-10 bg-gray-100">
       <div className="text-center mb-6">
-        <h2 className="text-3xl font-bold text-gray-800">
+        <h2 className="text-4xl font-bold text-gray-800">
           Featured Clients and Brands
         </h2>
-        <p className="text-gray-500 mt-2">
+        <p className="text-gray-600 mt-2">
           Highlighting collaborations in building effective digital designs &
           product materials for renowned brands
         </p>
