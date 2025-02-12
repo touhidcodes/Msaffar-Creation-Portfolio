@@ -4,28 +4,35 @@ import Button from "@/components/ui/Button/Button";
 
 const HeroSection = () => {
   return (
-    <div className="min-h-screen">
-      <div className="max-w-screen-xl mx-auto lg:p-20">
-        <div className=" grid grid-cols-2 gap-10">
-          {/* Right Side - Image */}
-          <div className="w-full">
-            <Image src={hero} alt="Hero Image" width={300} height={200} />
-          </div>
-
-          {/* Left Side - Text */}
-          <div className="w-full">
-            <h1 className="text-7xl font-bold">
+    <div className="max-w-screen-xl mx-auto flex items-center">
+      <div className="px-6 py-6 lg:py-10 lg:px-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          {/* Right Side - Image (Shown first on mobile) */}
+          <div className="text-center lg:text-left">
+            <h1 className="text-4xl lg:text-7xl font-bold">
               Custom Logo & Brand Identity Designer
             </h1>
-            <p className="py-6">
+            <p className="py-4 text-base lg:text-lg leading-relaxed">
               I specialize in creating user-centric solutions that align with
               business objectives, drawing from a decade of industry expertise
-              across various sectors, Im currently based in Dubai!
+              across various sectors. I'm currently based in Dubai!
             </p>
-            <Button
-              link="#talk"
-              text="Lets Talk"
-              className="inline-block bg-black border-2 border-black text-white font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-white hover:text-black transition-all duration-300"
+            <div className="mt-4 flex justify-center lg:justify-start">
+              <Button
+                link="#talk"
+                text="Let's Talk"
+                className="w-fit bg-black border-2 border-black text-white font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-white hover:text-black transition-all duration-300"
+              />
+            </div>
+          </div>
+          {/* Left Side - Text */}
+          <div className="flex justify-center lg:justify-end">
+            <Image
+              src={hero}
+              alt="Hero Image"
+              width={300}
+              height={200}
+              className="max-w-sm lg:max-w-md h-auto"
             />
           </div>
         </div>
