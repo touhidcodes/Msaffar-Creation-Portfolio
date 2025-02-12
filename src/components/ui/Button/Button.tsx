@@ -7,7 +7,7 @@ const Button = ({
 }: {
   text: string;
   link: string;
-  className: string;
+  className?: string;
 }) => {
   return (
     <Link href={link} passHref className={className}>
