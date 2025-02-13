@@ -1,14 +1,15 @@
 import React from "react";
 import Image from "next/image";
+import Button from "@/components/ui/Button/Button";
 
-const GotIdea: React.FC = () => {
+const GotIdea = () => {
   return (
-    <section className="py-16 bg-gray-50 flex flex-col items-center text-center">
+    <section className="py-6 px-6 md:py-10 bg-gray-50 flex flex-col items-center text-center">
       {/* Header Section */}
       <h2 className="text-3xl md:text-6xl font-bold text-gray-800">
         Got an idea?
       </h2>
-      <p className="text-xl md:text-2xl text-gray-600 mt-2">
+      <p className="text-xl md:text-3xl font-bold text-gray-800 mt-2">
         Let’s bring it to life!
       </p>
 
@@ -30,13 +31,12 @@ const GotIdea: React.FC = () => {
       </p>
 
       {/* CTA Button */}
-      <div className="mt-6">
-        <a
-          href="#contact"
-          className="bg-gray-900 text-white py-3 px-6 rounded-md text-lg font-semibold hover:bg-gray-700 transition"
-        >
-          Let’s Talk
-        </a>
+      <div className="mt-6 mb-5 lg:mb-0">
+        <Button
+          text="Let's Talk"
+          link="/contact"
+          className="w-fit bg-black border-2 border-black text-white font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-white hover:text-black transition-all duration-300"
+        />
       </div>
     </section>
   );
