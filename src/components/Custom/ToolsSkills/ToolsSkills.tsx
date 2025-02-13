@@ -6,60 +6,58 @@ const ToolsSkills: React.FC = () => {
     <section className="py-12 relative">
       <div className="container mx-auto text-center">
         {/* Header Section */}
-        <h2 className="text-3xl font-bold text-gray-800">
+        <h2 className="text-3xl font-bold text-gray-900">
           Tools & Skills for crafting intuitive designs
         </h2>
-        <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
+        <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
           I specialize in creating user-centric solutions that align with
           business objectives, drawing from a decade of industry expertise
           across various sectors. I’m currently based in Dubai!
         </p>
 
-        {/* Tools and Face Image */}
-        <div className="flex justify-center mt-10">
-          <Image
-            src="/assets/images/creative.png"
-            alt="Tools and Skills"
-            width={400}
-            height={400}
-            className="mx-auto"
-          />
-        </div>
+        {/* Tools and Skills Layout */}
+        <div className="flex flex-col md:flex-row justify-center items-start gap-12 mt-10 relative">
+          {/* Left: Tools List */}
+          <div className="w-full md:w-1/3 text-right pr-6 self-end">
+            <h3 className="text-lg font-semibold border-b-2 border-gray-800 inline-block">
+              Tools
+            </h3>
+            <ul className="text-gray-700 space-y-2 mt-3">
+              <li>Adobe Illustrator</li>
+              <li>Adobe Photoshop</li>
+              <li>Adobe Dimension</li>
+              <li>Adobe Xd</li>
+              <li>Adobe Acrobat</li>
+              <li>Figma</li>
+              <li>.......... and more.</li>
+            </ul>
+          </div>
 
-        {/* Tools and Skills Section */}
-        <div className="relative mt-2">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-            {/* Tools Section */}
-            <div className="text-left md:text-right md:pr-12">
-              <h3 className="text-lg font-semibold mb-4 border-b-2 border-gray-800 inline-block">
-                Tools
-              </h3>
-              <ul className="text-gray-600 space-y-2">
-                <li>Adobe Illustrator</li>
-                <li>Adobe Photoshop</li>
-                <li>Adobe Dimension</li>
-                <li>Adobe Xd</li>
-                <li>Adobe Acrobat</li>
-                <li>Figma</li>
-                <li>.......... and more.</li>
-              </ul>
-            </div>
+          {/* Center: Image (Slightly Higher) */}
+          <div className="w-full md:w-1/3 flex justify-center relative -mt-6">
+            <Image
+              src="/assets/images/creative.png"
+              alt="Tools and Skills"
+              width={350}
+              height={350}
+              className="mx-auto"
+            />
+          </div>
 
-            {/* Skills Section */}
-            <div className="text-left md:pl-12">
-              <h3 className="text-lg font-semibold mb-4 border-b-2 border-gray-800 inline-block">
-                Skills
-              </h3>
-              <ul className="text-gray-600 space-y-2">
-                <li>Mind Mapping</li>
-                <li>Critical Thinking</li>
-                <li>Problem Solving</li>
-                <li>Connecting</li>
-                <li>Progressing</li>
-                <li>Executing</li>
-                <li>.......... and more.</li>
-              </ul>
-            </div>
+          {/* Right: Skills List (Lower Position) */}
+          <div className="w-full md:w-1/3 text-left pl-6 self-end">
+            <h3 className="text-lg font-semibold border-b-2 border-gray-800 inline-block">
+              Skills
+            </h3>
+            <ul className="text-gray-700 space-y-2 mt-3">
+              <li>Mind Mapping</li>
+              <li>Critical Thinking</li>
+              <li>Problem Solving</li>
+              <li>Connecting</li>
+              <li>Progressing</li>
+              <li>Executing</li>
+              <li>.......... and more.</li>
+            </ul>
           </div>
         </div>
       </div>
