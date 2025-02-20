@@ -95,3 +95,21 @@ export const blogsData: Blog[] = [
     link: "/blog/typescript-for-react",
   },
 ];
+
+export const servicesData = [
+  {
+    title: "Web Development",
+    description:
+      "Building fast, responsive, and scalable websites with modern technologies.",
+  },
+  {
+    title: "UI/UX Design",
+    description:
+      "Creating stunning and user-friendly interfaces for web and mobile applications.",
+  },
+  {
+    title: "SEO Optimization",
+    description:
+      "Improving website visibility and ranking to drive more traffic.",
+  },
+];
