@@ -2,6 +2,24 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
 
+const services = [
+  {
+    title: "Web Development",
+    description:
+      "Building fast, responsive, and scalable websites with modern technologies.",
+  },
+  {
+    title: "UI/UX Design",
+    description:
+      "Creating stunning and user-friendly interfaces for web and mobile applications.",
+  },
+  {
+    title: "SEO Optimization",
+    description:
+      "Improving website visibility and ranking to drive more traffic.",
+  },
+];
+
 export default function ServicePage() {
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-6 lg:px-16">
