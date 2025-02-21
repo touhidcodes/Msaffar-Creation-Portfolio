@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import Button from "@/components/ui/Button/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { servicesData } from "@/data/data";
 import { CheckCircle } from "lucide-react";
@@ -39,7 +39,7 @@ export default function ServicePage() {
         <p className="text-gray-600 mt-2">
           Let’s discuss how we can help you achieve your goals.
         </p>
-        <Button className="mt-4 px-6 py-3 text-lg">Contact Us</Button>
+        <Button className="mt-4 px-6 py-3 text-lg" text="Contact Us" link="/" />
       </div>
     </div>
   );

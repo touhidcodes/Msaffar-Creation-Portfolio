@@ -1,4 +1,4 @@
-import { Blog } from "@/components/Custom/Blogs/Blogs";
+import { Blog } from "@/types";
 
 export const demoWorkData = [
   {
