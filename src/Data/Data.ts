@@ -49,17 +49,11 @@ export const demoWorkData = [
     description: "A platform for music learning during summer vacations.",
     technologies: ["React.js", "Firebase", "AOS"],
     link: "#",
-  },
-  {
-    id: 8,
-    title: "Next Blog",
-    description: "A platform for music learning during summer vacations.",
-    technologies: ["React.js", "Firebase", "AOS"],
-    link: "#",
-  },
-];
+  }]
 
-export const blogsData: Blog[] = [
+
+
+  export const blogsData: Blog[] = [
   {
     id: 1,
     title: "Introduction to Next.js",
