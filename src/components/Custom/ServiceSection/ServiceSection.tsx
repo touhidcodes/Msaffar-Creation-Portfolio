@@ -8,7 +8,7 @@ export default function ServicePage() {
     <div className="min-h-screen bg-gray-100 py-12 px-6 lg:px-16">
       {/* Hero Section */}
       <section className="text-center max-w-3xl mx-auto mb-12">
-        <h1 className="text-4xl font-bold text-gray-900">Our Services</h1>
+        <h1 className="text-4xl font-bold text-gray-900">My Services</h1>
         <p className="text-gray-600 mt-4">
           We provide top-notch services to help you build, grow, and optimize
           your online presence.
