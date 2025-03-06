@@ -49,11 +49,10 @@ export const demoWorkData = [
     description: "A platform for music learning during summer vacations.",
     technologies: ["React.js", "Firebase", "AOS"],
     link: "#",
-  }]
+  },
+];
 
-
-
-  export const blogsData: Blog[] = [
+export const blogsData: Blog[] = [
   {
     id: 1,
     title: "Introduction to Next.js",
@@ -105,5 +104,26 @@ export const servicesData = [
     title: "SEO Optimization",
     description:
       "Improving website visibility and ranking to drive more traffic.",
+  },
+];
+
+export const blogs = [
+  {
+    id: "1",
+    title: "Understanding Next.js and Its Benefits",
+    description:
+      "A deep dive into why Next.js is a great choice for web development.",
+    date: "March 5, 2025",
+    content:
+      "Next.js is a React framework that enables server-side rendering, static site generation, and API routes...",
+  },
+  {
+    id: "2",
+    title: "Why Tailwind CSS is a Game-Changer",
+    description:
+      "Learn how Tailwind CSS simplifies styling with utility-first classes.",
+    date: "March 4, 2025",
+    content:
+      "Tailwind CSS provides a set of utility classes that allow you to build modern, responsive designs efficiently...",
   },
 ];
