@@ -5,9 +5,6 @@ const MyBlogs = () => {
         <div className="text-center mb-6">
           <h2 className="text-4xl font-bold text-gray-800">Featured Blogs</h2>
           <p className="text-gray-600 mt-2">My Featured Blogs</p>
-          <p>Here is My Featured Blogs</p>
-          <p>Here is My Featured Blogs</p>
-          <p>Here is My Featured Blogs</p>
         </div>
       </div>
     </section>
