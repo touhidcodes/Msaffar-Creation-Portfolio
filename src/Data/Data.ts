@@ -55,37 +55,27 @@ export const demoWorkData = [
 export const blogsData: Blog[] = [
   {
     id: 1,
-    title: "Introduction to Next.js",
-    description: "Learn the basics of Next.js and how to get started with it.",
-    link: "/blog/introduction-to-nextjs",
+    title: "Mastering React Hooks",
+    description:
+      "Learn how to use React hooks like useState, useEffect, and useContext in your projects.",
+    image: "/images/react-hooks.jpg", // make sure this image exists in your public folder
+    link: "/blogs/react-hooks",
   },
   {
     id: 2,
-    title: "Tailwind CSS Guide",
+    title: "Next.js Performance Tips",
     description:
-      "A comprehensive guide to using Tailwind CSS in your projects.",
-    link: "/blog/tailwind-css-guide",
+      "Optimize your Next.js apps with image optimization, lazy loading, and SSR techniques.",
+    image: "/images/nextjs-performance.jpg",
+    link: "/blogs/nextjs-performance",
   },
   {
     id: 3,
-    title: "TypeScript for React Developers",
+    title: "Tailwind CSS Best Practices",
     description:
-      "Understanding TypeScript and its benefits in React applications.",
-    link: "/blog/typescript-for-react",
-  },
-  {
-    id: 4,
-    title: "TypeScript for React Developers",
-    description:
-      "Understanding TypeScript and its benefits in React applications.",
-    link: "/blog/typescript-for-react",
-  },
-  {
-    id: 5,
-    title: "TypeScript for React Developers",
-    description:
-      "Understanding TypeScript and its benefits in React applications.",
-    link: "/blog/typescript-for-react",
+      "Write clean and maintainable Tailwind code with component extraction and utility patterns.",
+    image: "/images/tailwind-tips.jpg",
+    link: "/blogs/tailwind-tips",
   },
 ];
 

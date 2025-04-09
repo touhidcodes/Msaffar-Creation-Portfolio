@@ -6,7 +6,7 @@ export type FormData = {
 
 export type Blog = {
   id: number;
-
+  image: string;
   title: string;
   description: string;
   link: string;
