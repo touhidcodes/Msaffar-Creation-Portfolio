@@ -95,4 +95,9 @@ export const servicesData = [
     description:
       "Improving website visibility and ranking to drive more traffic.",
   },
+  {
+    title: "Graphics Design",
+    description:
+      "Improving website visibility and ranking to drive more traffic.",
+  },
 ];
