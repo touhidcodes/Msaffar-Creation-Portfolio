@@ -4,7 +4,7 @@ export type FormData = {
   message: string;
 };
 
-export type Blog = {
+export type TBlog = {
   id: number;
   image: string;
   title: string;
