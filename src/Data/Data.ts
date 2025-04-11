@@ -1,6 +1,6 @@
-import { Blog } from "@/types";
+import { TBlog, TWorkData } from "@/types";
 
-export const demoWorkData = [
+export const demoWorkData: TWorkData[] = [
   {
     id: 1,
     title: "Flatmate Finder",
@@ -50,9 +50,16 @@ export const demoWorkData = [
     technologies: ["React.js", "Firebase", "AOS"],
     link: "#",
   },
+  {
+    id: 8,
+    title: "TOUFIK",
+    description: "A platform for music learning during summer vacations.",
+    technologies: ["React.js", "Firebase", "AOS"],
+    link: "#",
+  },
 ];
 
-export const blogsData: Blog[] = [
+export const blogsData: TBlog[] = [
   {
     id: 1,
     title: "Mastering React Hooks",
