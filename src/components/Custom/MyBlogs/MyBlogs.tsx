@@ -3,9 +3,7 @@ import { blogsData } from "@/data/Data";
 const MyBlogs = () => {
   return (
     <section className="bg-gray-100 py-12 px-4">
-      <h1 className="text-4xl font-bold mb-10 text-center">
-        My Featured Blogs
-      </h1>
+      <h1 className="text-4xl font-bold mb-10 text-center">My Blogs</h1>
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
         {blogsData.map((blog) => (
           <div
