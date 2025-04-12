@@ -57,6 +57,20 @@ export const demoWorkData: TWorkData[] = [
     technologies: ["React.js", "Firebase", "AOS"],
     link: "#",
   },
+  {
+    id: 9,
+    title: "TOUFIK",
+    description: "A platform for music learning during summer vacations.",
+    technologies: ["React.js", "Firebase", "AOS"],
+    link: "#",
+  },
+  {
+    id: 10,
+    title: "TOUFIK",
+    description: "A platform for music learning during summer vacations.",
+    technologies: ["React.js", "Firebase", "AOS"],
+    link: "#",
+  },
 ];
 
 export const blogsData: TBlog[] = [
@@ -84,6 +98,14 @@ export const blogsData: TBlog[] = [
     image: "/images/tailwind-tips.jpg",
     link: "/blogs/tailwind-tips",
   },
+  {
+    id: 4,
+    title: "Tailwind CSS Best Practices",
+    description:
+      "Write clean and maintainable Tailwind code with component extraction and utility patterns.",
+    image: "/images/tailwind-tips.jpg",
+    link: "/blogs/tailwind-tips",
+  },
 ];
 
 export const servicesData = [
@@ -104,6 +126,16 @@ export const servicesData = [
   },
   {
     title: "Graphics Design",
+    description:
+      "Improving website visibility and ranking to drive more traffic.",
+  },
+  {
+    title: "DB Design",
+    description:
+      "Improving website visibility and ranking to drive more traffic.",
+  },
+  {
+    title: "DB Design 2",
     description:
       "Improving website visibility and ranking to drive more traffic.",
   },
