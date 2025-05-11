@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { servicesData } from "@/data/Data";
 import { CheckCircle } from "lucide-react";
 
-export default function ServicePage() {
+export default function ServiceSection() {
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-6 lg:px-16">
       {/* Hero Section */}

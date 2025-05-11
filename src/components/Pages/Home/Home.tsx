@@ -4,6 +4,7 @@ import GotIdea from "@/components/Custom/GotIdea/GotIdea";
 import GrowthSection from "@/components/Custom/GrowthSection/GrowthSection";
 import HeroSection from "@/components/Custom/Hero/Hero";
 import MyBlogs from "@/components/Custom/MyBlogs/MyBlogs";
+import ServiceSection from "@/components/Custom/ServiceSection/ServiceSection";
 import ToolsSkills from "@/components/Custom/ToolsSkills/ToolsSkills";
 
 const HomePage = () => {
@@ -15,6 +16,7 @@ const HomePage = () => {
       <GrowthSection />
       <ToolsSkills />
       <GotIdea />
+      <ServiceSection />
       <MyBlogs />
     </div>
   );

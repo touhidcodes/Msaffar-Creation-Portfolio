@@ -3,10 +3,13 @@ import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 
-async function main() {
-  const email = process.env.ADMIN_EMAIL;
-  const username = process.env.ADMIN_USERNAME;
-  const password = await bcrypt.hash(process.env.ADMIN_PASSWORD!, 10);
+export async function seeAdmin() {
+  const email = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+  const username = process.env.NEXT_PUBLIC_ADMIN_USERNAME;
+  const password = await bcrypt.hash(
+    process.env.NEXT_PUBLIC_ADMIN_PASSWORD!,
+    10
+  );
 
   const existing = await prisma.user.findUnique({ where: { email } });
 
@@ -24,7 +27,7 @@ async function main() {
   }
 }
 
-main()
+seeAdmin()
   .catch((e) => {
     console.error(e);
     process.exit(1);
