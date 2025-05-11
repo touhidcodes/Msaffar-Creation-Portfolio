@@ -1,4 +1,4 @@
-import { demoWorkData } from "@/data/Data";
+import { demoWorkData, recentWorks } from "@/data/Data";
 import React from "react";
 
 const MyWork = () => {
@@ -8,18 +8,18 @@ const MyWork = () => {
         My Recent Works
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {demoWorkData.map((work) => (
+        {recentWorks.map((work) => (
           <div
             key={work.id}
             className="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105"
           >
             <div className="p-6">
               <h3 className="text-xl font-semibold text-gray-800">
-                {work.title}
+                {work.name}
               </h3>
               <p className="text-gray-600 mt-2">{work.description}</p>
               <div className="mt-4 flex flex-wrap gap-2">
-                {work.technologies.map((tech, index) => (
+                {work.tags.map((tech, index) => (
                   <span
                     key={index}
                     className="text-sm bg-blue-100 text-blue-800 py-1 px-2 rounded"
@@ -29,7 +29,7 @@ const MyWork = () => {
                 ))}
               </div>
               <a
-                href={work.link}
+                // href={work.link}
                 className="inline-block mt-6 bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded hover:bg-blue-700 transition-colors"
               >
                 View Project
