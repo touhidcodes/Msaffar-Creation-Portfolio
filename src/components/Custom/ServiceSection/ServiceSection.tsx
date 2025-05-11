@@ -1,7 +1,13 @@
+"use client";
+
 import Button from "@/components/ui/Button/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { servicesData } from "@/data/Data";
-import { CheckCircle } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+import Image from "next/image";
 
 export default function ServiceSection() {
   return (
@@ -21,9 +27,43 @@ export default function ServiceSection() {
           <Card key={index} className="bg-white shadow-lg rounded-2xl p-6">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-xl font-semibold">
-                <CheckCircle className="text-blue-600" /> {service.title}
+                {service.title}
               </CardTitle>
             </CardHeader>
+            <Swiper
+              pagination={{
+                dynamicBullets: true,
+              }}
+              // modules={[Pagination]}
+              className="mySwiper"
+              modules={[Autoplay]}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
+              loop={true}
+              slidesPerView={1}
+            >
+              <SwiperSlide>
+                <div className="relative w-full h-64">
+                  <Image
+                    src="https://images.unsplash.com/photo-1611443609367-15892f03e715"
+                    alt="Slide Image"
+                    fill // Makes the image fill the parent container
+                    className="object-cover"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>Slide 2</SwiperSlide>
+              <SwiperSlide>Slide 3</SwiperSlide>
+              <SwiperSlide>Slide 4</SwiperSlide>
+              <SwiperSlide>Slide 5</SwiperSlide>
+              <SwiperSlide>Slide 6</SwiperSlide>
+              <SwiperSlide>Slide 7</SwiperSlide>
+              <SwiperSlide>Slide 8</SwiperSlide>
+              <SwiperSlide>Slide 9</SwiperSlide>
+            </Swiper>
+
             <CardContent>
               <p className="text-gray-600">{service.description}</p>
             </CardContent>
