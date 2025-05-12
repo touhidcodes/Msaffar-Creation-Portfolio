@@ -1,5 +1,9 @@
-import { demoWorkData, recentWorks } from "@/data/Data";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { recentWorks } from "@/data/Data";
+import Image from "next/image";
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 
 const MyWork = () => {
   return (
@@ -9,33 +13,43 @@ const MyWork = () => {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {recentWorks.map((work) => (
-          <div
-            key={work.id}
-            className="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105"
-          >
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800">
+          <Card key={work.id} className="bg-white shadow-lg rounded-2xl">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-xl font-semibold">
                 {work.name}
-              </h3>
-              <p className="text-gray-600 mt-2">{work.description}</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {work.tags.map((tech, index) => (
-                  <span
-                    key={index}
-                    className="text-sm bg-blue-100 text-blue-800 py-1 px-2 rounded"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <a
-                // href={work.link}
-                className="inline-block mt-6 bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded hover:bg-blue-700 transition-colors"
-              >
-                View Project
-              </a>
-            </div>
-          </div>
+              </CardTitle>
+            </CardHeader>
+            <Swiper
+              pagination={{
+                dynamicBullets: true,
+              }}
+              // modules={[Pagination]}
+              className="mySwiper"
+              modules={[Autoplay]}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
+              loop={true}
+              slidesPerView={1}
+            >
+              <SwiperSlide>
+                <div className="relative w-full h-64">
+                  <Image
+                    src="https://images.unsplash.com/photo-1611443609367-15892f03e715"
+                    alt="Slide Image"
+                    fill // Makes the image fill the parent container
+                    className="object-cover"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>Slide 2</SwiperSlide>
+            </Swiper>
+
+            <CardContent>
+              <p className="text-gray-600">{work.description}</p>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>
