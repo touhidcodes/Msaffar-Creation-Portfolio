@@ -50,27 +50,6 @@ export const demoWorkData: TWorkData[] = [
     technologies: ["React.js", "Firebase", "AOS"],
     link: "#",
   },
-  {
-    id: 8,
-    title: "TOUFIK",
-    description: "A platform for music learning during summer vacations.",
-    technologies: ["React.js", "Firebase", "AOS"],
-    link: "#",
-  },
-  {
-    id: 9,
-    title: "TOUFIK",
-    description: "A platform for music learning during summer vacations.",
-    technologies: ["React.js", "Firebase", "AOS"],
-    link: "#",
-  },
-  {
-    id: 10,
-    title: "TOUFIK",
-    description: "A platform for music learning during summer vacations.",
-    technologies: ["React.js", "Firebase", "AOS"],
-    link: "#",
-  },
 ];
 
 export const blogsData: TBlog[] = [
@@ -138,5 +117,81 @@ export const servicesData = [
     title: "DB Design 2",
     description:
       "Improving website visibility and ranking to drive more traffic.",
+  },
+];
+
+export const recentWorks = [
+  {
+    id: "proj-001",
+    name: "Modern Brand Identity",
+    description:
+      "Complete branding for a modern tech startup, including logo, typography, and color palette.",
+    images: [
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+      "https://images.unsplash.com/photo-1611443609367-15892f03e715",
+    ],
+    tags: ["Branding", "Logo Design", "Typography"],
+    category: "Branding",
+    isFeatured: true,
+    isDeleted: false,
+    createdAt: "2024-12-15T10:20:00Z",
+    updatedAt: "2024-12-20T14:35:00Z",
+    client: "TechNova Inc.",
+    tools: ["Adobe Illustrator", "Figma"],
+    binanceProfileUrl: "https://www.binance.com/en/user/profile/your-client-id",
+  },
+  {
+    id: "proj-002",
+    name: "Social Media Campaign",
+    description:
+      "Designed engaging Instagram posts for a summer fashion sale campaign.",
+    images: [
+      "https://images.unsplash.com/photo-1611443609367-15892f03e715",
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+    ],
+    tags: ["Social Media", "Marketing", "Instagram"],
+    category: "Digital Marketing",
+    isFeatured: false,
+    isDeleted: false,
+    createdAt: "2025-01-05T08:00:00Z",
+    updatedAt: "2025-01-08T12:10:00Z",
+    client: "StyleFusion",
+    tools: ["Photoshop", "Canva"],
+    binanceProfileUrl: "https://www.binance.com/en/user/profile/your-client-id",
+  },
+  {
+    id: "proj-003",
+    name: "Event Poster Design",
+    description:
+      "Designed a poster for a music festival with a vibrant, energetic theme.",
+    images: ["https://images.unsplash.com/photo-1522202176988-66273c2fd55f"],
+    tags: ["Poster", "Print", "Event"],
+    category: "Print Design",
+    isFeatured: true,
+    isDeleted: false,
+    createdAt: "2025-02-01T16:00:00Z",
+    updatedAt: "2025-02-03T09:30:00Z",
+    client: "BeatWave Music",
+    tools: ["Adobe Photoshop", "InDesign"],
+    binanceProfileUrl: "https://www.binance.com/en/user/profile/your-client-id",
+  },
+  {
+    id: "proj-004",
+    name: "Website UI Mockup",
+    description:
+      "Created a modern and minimalistic UI design for a finance startup’s landing page.",
+    images: [
+      "https://images.unsplash.com/photo-1542744094-3a31f272c490",
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+    ],
+    tags: ["UI Design", "Web", "Figma"],
+    category: "UI/UX",
+    isFeatured: false,
+    isDeleted: true,
+    createdAt: "2024-11-20T13:45:00Z",
+    updatedAt: "2024-11-22T17:00:00Z",
+    client: "FinGrow",
+    tools: ["Figma", "Sketch", "Photoshop"],
+    binanceProfileUrl: "https://www.binance.com/en/user/profile/your-client-id",
   },
 ];

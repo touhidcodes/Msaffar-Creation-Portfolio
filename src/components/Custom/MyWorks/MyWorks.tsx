@@ -85,7 +85,10 @@ const MyWork = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {recentWorks.map((work) => (
-          <Card key={work.id} className="bg-white shadow-lg rounded-2xl">
+          <Card
+            key={work.id}
+            className="bg-white shadow-lg rounded-2xl overflow-hidden transition-transform transform hover:scale-105"
+          >
             <CardHeader>
               <CardTitle className="text-xl font-semibold text-gray-800">
                 {work.name}

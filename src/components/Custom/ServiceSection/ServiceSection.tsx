@@ -24,7 +24,7 @@ export default function ServiceSection() {
       {/* Service List */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {servicesData.map((service, index) => (
-          <Card key={index} className="bg-white shadow-lg rounded-2xl p-6">
+          <Card key={index} className="bg-white shadow-lg rounded-2xl">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-xl font-semibold">
                 {service.title}
