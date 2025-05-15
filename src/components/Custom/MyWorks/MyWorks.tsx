@@ -61,12 +61,12 @@ const MyWork = () => {
               </Swiper>
               <p className="text-gray-600 mt-2">{work.description}</p>
               <div className="mt-4 flex flex-wrap gap-2">
-                {work.tags.map((tech, index) => (
+                {work.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="text-sm bg-blue-100 text-blue-800 py-1 px-2 rounded"
+                    className="text-sm bg-blue-50 text-blue-800 py-1 px-2 rounded"
                   >
-                    {tech}
+                    {tag}
                   </span>
                 ))}
               </div>
