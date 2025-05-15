@@ -7,6 +7,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Button from "@/components/ui/Button/Button";
 
 const MyWork = () => {
   return (
@@ -69,12 +70,11 @@ const MyWork = () => {
                   </span>
                 ))}
               </div>
-              <a
-                href="#"
-                className="inline-block mt-6 bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded hover:bg-blue-700 transition-colors"
-              >
-                View Project
-              </a>
+              <Button
+                text="View Project"
+                link={`/projects/${work.id}`}
+                className="w-fit bg-black border-2 border-black text-white font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-white hover:text-black transition-all duration-300"
+              />
             </CardContent>
           </Card>
         ))}
