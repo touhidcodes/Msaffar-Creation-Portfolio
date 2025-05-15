@@ -79,6 +79,11 @@ const MyWork = () => {
           </Card>
         ))}
       </div>
+      <Button
+        text="View More Projects"
+        link={`/projects`}
+        className="w-fit bg-black border-2 border-black text-white font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-white hover:text-black transition-all duration-300"
+      />
     </div>
   );
 };
