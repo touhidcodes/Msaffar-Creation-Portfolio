@@ -31,17 +31,6 @@ export default function ServiceSection() {
           </Card>
         ))}
       </div>
-
-      {/* Call-to-Action */}
-      <div className="text-center mt-12">
-        <h2 className="text-2xl font-bold text-gray-900">
-          Ready to get started?
-        </h2>
-        <p className="text-gray-600 mt-2">
-          Let’s discuss how we can help you achieve your goals.
-        </p>
-        <Button className="mt-4 px-6 py-3 text-lg" text="Contact Us" link="/" />
-      </div>
     </div>
   );
 }
