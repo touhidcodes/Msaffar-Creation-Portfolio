@@ -12,10 +12,18 @@ export type TBlog = {
   link: string;
 };
 
-export type TWorkData = {
-  id: number;
+export type TRecentWorkData = {
+  id: string;
+  name: string;
+  description: string;
+  images: string[];
+  tags: string[];
+  category: string;
+  client: string;
+  tools: string[];
+  binanceProfileUrl: string;
+};
+export type TServiceData = {
   title: string;
   description: string;
-  technologies: string[];
-  link: string;
 };
