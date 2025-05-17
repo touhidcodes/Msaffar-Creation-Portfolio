@@ -58,7 +58,7 @@ export const blogsData: TBlog[] = [
     title: "Mastering React Hooks",
     description:
       "Learn how to use React hooks like useState, useEffect, and useContext in your projects.",
-    image: "/images/react-hooks.jpg", // make sure this image exists in your public folder
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
     link: "/blogs/react-hooks",
   },
   {
@@ -66,7 +66,7 @@ export const blogsData: TBlog[] = [
     title: "Next.js Performance Tips",
     description:
       "Optimize your Next.js apps with image optimization, lazy loading, and SSR techniques.",
-    image: "/images/nextjs-performance.jpg",
+    image: "https://images.unsplash.com/photo-1611443609367-15892f03e715",
     link: "/blogs/nextjs-performance",
   },
   {
@@ -74,7 +74,7 @@ export const blogsData: TBlog[] = [
     title: "Tailwind CSS Best Practices",
     description:
       "Write clean and maintainable Tailwind code with component extraction and utility patterns.",
-    image: "/images/tailwind-tips.jpg",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
     link: "/blogs/tailwind-tips",
   },
   {
@@ -82,7 +82,7 @@ export const blogsData: TBlog[] = [
     title: "Tailwind CSS Best Practices",
     description:
       "Write clean and maintainable Tailwind code with component extraction and utility patterns.",
-    image: "/images/tailwind-tips.jpg",
+    image: "https://images.unsplash.com/photo-1611443609367-15892f03e715",
     link: "/blogs/tailwind-tips",
   },
 ];
