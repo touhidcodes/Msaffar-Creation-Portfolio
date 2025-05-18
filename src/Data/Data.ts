@@ -1,56 +1,4 @@
-import { TBlog, TWorkData } from "@/types";
-
-export const demoWorkData: TWorkData[] = [
-  {
-    id: 1,
-    title: "Flatmate Finder",
-    description: "A platform to find and connect with potential flatmates.",
-    technologies: ["Next.js", "TypeScript", "Redux"],
-    link: "#",
-  },
-  {
-    id: 2,
-    title: "Gift Shop Management",
-    description: "A dashboard for managing gifts and inventory.",
-    technologies: ["React.js", "MongoDB", "Tailwind CSS"],
-    link: "#",
-  },
-  {
-    id: 3,
-    title: "Summer Music Camp",
-    description: "A platform for music learning during summer vacations.",
-    technologies: ["React.js", "Firebase", "AOS"],
-    link: "#",
-  },
-  {
-    id: 4,
-    title: "Dashboard",
-    description: "A platform for music learning during summer vacations.",
-    technologies: ["React.js", "Firebase", "AOS"],
-    link: "#",
-  },
-  {
-    id: 5,
-    title: "Summer Music",
-    description: "A platform for music learning during summer vacations.",
-    technologies: ["React.js", "Firebase", "AOS"],
-    link: "#",
-  },
-  {
-    id: 6,
-    title: "Next Vendor",
-    description: "A platform for music learning during summer vacations.",
-    technologies: ["React.js", "Firebase", "AOS"],
-    link: "#",
-  },
-  {
-    id: 7,
-    title: "Next AI",
-    description: "A platform for music learning during summer vacations.",
-    technologies: ["React.js", "Firebase", "AOS"],
-    link: "#",
-  },
-];
+import { TBlog, TRecentWorkData, TServiceData } from "@/types";
 
 export const blogsData: TBlog[] = [
   {
@@ -87,7 +35,7 @@ export const blogsData: TBlog[] = [
   },
 ];
 
-export const servicesData = [
+export const servicesData: TServiceData[] = [
   {
     title: "Web Development",
     description:
@@ -120,7 +68,7 @@ export const servicesData = [
   },
 ];
 
-export const recentWorks = [
+export const recentWorks: TRecentWorkData[] = [
   {
     id: "proj-001",
     name: "Modern Brand Identity",
