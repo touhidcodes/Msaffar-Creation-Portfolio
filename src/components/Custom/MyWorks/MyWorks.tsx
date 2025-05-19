@@ -12,7 +12,7 @@ import Link from "next/link";
 
 const MyWork = () => {
   return (
-    <div className="bg-[#c7c0a4] min-h-screen py-8 px-4 md:px-16">
+    <div className="bg-gray-100 min-h-screen py-8 px-4 md:px-16">
       {/* Hero Section */}
       <section className="text-center max-w-3xl mx-auto mb-12">
         <h1 className="text-4xl font-bold text-gray-900">
