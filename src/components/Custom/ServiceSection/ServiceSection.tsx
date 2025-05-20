@@ -5,7 +5,7 @@ import { servicesData } from "@/data/serviceData";
 
 export default function ServiceSection() {
   return (
-    <div className="min-h-screen bg-gray-100 py-12 px-6 lg:px-16">
+    <div className="min-h-screen py-12 px-6 lg:px-16">
       <div className="px-6 py-6 lg:py-10 lg:px-20">
         {/* Hero Section */}
         <section className="text-center max-w-3xl mx-auto mb-12">
