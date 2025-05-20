@@ -1,3 +1,5 @@
+import { LucideIcon } from "lucide-react";
+
 export type FormData = {
   name: string;
   email: string;
@@ -23,7 +25,9 @@ export type TRecentWorkData = {
   tools: string[];
   binanceProfileUrl: string;
 };
+
 export type TServiceData = {
   title: string;
   description: string;
+  icon: LucideIcon;
 };
