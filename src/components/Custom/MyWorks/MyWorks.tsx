@@ -5,6 +5,8 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { ArrowUpRight, Heart } from "lucide-react";
@@ -33,11 +35,12 @@ const MyWork = () => {
           >
             <div className="relative w-full h-64 rounded-xl overflow-hidden">
               <Swiper
-                modules={[Autoplay]}
+                modules={[Autoplay, Pagination]}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
                 loop={true}
                 slidesPerView={1}
                 className="h-full"
+                pagination={{ clickable: true }}
               >
                 {work?.images.map((image, index) => (
                   <SwiperSlide key={index}>

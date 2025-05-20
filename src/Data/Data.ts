@@ -106,7 +106,8 @@ export const recentWorks: TRecentWorkData[] = [
       "Designed a poster for a music festival with a vibrant, energetic theme.",
     images: [
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
-      'https://images.unsplash.com/photo-1660665416754-e0c780103b3c"',
+      "https://images.unsplash.com/photo-1660665416754-e0c780103b3c",
+      "https://plus.unsplash.com/premium_photo-1675237625804-25deee797cf7",
     ],
     tags: ["Poster", "Print", "Event"],
     category: "Print Design",
