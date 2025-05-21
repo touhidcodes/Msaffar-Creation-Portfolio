@@ -35,39 +35,6 @@ export const blogsData: TBlog[] = [
   },
 ];
 
-export const servicesData: TServiceData[] = [
-  {
-    title: "Web Development",
-    description:
-      "Building fast, responsive, and scalable websites with modern technologies.",
-  },
-  {
-    title: "UI/UX Design",
-    description:
-      "Creating stunning and user-friendly interfaces for web and mobile applications.",
-  },
-  {
-    title: "SEO Optimization",
-    description:
-      "Improving website visibility and ranking to drive more traffic.",
-  },
-  {
-    title: "Graphics Design",
-    description:
-      "Improving website visibility and ranking to drive more traffic.",
-  },
-  {
-    title: "DB Design",
-    description:
-      "Improving website visibility and ranking to drive more traffic.",
-  },
-  {
-    title: "DB Design 2",
-    description:
-      "Improving website visibility and ranking to drive more traffic.",
-  },
-];
-
 export const recentWorks: TRecentWorkData[] = [
   {
     id: "proj-001",

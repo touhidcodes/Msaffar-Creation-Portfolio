@@ -1,69 +1,48 @@
 import { TServiceData } from "@/types";
 import {
-  Brush,
-  PencilRuler,
-  Code2,
-  Globe,
-  LayoutTemplate,
-  Megaphone,
-  Share2,
+  PenTool,
+  Palette,
+  Image,
+  Layers,
+  MonitorSmartphone,
   FileText,
-  Search,
 } from "lucide-react";
 
 export const servicesData: TServiceData[] = [
   {
-    title: "Branding",
-    description:
-      "Creating an identity that is unique, consistent and captivating. Let us craft a brand story that resonates with your audience.",
-    icon: Brush,
-  },
-  {
     title: "Logo Design",
     description:
-      "Transform your company’s first impression with a logo that truly represents your business and its values.",
-    icon: PencilRuler,
+      "Crafting unique and memorable logos that capture the essence of your brand and make a lasting impression.",
+    icon: PenTool,
   },
   {
-    title: "Development",
+    title: "Brand Identity",
     description:
-      "Customized development solutions that are visually stunning, user-friendly, and seamlessly functional.",
-    icon: Code2,
+      "Building a consistent visual identity with color schemes, typography, and design systems for strong brand recognition.",
+    icon: Palette,
   },
   {
-    title: "Website Design",
+    title: "Social Media Graphics",
     description:
-      "Your website is your business’s digital face. Let’s make it an unforgettable one with user-centered designs.",
-    icon: Globe,
+      "Designing engaging social media posts, banners, and ads tailored for platforms like Instagram, Facebook, and LinkedIn.",
+    icon: Image,
   },
   {
-    title: "App Design",
+    title: "Print Design",
     description:
-      "Impress your mobile audience with a user-friendly app that is visually appealing and engaging.",
-    icon: LayoutTemplate,
+      "Creating stunning brochures, flyers, posters, and other print materials that communicate your message effectively.",
+    icon: Layers,
   },
   {
-    title: "Marketing",
+    title: "UI Design",
     description:
-      "From strategy creation to execution, we provide comprehensive marketing services to help your business thrive.",
-    icon: Megaphone,
+      "Designing intuitive user interfaces for websites and mobile apps that blend aesthetics with usability.",
+    icon: MonitorSmartphone,
   },
   {
-    title: "Social media",
+    title: "Presentation Design",
     description:
-      "Master the art of online interaction. We'll manage your social media channels to increase your reach and engagement.",
-    icon: Share2,
-  },
-  {
-    title: "Content Writing",
-    description:
-      "Capture your audience’s attention with well-crafted, SEO-driven content that sets you apart from the competition.",
+      "Transforming your ideas into compelling slide decks for business pitches, webinars, or educational content.",
     icon: FileText,
-  },
-  {
-    title: "SEO",
-    description:
-      "Boost your online visibility. Our SEO strategies will help you rank higher and reach a larger audience.",
-    icon: Search,
   },
 ];
