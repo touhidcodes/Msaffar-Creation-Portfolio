@@ -6,12 +6,13 @@ export type FormData = {
   message: string;
 };
 
-export type TBlog = {
+export type TBlogData = {
   id: number;
-  image: string;
   title: string;
   description: string;
-  link: string;
+  image: string;
+  isFeatured: boolean;
+  content: string;
 };
 
 export type TRecentWorkData = {
