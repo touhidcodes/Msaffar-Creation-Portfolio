@@ -1,39 +1,4 @@
-import { TBlog, TRecentWorkData, TServiceData } from "@/types";
-
-export const blogsData: TBlog[] = [
-  {
-    id: 1,
-    title: "Mastering React Hooks",
-    description:
-      "Learn how to use React hooks like useState, useEffect, and useContext in your projects.",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
-    link: "/blogs/react-hooks",
-  },
-  {
-    id: 2,
-    title: "Next.js Performance Tips",
-    description:
-      "Optimize your Next.js apps with image optimization, lazy loading, and SSR techniques.",
-    image: "https://images.unsplash.com/photo-1611443609367-15892f03e715",
-    link: "/blogs/nextjs-performance",
-  },
-  {
-    id: 3,
-    title: "Tailwind CSS Best Practices",
-    description:
-      "Write clean and maintainable Tailwind code with component extraction and utility patterns.",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
-    link: "/blogs/tailwind-tips",
-  },
-  {
-    id: 4,
-    title: "Tailwind CSS Best Practices",
-    description:
-      "Write clean and maintainable Tailwind code with component extraction and utility patterns.",
-    image: "https://images.unsplash.com/photo-1611443609367-15892f03e715",
-    link: "/blogs/tailwind-tips",
-  },
-];
+import { TRecentWorkData } from "@/types";
 
 export const recentWorks: TRecentWorkData[] = [
   {

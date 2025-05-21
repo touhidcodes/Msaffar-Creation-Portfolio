@@ -1,4 +1,6 @@
-const blogsData = [
+import { TBlogData } from "@/types";
+
+export const blogsData: TBlogData[] = [
   {
     id: 1,
     title: "Capture Breathtaking Landscape Photography",
