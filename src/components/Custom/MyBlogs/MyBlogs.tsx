@@ -9,7 +9,6 @@ import {
   CardTitle,
   CardDescription,
   CardFooter,
-  CardContent,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Button from "@/components/ui/Button/Button";
@@ -18,6 +17,14 @@ const MyBlogs = () => {
   return (
     <div className="min-h-screen py-12 px-6 lg:px-16 mx-auto">
       <div className="px-6 py-6 lg:py-10 lg:px-20">
+        {/* Blog Section */}
+        <section className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="text-4xl font-bold text-gray-900">Latest Blogs</h2>
+          <p className="text-gray-600 mt-4">
+            Stay updated with our latest insights, tips, and stories on
+            development, design, and tech trends.
+          </p>
+        </section>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {blogsData.slice(0, 3).map((blog) => (
             <Card key={blog.id} className="overflow-hidden">
