@@ -15,15 +15,17 @@ export type TBlogData = {
   content: string;
 };
 
-export type TRecentWorkData = {
-  id: string;
+export type TProjectsData = {
+  _id: string;
   name: string;
   description: string;
   images: string[];
+  timeline: string;
   tags: string[];
   category: string;
-  client: string;
   tools: string[];
+  client: string;
+  status: "Completed" | "Ongoing" | "In Development";
   binanceProfileUrl: string;
 };
 

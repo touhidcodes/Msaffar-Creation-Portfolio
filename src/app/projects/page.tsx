@@ -1,7 +1,6 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
-import { recentWorks } from "@/data/Data";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -10,6 +9,7 @@ import { Autoplay } from "swiper/modules";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { recentProjects } from "@/data/demoData";
 
 const ProjectPage = () => {
   return (
@@ -27,9 +27,9 @@ const ProjectPage = () => {
 
       {/* Card Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {recentWorks.map((work) => (
+        {recentProjects.map((project) => (
           <Card
-            key={work.id}
+            key={project._id}
             className="bg-white rounded-2xl overflow-hidden p-4 shadow-lg relative"
           >
             <div className="relative w-full h-64 rounded-xl overflow-hidden">
@@ -41,7 +41,7 @@ const ProjectPage = () => {
                 className="h-full"
                 pagination={{ clickable: true }}
               >
-                {work?.images.map((image, index) => (
+                {project?.images.map((image, index) => (
                   <SwiperSlide key={index}>
                     <div className="relative w-full h-64">
                       <Image
@@ -59,10 +59,10 @@ const ProjectPage = () => {
             <div className="flex justify-between items-center mt-4 px-1">
               <div>
                 <h2 className="text-lg font-semibold text-gray-800">
-                  {work.name}
+                  {project.name}
                 </h2>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {work.tags.map((tag, index) => (
+                  {project.tags.map((tag, index) => (
                     <span
                       key={index}
                       className="text-sm bg-blue-50 text-blue-800 py-1 px-2 rounded"
@@ -73,7 +73,7 @@ const ProjectPage = () => {
                 </div>
               </div>
               <Link
-                href={`/projects/${work.id}`}
+                href={`/projects/${project._id}`}
                 className="bg-gray-200 hover:bg-gray-300 p-2 rounded-full"
               >
                 <ArrowUpRight className="w-5 h-5 text-black" />
