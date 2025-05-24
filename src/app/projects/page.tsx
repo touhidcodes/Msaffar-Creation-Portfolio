@@ -2,27 +2,26 @@
 
 import { Card } from "@/components/ui/card";
 import { recentWorks } from "@/data/Data";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import { Pagination } from "swiper/modules";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import Button from "@/components/ui/Button/Button";
 
-const MyWork = () => {
+const ProjectPage = () => {
   return (
-    <div className="bg-gray-100 min-h-screen py-8 px-4 md:px-16">
-      {/* Hero Section */}
+    <div className="bg-white min-h-screen py-12 px-4 md:px-16">
+      {/* Header */}
       <section className="text-center max-w-3xl mx-auto mb-12">
         <h1 className="text-4xl font-bold text-gray-900">
-          My Works: Highlighted Branding Projects
+          All Branding Projects
         </h1>
-        <p className="text-gray-800 mt-4">
-          Explore my top Logo & Branding projects highlighting innovative
-          designs and intuitive solutions crafted for renowned brands
+        <p className="text-gray-700 mt-4">
+          A complete list of all my branding, logo design, and creative
+          projects, highlighting design excellence and brand identity.
         </p>
       </section>
 
@@ -83,17 +82,8 @@ const MyWork = () => {
           </Card>
         ))}
       </div>
-
-      {/* More Button */}
-      <div className="mt-10 mb-5 lg:mb-0 flex justify-center">
-        <Button
-          text="Explore More"
-          link="/project"
-          className="w-fit bg-black border-2 border-black text-white font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-white hover:text-black transition-all duration-300"
-        />
-      </div>
     </div>
   );
 };
 
-export default MyWork;
+export default ProjectPage;
