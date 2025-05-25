@@ -27,6 +27,20 @@ const MyProjects = () => {
     "aspect-[9/16]", // tall vertical
   ];
 
+  // Fixed aspect layout: mix of horizontal and vertical
+  const layoutClasses = [
+    "aspect-[4/3]",
+    "aspect-[3/4]",
+    "aspect-[4/3]",
+    "aspect-[3/4]",
+    "aspect-[4/3]",
+    "aspect-[4/3]",
+    "aspect-[3/4]",
+    "aspect-[4/3]",
+    "aspect-[3/4]",
+    "aspect-[4/3]",
+  ];
+
   const staticLayout = [0, 1, 2, 3, 1, 0, 3, 2, 2, 3];
 
   return (
@@ -152,9 +166,11 @@ const MyProjects = () => {
                 //   aspectRatioClasses[staticLayout[layoutIndex]];
 
                 const isVertical = [1, 4, 7].includes(index); // Chosen static indices for vertical layout
-                const aspectClass = isVertical
-                  ? "aspect-[3/4]"
-                  : "aspect-[4/3]";
+                // const aspectClass = isVertical
+                //   ? "aspect-[3/4]"
+                //   : "aspect-[4/3]";
+
+                const aspectClass = layoutClasses[index % layoutClasses.length];
 
                 return (
                   <div
