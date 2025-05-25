@@ -11,6 +11,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Button from "@/components/ui/Button/Button";
 import { recentProjects } from "@/data/demoData";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 const MyProjects = () => {
   return (
@@ -84,6 +85,45 @@ const MyProjects = () => {
             </Card>
           ))}
         </div>
+
+        {/* Masonry Gallery */}
+        <ResponsiveMasonry
+          columnsCountBreakPoints={{ 350: 1, 768: 2, 1024: 3 }}
+        >
+          <Masonry gutter="20px">
+            {recentProjects.map((project) => (
+              <Card
+                key={project._id}
+                className="group relative overflow-hidden rounded-xl shadow-md"
+              >
+                <div className="relative w-full h-[350px]">
+                  <Image
+                    src={project.images[0]}
+                    alt={project.name}
+                    fill
+                    className="object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <h2 className="text-lg font-semibold text-gray-800">
+                    {project.name}
+                  </h2>
+
+                  {/* Hover Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-sm text-white p-4 opacity-0 group-hover:opacity-100 translate-y-full group-hover:translate-y-0 transition-all duration-300 rounded-b-xl">
+                    <div className="flex justify-between items-center">
+                      <h2 className="text-lg font-semibold">{project.name}</h2>
+                      <Link
+                        href={`/projects/${project._id}`}
+                        className="bg-white text-black rounded-full p-2 hover:bg-gray-200 transition"
+                      >
+                        <ArrowUpRight className="w-5 h-5" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </Masonry>
+        </ResponsiveMasonry>
 
         {/* More Button */}
         <div className="mt-10 mb-5 lg:mb-0 flex justify-center">

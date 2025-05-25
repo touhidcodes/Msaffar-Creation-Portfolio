@@ -1,4 +1,4 @@
-import { TBlogData } from "@/types";
+import { TBlogData, TProjectsData } from "@/types";
 
 export const blogsData: TBlogData[] = [
   {
@@ -63,5 +63,93 @@ export const blogsData: TBlogData[] = [
     isFeatured: false,
     content:
       "Macro photography reveals details invisible to the naked eye. Use a dedicated macro lens and a sturdy tripod for sharpness. Set a small aperture (f/8 f/16) for better depth of field. Manual focus gives you more control. Shoot in natural light or use a ring light to avoid harsh shadows. Focus on textures, patterns, or insects. Patience is key subjects are small and movements are magnified at such close distances.",
+  },
+];
+
+export const recentProjects: TProjectsData[] = [
+  {
+    _id: "6650b1fa46c7ae001fb84301",
+    name: "Modern Brand Identity",
+    description:
+      "Complete branding for a modern tech startup, including logo, typography, and color palette.",
+    images: [
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+      "https://images.unsplash.com/photo-1611443609367-15892f03e715",
+    ],
+    timeline: "Jan 2024 - Mar 2024",
+    tags: ["branding", "logo", "typography"],
+    category: "Brand Identity",
+    tools: ["Adobe Illustrator", "Figma", "Photoshop"],
+    client: "TechNova Inc.",
+    status: "Completed",
+    binanceProfileUrl: "https://www.behance.net/techbranddesign",
+  },
+  {
+    _id: "6650b1fa46c7ae001fb84302",
+    name: "Social Media Campaign",
+    description:
+      "Designed engaging visuals and storyboards for a seasonal marketing campaign on Instagram and Facebook.",
+    images: [
+      "https://images.unsplash.com/photo-1602526216231-1b2d4074e6fa",
+      "https://images.unsplash.com/photo-1556742400-b5fbdcceaa4b",
+    ],
+    timeline: "Feb 2024 - Apr 2024",
+    tags: ["social media", "marketing", "ads"],
+    category: "Digital Marketing",
+    tools: ["Photoshop", "Canva", "After Effects"],
+    client: "GlowFit Apparel",
+    status: "Completed",
+    binanceProfileUrl: "https://www.behance.net/glowfitmedia",
+  },
+  {
+    _id: "6650b1fa46c7ae001fb84303",
+    name: "Event Poster Series",
+    description:
+      "Created a set of promotional posters for an international tech summit.",
+    images: [
+      "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e",
+      "https://images.unsplash.com/photo-1549921296-3a6bca4a6e2f",
+    ],
+    timeline: "Mar 2024 - Mar 2024",
+    tags: ["poster", "print", "event"],
+    category: "Print Design",
+    tools: ["Adobe InDesign", "Photoshop"],
+    client: "Global Tech Summit 2024",
+    status: "Completed",
+    binanceProfileUrl: "https://www.behance.net/techsummitposters",
+  },
+  {
+    _id: "6650b1fa46c7ae001fb84304",
+    name: "UI Kit for Mobile App",
+    description:
+      "Developed a complete UI component kit for a fitness tracking mobile app.",
+    images: [
+      "https://images.unsplash.com/photo-1591696331119-d9a2beaf0a1a",
+      "https://images.unsplash.com/photo-1611617777798-9701b0086971",
+    ],
+    timeline: "Apr 2024 - May 2024",
+    tags: ["UI", "mobile", "fitness"],
+    category: "UI/UX Design",
+    tools: ["Figma", "Sketch"],
+    client: "PulseTrack",
+    status: "Ongoing",
+    binanceProfileUrl: "https://www.behance.net/fituikit",
+  },
+  {
+    _id: "6650b1fa46c7ae001fb84305",
+    name: "Packaging Design",
+    description:
+      "Crafted eye-catching packaging designs for a new eco-friendly skincare product line.",
+    images: [
+      "https://images.unsplash.com/photo-1607082349566-1873425f4f47",
+      "https://images.unsplash.com/photo-1607082350705-bf8f149fe9b8",
+    ],
+    timeline: "May 2024 - Jun 2024",
+    tags: ["packaging", "eco", "skincare"],
+    category: "Product Design",
+    tools: ["Illustrator", "Photoshop"],
+    client: "GreenGlow Organics",
+    status: "In Development",
+    binanceProfileUrl: "https://www.behance.net/greenglowpackaging",
   },
 ];
