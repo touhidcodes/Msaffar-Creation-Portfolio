@@ -11,37 +11,15 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Button from "@/components/ui/Button/Button";
 import { recentProjects } from "@/data/demoData";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import Masonry from "react-masonry-css";
 
-const MyProjects = () => {
-  // Helper to randomly assign vertical or horizontal layout
-  const getRandomAspectClass = () => {
-    const isVertical = Math.random() > 0.5;
-    return isVertical ? "aspect-[3/4]" : "aspect-[4/3]";
+const ProjectsSection = () => {
+  const columnBreakpoints = {
+    default: 4,
+    1024: 3,
+    768: 2,
+    500: 1,
   };
-
-  const aspectRatioClasses = [
-    "aspect-[4/3]", // horizontal
-    "aspect-[3/4]", // vertical
-    "aspect-[16/9]", // wide horizontal
-    "aspect-[9/16]", // tall vertical
-  ];
-
-  // Fixed aspect layout: mix of horizontal and vertical
-  const layoutClasses = [
-    "aspect-[4/3]",
-    "aspect-[3/4]",
-    "aspect-[4/3]",
-    "aspect-[3/4]",
-    "aspect-[4/3]",
-    "aspect-[4/3]",
-    "aspect-[3/4]",
-    "aspect-[4/3]",
-    "aspect-[3/4]",
-    "aspect-[4/3]",
-  ];
-
-  const staticLayout = [0, 1, 2, 3, 1, 0, 3, 2, 2, 3];
 
   return (
     <div className="bg-gray-100 min-h-screen py-8 px-4 md:px-16">
@@ -116,7 +94,52 @@ const MyProjects = () => {
         </div>
 
         {/* Masonry Gallery */}
-        <ResponsiveMasonry
+
+        <Masonry
+          breakpointCols={columnBreakpoints}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {recentProjects.slice(0, 8).map((project, index) => {
+            const isVertical = [1, 3, 4, 6].includes(index); // Choose which ones are vertical
+            const aspectClass = isVertical ? "aspect-[3/4]" : "aspect-[4/3]";
+
+            return (
+              <div
+                key={`${project._id}-${index}`}
+                className={`group relative w-full ${aspectClass} overflow-hidden rounded-xl mb-4`}
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    src={project.images[0]}
+                    alt={project.name}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105 rounded-xl"
+                  />
+                </div>
+
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-white/10 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-4 rounded-xl">
+                  <div className="text-white text-xl font-bold drop-shadow-md">
+                    {project.name}
+                  </div>
+                  <div className="mt-3">
+                    <Link href={`/projects/${project._id}`}>
+                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/80 text-black rounded-full hover:bg-white transition-all shadow-md backdrop-blur-sm cursor-pointer">
+                        <span className="text-sm font-medium">
+                          View Details
+                        </span>
+                        <ArrowUpRight className="w-4 h-4" />
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </Masonry>
+
+        {/* <ResponsiveMasonry
           columnsCountBreakPoints={{ 350: 1, 768: 2, 1024: 3 }}
         >
           <Masonry gutter="16px">
@@ -136,8 +159,7 @@ const MyProjects = () => {
                         className="object-cover transition-transform duration-300 group-hover:scale-105 rounded-xl"
                       />
                     </div>
-
-                    {/* Hover Overlay */}
+                    // Hover Overlay
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-3">
                       <div className="text-white text-sm font-semibold">
                         {project.name}
@@ -154,54 +176,7 @@ const MyProjects = () => {
               })
             )}
           </Masonry>
-        </ResponsiveMasonry>
-
-        {/* Static Grid Gallery */}
-        <section className="mt-14 max-w-[1200px] mx-auto px-4">
-          <div className="grid grid-cols-4 gap-4">
-            {recentProjects.slice(0, 10).map((project, pIndex) =>
-              project.images.map((img, index) => {
-                const layoutIndex = pIndex % staticLayout.length;
-                // const aspectClass =
-                //   aspectRatioClasses[staticLayout[layoutIndex]];
-
-                const isVertical = [1, 4, 7].includes(index); // Chosen static indices for vertical layout
-                // const aspectClass = isVertical
-                //   ? "aspect-[3/4]"
-                //   : "aspect-[4/3]";
-
-                const aspectClass = layoutClasses[index % layoutClasses.length];
-
-                return (
-                  <div
-                    key={`${project._id}-${index}`}
-                    className={`group relative rounded-xl overflow-hidden w-full ${aspectClass}`}
-                    style={{ maxWidth: "100%" }}
-                  >
-                    <Image
-                      src={img}
-                      alt={project.name}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105 rounded-xl"
-                    />
-
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-3 rounded-xl">
-                      <div className="text-white text-sm font-semibold">
-                        {project.name}
-                      </div>
-                      <Link
-                        href={`/projects/${project._id}`}
-                        className="mt-2 w-fit bg-white text-black p-1 rounded-full hover:bg-gray-200"
-                      >
-                        <ArrowUpRight className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  </div>
-                );
-              })
-            )}
-          </div>
-        </section>
+        </ResponsiveMasonry> */}
 
         {/* More Button */}
         <div className="mt-10 mb-5 lg:mb-0 flex justify-center">
@@ -216,50 +191,4 @@ const MyProjects = () => {
   );
 };
 
-export default MyProjects;
-
-// Inside the component
-const breakpointColumnsObj = {
-  default: 4,
-  1024: 3,
-  768: 2,
-  500: 1,
-};
-
-<Masonry
-  // breakpointCols={breakpointColumnsObj}
-  className="my-masonry-grid"
-  // columnClassName="my-masonry-grid_column"
->
-  {recentProjects.slice(0, 8).map((project, index) => {
-    const isVertical = [1, 3, 4, 6].includes(index); // Choose which ones are vertical
-    const aspectClass = isVertical ? "aspect-[3/4]" : "aspect-[4/3]";
-
-    return (
-      <div
-        key={`${project._id}-${index}`}
-        className={`group relative w-full ${aspectClass} overflow-hidden rounded-xl mb-4`}
-      >
-        <div className="relative w-full h-full">
-          <Image
-            src={project.images[0]}
-            alt={project.name}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105 rounded-xl"
-          />
-        </div>
-
-        {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-3">
-          <div className="text-white text-sm font-semibold">{project.name}</div>
-          <Link
-            href={`/projects/${project._id}`}
-            className="mt-2 w-fit bg-white text-black p-1 rounded-full hover:bg-gray-200"
-          >
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
-        </div>
-      </div>
-    );
-  })}
-</Masonry>;
+export default ProjectsSection;

@@ -4,7 +4,7 @@ import GotIdea from "@/components/Custom/GotIdea/GotIdea";
 import GrowthSection from "@/components/Custom/GrowthSection/GrowthSection";
 import HeroSection from "@/components/Custom/Hero/Hero";
 import MyBlogs from "@/components/Custom/MyBlogs/MyBlogs";
-import MyProjects from "@/components/Custom/MyProjects/MyProjects";
+import ProjectsSection from "@/components/Custom/ProjectsSection/ProjectsSection";
 import ServiceSection from "@/components/Custom/ServiceSection/ServiceSection";
 import ToolsSkills from "@/components/Custom/ToolsSkills/ToolsSkills";
 
@@ -19,7 +19,7 @@ const HomePage = () => {
       <GotIdea />
       <ServiceSection />
       <MyBlogs />
-      <MyProjects />
+      <ProjectsSection />
     </div>
   );
 };
