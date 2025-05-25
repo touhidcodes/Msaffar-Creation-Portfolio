@@ -217,3 +217,49 @@ const MyProjects = () => {
 };
 
 export default MyProjects;
+
+// Inside the component
+const breakpointColumnsObj = {
+  default: 4,
+  1024: 3,
+  768: 2,
+  500: 1,
+};
+
+<Masonry
+  // breakpointCols={breakpointColumnsObj}
+  className="my-masonry-grid"
+  // columnClassName="my-masonry-grid_column"
+>
+  {recentProjects.slice(0, 8).map((project, index) => {
+    const isVertical = [1, 3, 4, 6].includes(index); // Choose which ones are vertical
+    const aspectClass = isVertical ? "aspect-[3/4]" : "aspect-[4/3]";
+
+    return (
+      <div
+        key={`${project._id}-${index}`}
+        className={`group relative w-full ${aspectClass} overflow-hidden rounded-xl mb-4`}
+      >
+        <div className="relative w-full h-full">
+          <Image
+            src={project.images[0]}
+            alt={project.name}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105 rounded-xl"
+          />
+        </div>
+
+        {/* Hover Overlay */}
+        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-3">
+          <div className="text-white text-sm font-semibold">{project.name}</div>
+          <Link
+            href={`/projects/${project._id}`}
+            className="mt-2 w-fit bg-white text-black p-1 rounded-full hover:bg-gray-200"
+          >
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </div>
+    );
+  })}
+</Masonry>;
