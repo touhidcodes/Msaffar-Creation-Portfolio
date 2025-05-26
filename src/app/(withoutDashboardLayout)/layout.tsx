@@ -1,4 +1,4 @@
-import Header from "@/components/Custom/Header/Header";
+import NavBar from "@/components/Custom/Navbar/Navbar";
 
 const WithoutDashboardLayout = ({
   children,
@@ -7,7 +7,7 @@ const WithoutDashboardLayout = ({
 }) => {
   return (
     <div>
-      <Header />
+      <NavBar />
       {children}
     </div>
   );
