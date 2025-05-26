@@ -9,10 +9,12 @@ export default function ServiceSection() {
       <div className="px-6 py-6 lg:py-10 lg:px-20">
         {/* Hero Section */}
         <section className="text-center max-w-3xl mx-auto mb-12">
-          <h1 className="text-4xl font-bold text-gray-900">My Services</h1>
+          <h1 className="text-4xl font-bold text-gray-900">
+            Comprehensive Services You Will Get
+          </h1>
           <p className="text-gray-600 mt-4">
-            We provide top-notch services to help you build, grow, and optimize
-            your online presence.
+            Explore a range of services tailored to elevate your project. From
+            Logo Design to Branding and research to information.
           </p>
         </section>
 

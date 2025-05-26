@@ -90,8 +90,8 @@ export const recentProjects: TProjectsData[] = [
     description:
       "Designed engaging visuals and storyboards for a seasonal marketing campaign on Instagram and Facebook.",
     images: [
-      "https://images.unsplash.com/photo-1602526216231-1b2d4074e6fa",
-      "https://images.unsplash.com/photo-1556742400-b5fbdcceaa4b",
+      "https://images.unsplash.com/photo-1747913647304-9f298ff28ff4",
+      "https://images.unsplash.com/photo-1747549721349-9a2643a44340",
     ],
     timeline: "Feb 2024 - Apr 2024",
     tags: ["social media", "marketing", "ads"],
@@ -107,8 +107,8 @@ export const recentProjects: TProjectsData[] = [
     description:
       "Created a set of promotional posters for an international tech summit.",
     images: [
-      "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e",
-      "https://images.unsplash.com/photo-1549921296-3a6bca4a6e2f",
+      "https://images.unsplash.com/photo-1747549721349-9a2643a44340",
+      "https://plus.unsplash.com/premium_photo-1747375615029-515941ee7a99",
     ],
     timeline: "Mar 2024 - Mar 2024",
     tags: ["poster", "print", "event"],
@@ -124,8 +124,8 @@ export const recentProjects: TProjectsData[] = [
     description:
       "Developed a complete UI component kit for a fitness tracking mobile app.",
     images: [
-      "https://images.unsplash.com/photo-1591696331119-d9a2beaf0a1a",
-      "https://images.unsplash.com/photo-1611617777798-9701b0086971",
+      "https://images.unsplash.com/photo-1746424919579-7c119aaa8e61",
+      "https://images.unsplash.com/photo-1747913647304-9f298ff28ff4",
     ],
     timeline: "Apr 2024 - May 2024",
     tags: ["UI", "mobile", "fitness"],
@@ -141,8 +141,8 @@ export const recentProjects: TProjectsData[] = [
     description:
       "Crafted eye-catching packaging designs for a new eco-friendly skincare product line.",
     images: [
-      "https://images.unsplash.com/photo-1607082349566-1873425f4f47",
-      "https://images.unsplash.com/photo-1607082350705-bf8f149fe9b8",
+      "https://images.unsplash.com/photo-1745563115146-aec349b7cadf",
+      "https://plus.unsplash.com/premium_photo-1747375615029-515941ee7a99",
     ],
     timeline: "May 2024 - Jun 2024",
     tags: ["packaging", "eco", "skincare"],
@@ -151,5 +151,106 @@ export const recentProjects: TProjectsData[] = [
     client: "GreenGlow Organics",
     status: "In Development",
     binanceProfileUrl: "https://www.behance.net/greenglowpackaging",
+  },
+  {
+    _id: "6650b1fa46c7ae001fb84305",
+    name: "Packaging Design 2",
+    description:
+      "Crafted eye-catching packaging designs for a new eco-friendly skincare product line.",
+    images: [
+      "https://images.unsplash.com/photo-1747647098060-c78991b97260",
+      "https://plus.unsplash.com/premium_photo-1747375615029-515941ee7a99",
+    ],
+    timeline: "May 2024 - Jun 2024",
+    tags: ["packaging", "eco", "skincare"],
+    category: "Product Design",
+    tools: ["Illustrator", "Photoshop"],
+    client: "GreenGlow Organics",
+    status: "In Development",
+    binanceProfileUrl: "https://www.behance.net/greenglowpackaging",
+  },
+  {
+    _id: "6651c2a947f7bb002fb94310",
+    name: "Brand Identity for TechHive",
+    description:
+      "Developed a full brand identity for a SaaS startup, including logo, typography, and color system.",
+    images: [
+      "https://images.unsplash.com/photo-1504805572947-34fad45aed93",
+      "https://images.unsplash.com/photo-1747549721349-9a2643a44340",
+    ],
+    timeline: "Feb 2024 - Mar 2024",
+    tags: ["branding", "tech", "logo"],
+    category: "Brand Identity",
+    tools: ["Figma", "Illustrator"],
+    client: "TechHive",
+    status: "Completed",
+    binanceProfileUrl: "https://www.behance.net/techhivebranding",
+  },
+  {
+    _id: "6651c2b947f7bb002fb94311",
+    name: "Minimal Coffee Packaging",
+    description:
+      "Designed a clean and minimalistic coffee bag packaging for a luxury coffee brand.",
+    images: [
+      "https://images.unsplash.com/photo-1513151233558-d860c5398176",
+      "https://plus.unsplash.com/premium_photo-1746101506623-60f66e1da8b4",
+    ],
+    timeline: "Jan 2024 - Feb 2024",
+    tags: ["packaging", "minimal", "coffee"],
+    category: "Product Design",
+    tools: ["Photoshop", "Cinema 4D"],
+    client: "Barista Luxe",
+    status: "Completed",
+    binanceProfileUrl: "https://www.behance.net/baristaluxe",
+  },
+  {
+    _id: "6651c2c947f7bb002fb94312",
+    name: "Fashion Label Rebranding",
+    description:
+      "Led the rebranding of an urban fashion label with bold typography and visual storytelling.",
+    images: [
+      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f",
+      "https://images.unsplash.com/photo-1747586181200-96551a018ed1",
+    ],
+    timeline: "Mar 2024 - Apr 2024",
+    tags: ["rebrand", "fashion", "visual identity"],
+    category: "Brand Identity",
+    tools: ["Figma", "After Effects"],
+    client: "Noir Urban",
+    status: "Completed",
+    binanceProfileUrl: "https://www.behance.net/noirurban",
+  },
+  {
+    _id: "6651c2d947f7bb002fb94313",
+    name: "Organic Juice Label Design",
+    description:
+      "Created colorful and vibrant label designs for a line of organic fruit juices.",
+    images: [
+      "https://plus.unsplash.com/premium_photo-1747038385188-2f345c630fcb",
+    ],
+    timeline: "Apr 2024 - May 2024",
+    tags: ["packaging", "label", "organic"],
+    category: "Product Design",
+    tools: ["Illustrator", "InDesign"],
+    client: "Nature’s Sip",
+    status: "Completed",
+    binanceProfileUrl: "https://www.behance.net/naturessip",
+  },
+  {
+    _id: "6651c2e947f7bb002fb94314",
+    name: "Luxury Skincare Branding",
+    description:
+      "Delivered a luxury-themed brand guideline, packaging mockups, and digital assets.",
+    images: [
+      "https://images.unsplash.com/photo-1747681476477-8f8df64a863d",
+      "https://images.unsplash.com/photo-1748100377329-429f657842de",
+    ],
+    timeline: "Dec 2023 - Jan 2024",
+    tags: ["luxury", "branding", "skincare"],
+    category: "Brand Identity",
+    tools: ["Photoshop", "XD", "Figma"],
+    client: "Léclair Paris",
+    status: "Completed",
+    binanceProfileUrl: "https://www.behance.net/leclairparis",
   },
 ];
