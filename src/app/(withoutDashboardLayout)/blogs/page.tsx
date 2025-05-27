@@ -11,7 +11,7 @@ import { blogsData } from "@/data/demoData";
 import { truncateText } from "@/utils/truncateText";
 import Image from "next/image";
 
-const Page = () => {
+const BlogPage = () => {
   return (
     <div className="min-h-screen lg:px-16 mx-auto">
       <div className="px-6 lg:px-20 mb-10">
@@ -25,7 +25,7 @@ const Page = () => {
         </section>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {blogsData.map((blog) => (
-            <Card key={blog.id} className="overflow-hidden">
+            <Card key={blog._id} className="overflow-hidden">
               <div className="relative w-full h-48">
                 <Image
                   src={blog.image}
@@ -51,7 +51,7 @@ const Page = () => {
               <CardFooter>
                 <Button
                   text="Read More"
-                  link={`/blog/${blog.id}`}
+                  link={`/blogs/${blog._id}`}
                   className="w-fit bg-black border-2 border-black text-white font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-white hover:text-black transition-all duration-300"
                 />
               </CardFooter>
@@ -63,4 +63,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default BlogPage;
