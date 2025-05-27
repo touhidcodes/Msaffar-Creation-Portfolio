@@ -3,10 +3,11 @@ import FeaturedBrands from "@/components/Custom/FeatureBrands/FeatureBrands";
 import GotIdea from "@/components/Custom/GotIdea/GotIdea";
 import GrowthSection from "@/components/Custom/GrowthSection/GrowthSection";
 import HeroSection from "@/components/Custom/Hero/Hero";
-import MyBlogs from "@/components/Custom/MyBlogs/MyBlogs";
+import MyBlogs from "@/components/Custom/BlogsSection/BlogsSection";
 import ProjectsSection from "@/components/Custom/ProjectsSection/ProjectsSection";
 import ServiceSection from "@/components/Custom/ServiceSection/ServiceSection";
 import ToolsSkills from "@/components/Custom/ToolsSkills/ToolsSkills";
+import BlogsSection from "@/components/Custom/BlogsSection/BlogsSection";
 
 const HomePage = () => {
   return (
@@ -18,8 +19,8 @@ const HomePage = () => {
       <ToolsSkills />
       <GotIdea />
       <ServiceSection />
-      <MyBlogs />
       <ProjectsSection />
+      <BlogsSection />
     </div>
   );
 };

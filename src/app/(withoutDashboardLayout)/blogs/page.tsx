@@ -1,22 +1,20 @@
-"use client";
-
-import Image from "next/image";
-import { truncateText } from "@/utils/truncateText";
-import { blogsData } from "@/data/demoData";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardFooter,
-} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Button from "@/components/ui/Button/Button";
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { blogsData } from "@/data/demoData";
+import { truncateText } from "@/utils/truncateText";
+import Image from "next/image";
 
-const MyBlogs = () => {
+const Page = () => {
   return (
-    <div className="min-h-screen py-12 px-6 lg:px-16 mx-auto">
-      <div className="px-6 py-6 lg:py-10 lg:px-20">
+    <div className="min-h-screen lg:px-16 mx-auto">
+      <div className="px-6 lg:px-20 mb-10">
         {/* Blog Section */}
         <section className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-4xl font-bold text-gray-900">Latest Blogs</h2>
@@ -26,7 +24,7 @@ const MyBlogs = () => {
           </p>
         </section>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {blogsData.slice(0, 3).map((blog) => (
+          {blogsData.map((blog) => (
             <Card key={blog.id} className="overflow-hidden">
               <div className="relative w-full h-48">
                 <Image
@@ -65,4 +63,4 @@ const MyBlogs = () => {
   );
 };
 
-export default MyBlogs;
+export default Page;
