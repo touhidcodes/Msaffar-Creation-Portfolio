@@ -5,7 +5,7 @@ const Button = ({
   link,
   className,
 }: {
-  text: string;
+  text?: string;
   link: string;
   className?: string;
 }) => {
