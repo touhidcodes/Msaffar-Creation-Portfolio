@@ -1,102 +1,74 @@
-import { FormData } from "@/types";
-import { useState, ChangeEvent, FormEvent } from "react";
+"use client";
 
-const ContactSection = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [successMessage, setSuccessMessage] = useState<string>("");
+import Button from "@/components/ui/Button/Button";
+import Image from "next/image";
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ): void => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-    setSuccessMessage("Thank you! Your message has been sent.");
-    setFormData({ name: "", email: "", message: "" });
-  };
+export default function ContactSection() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="max-w-lg w-full bg-white shadow-lg rounded-lg p-6">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
-          Contact Us
-        </h1>
-        {successMessage && (
-          <p className="text-green-600 text-center font-medium mb-4">
-            {successMessage}
+    <section className="min-h-screen flex items-center justify-center bg-white px-4 py-10">
+      <div className="grid md:grid-cols-2 w-full max-w-6xl gap-10 items-center">
+        {/* Left Section */}
+        <div className="text-center md:text-left space-y-6">
+          <h1 className="text-3xl md:text-4xl font-bold leading-tight">
+            Let’s connect and start the conversations!
+          </h1>
+          <p className="text-gray-600">
+            Whether you have questions, want to discuss a project, or simply
+            want to chat about design feel free to reach out. <br />
+            <a href="#" className="text-blue-600 underline">
+              Drop me a message
+            </a>
           </p>
-        )}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-gray-600 font-medium mb-2"
-            >
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            />
-          </div>
 
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-gray-600 font-medium mb-2"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            />
+          {/* Icon line */}
+          <div className="flex flex-col items-center md:items-start space-y-4">
+            <div className="flex flex-col items-center">
+              <div className="text-xs font-semibold">YOU</div>
+              <div className="bg-black p-4 rounded">
+                <Image
+                  src="/you-icon.svg"
+                  alt="You Icon"
+                  width={40}
+                  height={40}
+                />
+              </div>
+            </div>
+            <div className="h-12 w-1 bg-black" />
+            <div>
+              <Image
+                src="/plug-icon.svg"
+                alt="Plug Icon"
+                width={40}
+                height={40}
+              />
+            </div>
+            <div className="h-12 w-1 bg-black" />
+            <div className="flex flex-col items-center">
+              <div className="bg-black p-4 rounded">
+                <Image
+                  src="/me-icon.svg"
+                  alt="Me Icon"
+                  width={40}
+                  height={40}
+                />
+              </div>
+              <div className="text-xs font-semibold">ME</div>
+            </div>
           </div>
+        </div>
 
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-gray-600 font-medium mb-2"
-            >
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={4}
-              value={formData.message}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            />
-          </div>
-
-          <button
+        {/* Right Section */}
+        <form className="space-y-4 w-full">
+          <Input type="text" placeholder="Name" required />
+          <Input type="email" placeholder="Email" required />
+          <Textarea placeholder="Message" rows={4} required />
+          <Button
+            text="submit"
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition"
-          >
-            Submit
-          </button>
+            className="w-full bg-black text-white"
+          ></Button>
         </form>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default ContactSection;
+}
