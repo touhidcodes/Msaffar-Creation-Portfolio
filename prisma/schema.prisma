@@ -42,3 +42,9 @@ model RecentWork {
 
   @@map("recent_works")
 }
+
+enum ProjectStatus {
+  Completed
+  Ongoing
+  In_Development
+}
