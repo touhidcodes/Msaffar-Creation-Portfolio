@@ -122,6 +122,22 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.RecentWorkScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  images: 'images',
+  tags: 'tags',
+  isFeatured: 'isFeatured',
+  isDeleted: 'isDeleted',
+  binanceProfileUrl: 'binanceProfileUrl',
+  tools: 'tools',
+  client: 'client',
+  projectDuration: 'projectDuration',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -134,7 +150,8 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  RecentWork: 'RecentWork'
 };
 
 /**

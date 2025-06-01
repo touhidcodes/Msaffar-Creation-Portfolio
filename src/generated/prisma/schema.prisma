@@ -24,3 +24,27 @@ model User {
 
   @@map("users")
 }
+
+model RecentWork {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  name              String
+  description       String
+  images            String[]
+  tags              String[]
+  isFeatured        Boolean  @default(false)
+  isDeleted         Boolean  @default(false)
+  binanceProfileUrl String?
+  tools             String[] @default([])
+  client            String?
+  projectDuration   String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("recent_works")
+}
+
+enum ProjectStatus {
+  Completed
+  Ongoing
+  In_Development
+}
