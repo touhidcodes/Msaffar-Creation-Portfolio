@@ -12,8 +12,8 @@ async function main() {
     where: { email: process.env.NEXT_PUBLIC_ADMIN_EMAIL },
     update: {},
     create: {
-      email: process.env.NEXT_PUBLIC_ADMIN_EMAIL,
-      username: process.env.NEXT_PUBLIC_ADMIN_USERNAME,
+      email: process.env.NEXT_PUBLIC_ADMIN_EMAIL!,
+      username: process.env.NEXT_PUBLIC_ADMIN_USERNAME!,
       password,
     },
   });

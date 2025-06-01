@@ -6,7 +6,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -25,7 +24,7 @@ model User {
   @@map("users")
 }
 
-model RecentWork {
+model Project {
   id                String   @id @default(auto()) @map("_id") @db.ObjectId
   name              String
   description       String
@@ -40,7 +39,7 @@ model RecentWork {
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
 
-  @@map("recent_works")
+  @@map("projects")
 }
 
 enum ProjectStatus {
