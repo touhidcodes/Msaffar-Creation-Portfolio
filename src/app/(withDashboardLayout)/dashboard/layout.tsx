@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Sidebar from "@/components/Dashboard/Sidebar/Sidebar";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -19,8 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Main content */}
       <div
         className={cn(
-          "flex flex-col flex-1 transition-all duration-300", // no animation on margin
-          // on lg: margin-left = 0 if sidebar closed, 16rem if open
+          "flex flex-col flex-1 transition-all duration-300",
           sidebarOpen ? "lg:ml-64" : "lg:ml-0 ml-0"
         )}
       >

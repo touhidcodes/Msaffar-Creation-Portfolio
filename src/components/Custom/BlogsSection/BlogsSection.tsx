@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { truncateText } from "@/utils/truncateText";
 import { blogsData } from "@/data/demoData";
 import {
   Card,
@@ -12,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Button from "@/components/ui/Button/Button";
+import { truncateText } from "@/lib/utils";
 
 const BlogsSection = () => {
   return (
