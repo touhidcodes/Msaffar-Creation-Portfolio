@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/utils/cn";
 import {
   CircleUser,
   FileText,
@@ -15,12 +16,10 @@ import {
   FileStack,
   FolderArchive,
   Bell,
-  Menu,
   X,
 } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useRef } from "react";
 
 const sidebarLinks = [
   {
@@ -44,40 +43,81 @@ const sidebarLinks = [
     ],
   },
   {
+    section: "Documents",
+    items: [
+      { label: "Data Library", icon: FolderArchive, href: "#" },
+      { label: "Reports", icon: FileText, href: "#" },
+      { label: "Word Assistant", icon: NotebookPen, href: "#" },
+      { label: "More", icon: MoreHorizontal, href: "#" },
+    ],
+  },
+  {
+    section: "Documents",
+    items: [
+      { label: "Data Library", icon: FolderArchive, href: "#" },
+      { label: "Reports", icon: FileText, href: "#" },
+      { label: "Word Assistant", icon: NotebookPen, href: "#" },
+      { label: "More", icon: MoreHorizontal, href: "#" },
+    ],
+  },
+  {
     section: "Settings",
     items: [{ label: "Settings", icon: Settings, href: "#" }],
   },
 ];
 
-export default function Sidebar() {
-  const [open, setOpen] = useState(false);
+type SidebarProps = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+export default function Sidebar({ isOpen, onClose }: SidebarProps) {
+  const sidebarRef = useRef<HTMLDivElement>(null);
 
   return (
     <>
-      {/* Mobile Toggle Button */}
-      <div className="md:hidden p-4 flex justify-between items-center border-b shadow-sm">
-        <div className="font-bold text-lg">M Saffar Creation</div>
-        <button onClick={() => setOpen(!open)}>
-          {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </div>
+      {/* Overlay shown only on mobile when sidebar is open */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+          onClick={onClose}
+          aria-hidden="true"
+        />
+      )}
 
-      {/* Sidebar */}
       <aside
+        ref={sidebarRef}
+        // className={cn(
+        //   "h-screen bg-white border-r shadow-sm flex-shrink-0 flex flex-col transition-all duration-300 ease-in-out",
+        //   // On desktop: static with fixed width
+        //   "hidden lg:flex lg:w-64",
+
+        //   // On mobile: fixed overlay, show/hide instantly
+        //   isOpen ? "fixed inset-y-0 left-0 w-64 z-50 flex flex-col" : "hidden"
+        // )}
         className={cn(
-          "bg-white border-r h-screen md:w-64 flex-col justify-between fixed z-50 transition-all duration-300 md:flex",
-          open ? "flex w-64" : "hidden",
-          "md:static"
+          "w-64 z-50 bg-white h-full shadow-md transition-transform duration-300 transform flex flex-col",
+          // isOpen ? "translate-x-0" : "-translate-x-full"
+          isOpen ? "fixed inset-y-0 left-0 w-64 z-50 flex flex-col" : "hidden"
         )}
       >
-        {/* Top: Logo & Notification */}
-        <div className="flex items-center justify-between px-6 py-4 border-b md:border-none">
+        {/* Top header */}
+        <div className="flex items-center justify-between px-6 py-4 border-b flex-shrink-0">
           <div className="text-lg font-semibold">M Saffar Creation</div>
-          <Bell className="w-5 h-5 text-muted-foreground" />
+          <div className="flex items-center gap-3">
+            <Bell className="w-5 h-5 text-muted-foreground" />
+            <button
+              className="block lg:hidden"
+              onClick={onClose}
+              aria-label="Close sidebar"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
         </div>
 
-        {/* Middle: Scrollable navigation */}
-        <div className="flex-1 overflow-y-auto custom-scroll px-1">
+        {/* Scrollable Nav */}
+        <div className="flex-1 overflow-y-auto">
           {sidebarLinks.map((group, idx) => (
             <div key={idx} className="mb-4">
               {group.section !== "Main" && (
@@ -104,7 +144,7 @@ export default function Sidebar() {
           ))}
         </div>
 
-        {/* Bottom: Static Profile */}
+        {/* Footer */}
         <div className="px-6 py-4 border-t flex items-center gap-3 shrink-0 bg-white">
           <img
             src="https://github.com/shadcn.png"
