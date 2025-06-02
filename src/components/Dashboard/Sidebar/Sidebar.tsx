@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/utils";
 import {
   CircleUser,
   FileText,
@@ -87,14 +87,6 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
       <aside
         ref={sidebarRef}
-        // className={cn(
-        //   "h-screen bg-white border-r shadow-sm flex-shrink-0 flex flex-col transition-all duration-300 ease-in-out",
-        //   // On desktop: static with fixed width
-        //   "hidden lg:flex lg:w-64",
-
-        //   // On mobile: fixed overlay, show/hide instantly
-        //   isOpen ? "fixed inset-y-0 left-0 w-64 z-50 flex flex-col" : "hidden"
-        // )}
         className={cn(
           "w-64 z-50 bg-white h-full shadow-md transition-transform duration-300 transform flex flex-col",
           // isOpen ? "translate-x-0" : "-translate-x-full"
