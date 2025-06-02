@@ -1,11 +1,17 @@
 "use client";
 
+import FormContainer from "@/components/Forms/FormContainer";
+import FormInput from "@/components/Forms/FormInput";
 import Button from "@/components/ui/Button/Button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
+import { FieldValues } from "react-hook-form";
 
 export default function ContactSection() {
+  const handleSubmit = (data: FieldValues) => {
+    console.log(data);
+  };
   return (
     <section className="min-h-screen flex items-center justify-center bg-white px-4 py-10">
       <div className="grid md:grid-cols-3 w-full max-w-6xl gap-10 items-center">
@@ -37,7 +43,15 @@ export default function ContactSection() {
         {/* Right Section */}
         <form className="space-y-4 w-full">
           <Input type="text" placeholder="Name" required />
-          <Input type="email" placeholder="Email" required />
+          <FormContainer onSubmit={handleSubmit}>
+            <FormInput
+              name="email"
+              label="Email Address"
+              type="email"
+              placeholder="Enter your email"
+              required
+            />
+          </FormContainer>
           <Textarea placeholder="Message" rows={4} required />
           <Button
             text="Submit"
