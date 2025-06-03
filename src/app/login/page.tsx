@@ -12,10 +12,32 @@ import { FieldValues } from "react-hook-form";
 import FormInput from "@/components/Forms/FormInput";
 import { loginValidationSchema } from "@/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 
 export default function Component() {
-  const handleSubmit = (data: FieldValues) => {
-    console.log(data);
+  const handleSubmit = async (data: FieldValues) => {
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+      toast("event");
+
+      if (!res.ok) {
+        // Handle login failure
+        return alert(result.message || "Login failed");
+      }
+
+      // On successful login, navigate or show success
+      alert("Login successful!");
+      window.location.href = "/dashboard"; // Or use router.push()
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("Something went wrong.");
+    }
   };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
