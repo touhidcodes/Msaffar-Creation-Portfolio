@@ -1,6 +1,6 @@
-import { prisma } from "@/lib/prisma";
+import { signJwtToken } from "@/lib/jwt";
+import prisma from "@/lib/prisma";
 import bcrypt from "bcrypt";
-import { signJwtToken } from "@/lib/auth";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -37,10 +37,13 @@ export async function POST(req: Request) {
     const token = signJwtToken({ userId: user.id, email: user.email });
 
     // 5. Set JWT in httpOnly cookie
-    cookies().set("token", token, {
+    const cookieStore = await cookies();
+    cookieStore.set({
+      name: "token",
+      value: token,
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      maxAge: 7 * 24 * 60 * 60,
+      maxAge: 7 * 24 * 60 * 60, // 7 days
       path: "/",
     });
 

@@ -42,7 +42,9 @@ const FormContainer = ({
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(submit)}>{children}</form>
+      <form onSubmit={handleSubmit(submit)} className="space-y-4">
+        {children}
+      </form>
     </FormProvider>
   );
 };

@@ -27,7 +27,7 @@ const FormInput = ({
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <div className="w-full space-y-1.5">
+        <div className="w-full space-y-2">
           {label && (
             <Label htmlFor={name} className={cn(error && "text-destructive")}>
               {label}
