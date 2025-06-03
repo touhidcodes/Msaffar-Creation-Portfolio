@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 import FormContainer from "@/components/Forms/FormContainer";
 import { FieldValues } from "react-hook-form";
 import FormInput from "@/components/Forms/FormInput";
+import { loginValidationSchema } from "@/schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function Component() {
   const handleSubmit = (data: FieldValues) => {
@@ -25,7 +27,14 @@ export default function Component() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <FormContainer onSubmit={handleSubmit}>
+          <FormContainer
+            onSubmit={handleSubmit}
+            resolver={zodResolver(loginValidationSchema)}
+            defaultValues={{
+              email: "",
+              password: "",
+            }}
+          >
             <FormInput
               label="Email"
               name="email"
