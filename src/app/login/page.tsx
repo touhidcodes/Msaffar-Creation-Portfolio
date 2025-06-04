@@ -13,8 +13,10 @@ import FormInput from "@/components/Forms/FormInput";
 import { loginValidationSchema } from "@/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
-export default function Component() {
+export default function LoginPage() {
+  const router = useRouter();
   const handleSubmit = async (data: FieldValues) => {
     try {
       const res = await fetch("/api/login", {
@@ -26,14 +28,14 @@ export default function Component() {
       const result = await res.json();
 
       if (!res.ok) {
-        toast.error(result.error);
+        toast.warning(result.error);
       } else {
         toast.success(result.message);
-        // window.location.href = "/dashboard"; // Or use router.push()
+        router.push("/dashboard");
       }
     } catch (error) {
       // console.error("Login error:", error);
-      toast.warning("Something went wrong.");
+      toast.error("Something went wrong.");
     }
   };
   return (

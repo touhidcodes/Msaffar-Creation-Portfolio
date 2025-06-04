@@ -5,6 +5,7 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Sidebar from "@/components/Dashboard/Sidebar/Sidebar";
 import { cn } from "@/lib/utils";
+import LogoutButton from "@/components/Shared/LogoutButton/LogoutButton";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -30,14 +31,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <Button variant="ghost" size="icon" onClick={toggleSidebar}>
               <Menu className="w-5 h-5" />
             </Button>
-            <span className="font-semibold text-lg">Documents</span>
+            <span className="font-semibold text-lg">Dashboard</span>
           </div>
-          <a
-            href="https://github.com"
-            className="text-sm text-muted-foreground"
-          >
-            GitHub
-          </a>
+          <LogoutButton />
         </header>
 
         <main className="flex-1 overflow-y-auto p-6">{children}</main>
