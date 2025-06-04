@@ -24,19 +24,16 @@ export default function Component() {
       });
 
       const result = await res.json();
-      toast("event");
 
       if (!res.ok) {
-        // Handle login failure
-        return alert(result.message || "Login failed");
+        toast.error(result.error);
+      } else {
+        toast.success(result.message);
+        // window.location.href = "/dashboard"; // Or use router.push()
       }
-
-      // On successful login, navigate or show success
-      alert("Login successful!");
-      window.location.href = "/dashboard"; // Or use router.push()
     } catch (error) {
-      console.error("Login error:", error);
-      alert("Something went wrong.");
+      // console.error("Login error:", error);
+      toast.warning("Something went wrong.");
     }
   };
   return (
