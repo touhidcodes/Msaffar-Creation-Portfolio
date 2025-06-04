@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     }
 
     // 4. Sign JWT token
-    const token = signJwtToken({ userId: user.id, email: user.email });
+    const token = signJwtToken({ username: user.username, email: user.email });
 
     // 5. Set JWT in httpOnly cookie
     const cookieStore = await cookies();
