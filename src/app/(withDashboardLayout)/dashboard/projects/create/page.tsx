@@ -3,7 +3,6 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import {
   Grid,
@@ -17,6 +16,8 @@ import {
 } from "lucide-react";
 import FormInput from "@/components/Forms/FormInput";
 import FormContainer from "@/components/Forms/FormContainer";
+import FormSelect from "@/components/Forms/FormSelect";
+import FormTextarea from "@/components/Forms/FormTextarea";
 
 const projectSchema = z.object({
   name: z.string().min(1, "Project name is required"),
@@ -37,7 +38,7 @@ export default function CreateProjectPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-10 bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-5xl">
         <h2 className="text-3xl font-bold text-center mb-8">
           🚀 Create New Project
@@ -60,53 +61,49 @@ export default function CreateProjectPage() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Left Column */}
-            <div className="space-y-4">
+            <div className="space-y-4 max-w-xs">
               <FormInput
                 label="Project Name"
                 name="name"
                 placeholder="Awesome Project"
                 required
-                icon={<Grid size={16} className="mr-1" />}
               />
-              <div>
-                <label className="block mb-1 font-medium flex items-center">
-                  <ImageIcon size={16} className="mr-1" /> Description
-                </label>
-                <Textarea
-                  name="description"
-                  placeholder="Project description..."
-                />
-              </div>
+              <FormTextarea
+                name="description"
+                label="Project Description"
+                placeholder="Write a detailed description..."
+                required
+              />
               <FormInput
                 label="Binance Profile URL"
                 name="binanceProfileUrl"
                 placeholder="https://..."
-                icon={<LinkIcon size={16} className="mr-1" />}
               />
             </div>
 
             {/* Right Column */}
-            <div className="space-y-4">
+            <div className="space-y-4 max-w-xs">
+              <UserIcon size={16} className="mr-1" />
               <FormInput
                 label="Client"
                 name="client"
                 placeholder="Client Name"
-                icon={<UserIcon size={16} className="mr-1" />}
               />
               <FormInput
                 label="Project Duration"
                 name="projectDuration"
                 placeholder="e.g. 3 months"
-                icon={<TimerIcon size={16} className="mr-1" />}
               />
               <div className="flex items-center gap-2 mt-6">
-                <Checkbox id="isFeatured" name="isFeatured" />
-                <label
-                  htmlFor="isFeatured"
-                  className="flex items-center font-medium"
-                >
-                  <StarIcon size={16} className="mr-1" /> Feature on Homepage
-                </label>
+                <FormSelect
+                  name="isFeatured"
+                  label="Project Type"
+                  required
+                  options={[
+                    { label: "Yes", value: true },
+                    { label: "No", value: false },
+                  ]}
+                />
               </div>
             </div>
 

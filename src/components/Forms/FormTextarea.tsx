@@ -1,25 +1,25 @@
 import { Controller, useFormContext } from "react-hook-form";
-import { Input } from "../ui/input";
 import { Label } from "../ui/label";
+import { Textarea } from "../ui/textarea";
 import { cn } from "@/lib/utils";
 
-type TFormInputProps = {
+type TFormTextareaProps = {
   name: string;
   label?: string;
-  type?: string;
   placeholder?: string;
   required?: boolean;
   className?: string;
+  rows?: number;
 };
 
-const FormInput = ({
+const FormTextarea = ({
   name,
   label,
-  type = "text",
   placeholder,
   required,
   className,
-}: TFormInputProps) => {
+  rows = 4,
+}: TFormTextareaProps) => {
   const { control } = useFormContext();
 
   return (
@@ -35,15 +35,15 @@ const FormInput = ({
             </Label>
           )}
 
-          <Input
+          <Textarea
             {...field}
             id={name}
-            type={type}
+            rows={rows}
             placeholder={placeholder || label}
             className={cn(
-              className,
-              "w-full bg-secondary shadow-none",
-              error && "border-destructive focus-visible:ring-destructive"
+              "w-full bg-secondary shadow-none resize-y",
+              error && "border-destructive focus-visible:ring-destructive",
+              className
             )}
           />
 
@@ -56,4 +56,4 @@ const FormInput = ({
   );
 };
 
-export default FormInput;
+export default FormTextarea;
