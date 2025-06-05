@@ -42,14 +42,18 @@ const FormSelect = ({
           {label && (
             <Label htmlFor={name} className={cn(error && "text-destructive")}>
               {label}
-              {required && <span className="text-destructive">*</span>}
+              {required && <span className="text-destructive">{` `}*</span>}
             </Label>
           )}
 
           <Select
-            value={field.value}
-            onValueChange={field.onChange}
-            defaultValue={field.value}
+            value={String(field.value)}
+            onValueChange={(val) => {
+              const parsedValue =
+                val === "true" ? true : val === "false" ? false : val;
+              field.onChange(parsedValue);
+            }}
+            defaultValue={String(field.value)}
           >
             <SelectTrigger
               className={cn(
@@ -58,7 +62,15 @@ const FormSelect = ({
                 className
               )}
             >
-              <SelectValue placeholder={placeholder} />
+              <SelectValue>
+                <span className={!field.value ? "text-muted-foreground" : ""}>
+                  {field.value
+                    ? options.find(
+                        (opt) => String(opt.value) === String(field.value)
+                      )?.label
+                    : placeholder}
+                </span>
+              </SelectValue>
             </SelectTrigger>
             <SelectContent>
               {options.map((opt) => (

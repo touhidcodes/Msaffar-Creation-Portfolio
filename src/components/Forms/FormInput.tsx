@@ -31,7 +31,7 @@ const FormInput = ({
           {label && (
             <Label htmlFor={name} className={cn(error && "text-destructive")}>
               {label}
-              {required && <span className="text-destructive">*</span>}
+              {required && <span className="text-destructive">{` `}*</span>}
             </Label>
           )}
 

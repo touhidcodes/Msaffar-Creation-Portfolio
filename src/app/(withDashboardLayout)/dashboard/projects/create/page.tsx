@@ -2,22 +2,12 @@
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import {
-  Grid,
-  ImageIcon,
-  TagsIcon,
-  UserIcon,
-  TimerIcon,
-  LinkIcon,
-  WrenchIcon,
-  StarIcon,
-} from "lucide-react";
 import FormInput from "@/components/Forms/FormInput";
 import FormContainer from "@/components/Forms/FormContainer";
 import FormSelect from "@/components/Forms/FormSelect";
 import FormTextarea from "@/components/Forms/FormTextarea";
+import FormFieldArray from "@/components/Forms/FormFieldArray";
 
 const projectSchema = z.object({
   name: z.string().min(1, "Project name is required"),
@@ -38,10 +28,10 @@ export default function CreateProjectPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-10">
+    <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-5xl">
-        <h2 className="text-3xl font-bold text-center mb-8">
-          🚀 Create New Project
+        <h2 className="text-3xl font-bold text-center mb-5">
+          Create New Project
         </h2>
 
         <FormContainer
@@ -59,9 +49,9 @@ export default function CreateProjectPage() {
             projectDuration: "",
           }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mx-auto">
             {/* Left Column */}
-            <div className="space-y-4 max-w-xs">
+            <div className="space-y-4 w-full max-w-sm mx-auto">
               <FormInput
                 label="Project Name"
                 name="name"
@@ -74,18 +64,24 @@ export default function CreateProjectPage() {
                 placeholder="Write a detailed description..."
                 required
               />
-              <FormInput
-                label="Binance Profile URL"
-                name="binanceProfileUrl"
-                placeholder="https://..."
+              <FormFieldArray
+                name="tags"
+                label="Tags"
+                placeholder="e.g. Logo Design"
+                required
+              />
+              <FormFieldArray
+                name="images"
+                label="Image URLs"
+                placeholder="https://img1..."
+                required
               />
             </div>
 
             {/* Right Column */}
-            <div className="space-y-4 max-w-xs">
-              <UserIcon size={16} className="mr-1" />
+            <div className="space-y-4 w-full max-w-sm mx-auto">
               <FormInput
-                label="Client"
+                label="Client Name"
                 name="client"
                 placeholder="Client Name"
               />
@@ -94,52 +90,34 @@ export default function CreateProjectPage() {
                 name="projectDuration"
                 placeholder="e.g. 3 months"
               />
-              <div className="flex items-center gap-2 mt-6">
-                <FormSelect
-                  name="isFeatured"
-                  label="Project Type"
-                  required
-                  options={[
-                    { label: "Yes", value: true },
-                    { label: "No", value: false },
-                  ]}
-                />
-              </div>
-            </div>
-
-            {/* Full Width Fields */}
-            <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-              <FormInput
-                label="Image URLs (comma separated)"
-                name="images"
-                placeholder="https://img1, https://img2"
-                transform={(val: string) => val.split(",").map((v) => v.trim())}
-                icon={<ImageIcon size={16} className="mr-1" />}
+              <FormSelect
+                name="isFeatured"
+                label="Highlight Project"
+                options={[
+                  { label: "Yes", value: true },
+                  { label: "No", value: false },
+                ]}
+                required
               />
               <FormInput
-                label="Tags (comma separated)"
-                name="tags"
-                placeholder="SaaS, AI, Web3"
-                transform={(val: string) => val.split(",").map((v) => v.trim())}
-                icon={<TagsIcon size={16} className="mr-1" />}
+                label="Binance Profile URL"
+                name="binanceProfileUrl"
+                placeholder="https://..."
               />
-            </div>
-
-            <div className="md:col-span-2">
-              <FormInput
-                label="Tools Used (comma separated)"
+              <FormFieldArray
                 name="tools"
-                placeholder="Next.js, Prisma, Tailwind"
-                transform={(val: string) => val.split(",").map((v) => v.trim())}
-                icon={<WrenchIcon size={16} className="mr-1" />}
+                label="Tools"
+                placeholder="e.g. Adobe Illustrator"
+                required
               />
             </div>
+          </div>
 
-            <div className="md:col-span-2">
-              <Button type="submit" className="w-full">
-                Create Project
-              </Button>
-            </div>
+          {/* Submit Button */}
+          <div className="flex justify-center pt-4">
+            <Button type="submit" className="w-full max-w-xs">
+              Create Project
+            </Button>
           </div>
         </FormContainer>
       </div>
