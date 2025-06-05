@@ -28,7 +28,7 @@ export default function ServiceSection() {
                 className="bg-white rounded-2xl shadow-sm p-6 text-center hover:shadow-md transition"
               >
                 <div className="flex justify-center items-center w-12 h-12 mx-auto mb-4 bg-gray-100 rounded-full">
-                  <Icon className="text-green-600 w-6 h-6" />
+                  <Icon className="text-black w-6 h-6" />
                 </div>
                 <CardHeader className="p-0 mb-2">
                   <CardTitle className="text-lg font-semibold">
