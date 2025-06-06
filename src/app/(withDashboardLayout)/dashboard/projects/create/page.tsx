@@ -1,6 +1,5 @@
 "use client";
 
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import FormInput from "@/components/Forms/FormInput";
@@ -8,23 +7,17 @@ import FormContainer from "@/components/Forms/FormContainer";
 import FormSelect from "@/components/Forms/FormSelect";
 import FormTextarea from "@/components/Forms/FormTextarea";
 import FormFieldArray from "@/components/Forms/FormFieldArray";
-
-const projectSchema = z.object({
-  name: z.string().min(1, "Project name is required"),
-  description: z.string().min(1, "Description is required"),
-  images: z.string().array().min(1, "At least one image URL is required"),
-  tags: z.string().array().optional(),
-  tools: z.string().array().optional(),
-  isFeatured: z.boolean().default(false),
-  binanceProfileUrl: z.string().url().optional(),
-  client: z.string().optional(),
-  projectDuration: z.string().optional(),
-});
+import { FieldValues } from "react-hook-form";
+import { createProjectSchema } from "@/schema/project";
+import axios from "@/lib/axios";
 
 export default function CreateProjectPage() {
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = async (values: FieldValues) => {
     console.log("Form submitted:", values);
     // send to API here
+
+    const response = await axios.post("/projects", values); // cookie auto-sent
+    console.log(response);
   };
 
   return (
@@ -36,7 +29,7 @@ export default function CreateProjectPage() {
 
         <FormContainer
           onSubmit={handleSubmit}
-          resolver={zodResolver(projectSchema)}
+          resolver={zodResolver(createProjectSchema)}
           defaultValues={{
             name: "",
             description: "",

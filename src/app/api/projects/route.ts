@@ -1,8 +1,19 @@
 import prisma from "@/lib/prisma";
-import { NextResponse } from "next/server";
+import { authenticateRequest } from "@/service/authMiddleware";
+import { NextRequest, NextResponse } from "next/server";
 
 // Create new project
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
+  const auth = await authenticateRequest(req);
+  console.log(auth);
+
+  if (!auth) {
+    return NextResponse.json(
+      { message: "Unauthorized access" },
+      { status: 401 }
+    );
+  }
+
   try {
     const body = await req.json();
     const newProject = await prisma.project.create({

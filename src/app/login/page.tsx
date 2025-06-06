@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import FormContainer from "@/components/Forms/FormContainer";
 import { FieldValues } from "react-hook-form";
 import FormInput from "@/components/Forms/FormInput";
-import { loginValidationSchema } from "@/schema";
+import { loginValidationSchema } from "@/schema/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
