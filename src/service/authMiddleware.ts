@@ -1,32 +1,26 @@
 "use server";
 
 import { verifyToken } from "@/lib/jwt";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
 interface JwtPayload {
   [key: string]: any;
 }
 
-export async function authenticateRequest(req: NextRequest) {
-  const token = req.headers.get("authorization");
-  console.log(token);
+export async function authenticateRequest(
+  req: NextRequest
+): Promise<JwtPayload | null> {
+  const token = req.headers.get("Authorization")?.replace("Bearer ", "");
 
   if (!token) {
-    return NextResponse.json(
-      { message: "No token provided!" },
-      { status: 401 }
-    );
+    return null;
   }
 
   const user = verifyToken(token) as JwtPayload;
 
   if (!user) {
-    return NextResponse.json(
-      { message: "Unauthorized access!" },
-      { status: 401 }
-    );
+    return null;
   }
-  console.log(user);
 
-  return NextResponse.json({ message: "Authenticated", user });
+  return user;
 }
