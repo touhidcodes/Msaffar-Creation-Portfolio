@@ -9,15 +9,37 @@ import FormTextarea from "@/components/Forms/FormTextarea";
 import FormFieldArray from "@/components/Forms/FormFieldArray";
 import { FieldValues } from "react-hook-form";
 import { createProjectSchema } from "@/schema/project";
-import axios from "@/lib/axios";
+import { toast } from "sonner";
+import { fetchWithAuth } from "@/service/fetchWithAuth";
 
 export default function CreateProjectPage() {
-  const handleSubmit = async (values: FieldValues) => {
-    console.log("Form submitted:", values);
-    // send to API here
+  // const handleSubmit = async (values: FieldValues) => {
+  //   console.log("Form submitted:", values);
+  //   // send to API here
 
-    const response = await axios.post("/projects", values); // cookie auto-sent
-    console.log(response);
+  //   const response = await axios.post("/projects", values); // cookie auto-sent
+  //   console.log(response);
+  // };
+
+  const handleSubmit = async (values: FieldValues) => {
+    try {
+      const data = await fetchWithAuth("/api/projects", {
+        method: "POST",
+        body: JSON.stringify(values),
+      });
+      // console.log(res);
+      // const data = await res.json();
+      console.log(data);
+
+      if (!data.ok) {
+        toast.warning(data.error || "Something went wrong");
+      } else {
+        toast.success(data.message || "Project created successfully");
+      }
+    } catch (error: any) {
+      console.error("Error submitting project:", error);
+      toast.error(error.message || "Authentication failed");
+    }
   };
 
   return (

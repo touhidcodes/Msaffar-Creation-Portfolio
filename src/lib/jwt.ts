@@ -7,7 +7,12 @@ export function generateToken(payload: object) {
 }
 
 export function verifyToken(token: string) {
-  return jwt.verify(token, NEXT_PUBLIC_JWT_SECRET);
+  try {
+    const decoded = jwt.verify(token, process.env.NEXT_PUBLIC_JWT_SECRET!);
+    return decoded;
+  } catch (error) {
+    return { error: "Invalid or expired token" };
+  }
 }
 
 export function signJwtToken(payload: object) {

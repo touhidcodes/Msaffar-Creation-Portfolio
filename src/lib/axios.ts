@@ -15,9 +15,7 @@ axiosInstance.interceptors.request.use(
     const token = Cookies.get("token");
     console.log(token);
 
-    if (token) {
-      config.headers.Authorization = token;
-    }
+    config.headers.Authorization = token;
     return config;
   },
   function (error) {
