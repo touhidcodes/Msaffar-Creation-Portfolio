@@ -30,14 +30,14 @@ export async function POST(req: NextRequest, res: NextResponse) {
     // };
     console.log(sanitizedProject);
 
-    return new Response(JSON.parse(JSON.stringify(sanitizedProject)), {
-      status: 201,
-      headers: { "Content-Type": "application/json" },
-    });
-    // return NextResponse.json(
-    //   { message: "Project created successfully", data: sanitizedProject },
-    //   { status: 201 }
-    // );
+    // return new Response(JSON.parse(JSON.stringify(sanitizedProject)), {
+    //   status: 201,
+    //   headers: { "Content-Type": "application/json" },
+    // });
+    return NextResponse.json(
+      { message: "Project created successfully", data: sanitizedProject },
+      { status: 201 }
+    );
   } catch (error) {
     console.error("Error creating project:", error);
     return NextResponse.json(

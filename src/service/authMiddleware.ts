@@ -1,7 +1,7 @@
 "use server";
 
 import { verifyToken } from "@/lib/jwt";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 interface JwtPayload {
   [key: string]: any;
@@ -9,17 +9,17 @@ interface JwtPayload {
 
 export async function authenticateRequest(
   req: NextRequest
-): Promise<JwtPayload | null> {
-  const token = req.headers.get("Authorization")?.replace("Bearer ", "");
+): Promise<JwtPayload | NextResponse> {
+  const token = req.headers.get("Authorization");
 
   if (!token) {
-    return null;
+    throw new Error("Unauthorized: No Authorization header found");
   }
 
-  const user = verifyToken(token) as JwtPayload;
+  const user = verifyToken(token) as JwtPayload | null;
 
   if (!user) {
-    return null;
+    throw new Error("Unauthorized: Invalid token");
   }
 
   return user;
