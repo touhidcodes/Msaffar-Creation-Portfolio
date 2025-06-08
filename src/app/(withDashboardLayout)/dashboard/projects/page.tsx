@@ -6,6 +6,18 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { MoreHorizontal } from "lucide-react";
+
 const products = [
   {
     id: 101,
@@ -208,7 +220,17 @@ const products = [
     dateAdded: "2024-06-10",
   },
 ];
+
 export default function ProjectsPage() {
+  const handleUpdate = (id: number) => {
+    console.log("Update", id);
+    // Your update logic here
+  };
+
+  const handleDelete = (id: number) => {
+    console.log("Delete", id);
+    // Your delete logic here
+  };
   return (
     <div className="grid w-full [&>div]:h-full [&>div]:border [&>div]:rounded">
       <Table>
@@ -222,6 +244,7 @@ export default function ProjectsPage() {
             <TableHead>Stock Quantity</TableHead>
             <TableHead>Supplier</TableHead>
             <TableHead>Date Added</TableHead>
+            <TableHead>Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody className="overflow-hidden">
@@ -238,6 +261,25 @@ export default function ProjectsPage() {
               <TableCell>{product.stockQuantity}</TableCell>
               <TableCell>{product.supplier}</TableCell>
               <TableCell>{product.dateAdded}</TableCell>
+              <TableCell>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" className="h-8 w-8 p-0">
+                      <span className="sr-only">Open menu</span>
+                      <MoreHorizontal />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                    <DropdownMenuItem onClick={() => handleUpdate(product.id)}>
+                      Update
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => handleDelete(product.id)}>
+                      Delete
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
