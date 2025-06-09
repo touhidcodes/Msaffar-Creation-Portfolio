@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Table,
   TableBody,
@@ -8,15 +10,13 @@ import {
 } from "@/components/ui/table";
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { MoreHorizontal } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash } from "lucide-react";
 
 const products = [
   {
@@ -264,17 +264,33 @@ export default function ProjectsPage() {
               <TableCell>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="h-8 w-8 p-0">
+                    <Button
+                      variant="ghost"
+                      className="h-8 w-8 p-0 hover:bg-accent/40 transition"
+                    >
                       <span className="sr-only">Open menu</span>
-                      <MoreHorizontal />
+                      <MoreHorizontal className="w-5 h-5" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
+
+                  <DropdownMenuContent
+                    align="end"
+                    className="w-44 bg-background border border-border rounded-md shadow-xl animate-in fade-in-0 zoom-in-95"
+                  >
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                    <DropdownMenuItem onClick={() => handleUpdate(product.id)}>
+
+                    <DropdownMenuItem
+                      onClick={() => handleUpdate(product.id)}
+                      className="hover:bg-indigo-600 hover:text-white transition-colors px-3 py-2 cursor-pointer text-sm flex items-center gap-2"
+                    >
+                      <Pencil className="w-4 h-4" />
                       Update
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => handleDelete(product.id)}>
+                    <DropdownMenuItem
+                      onClick={() => handleDelete(product.id)}
+                      className="hover:bg-red-600 hover:text-white transition-colors px-3 py-2 cursor-pointer text-sm flex items-center gap-2"
+                    >
+                      <Trash className="w-4 h-4" />
                       Delete
                     </DropdownMenuItem>
                   </DropdownMenuContent>

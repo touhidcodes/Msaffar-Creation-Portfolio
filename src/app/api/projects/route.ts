@@ -6,7 +6,6 @@ import { NextRequest, NextResponse } from "next/server";
 // Create new project
 export async function POST(req: NextRequest, res: NextResponse) {
   const user = await authenticateRequest(req);
-  console.log(user);
 
   if (!user) {
     return NextResponse.json({ error: "Unauthorized access" }, { status: 401 });
