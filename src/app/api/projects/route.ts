@@ -18,18 +18,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const newProject = await prisma.project.create({
       data: body,
     });
-    console.log(newProject);
-    // Serialize the _id and Date fields to plain JSON-safe values
     const sanitizedProject = deepSanitize(newProject);
-    // const sanitizedProject = {
-    //   ...newProject,
-    //   id: newProject.id.toString(),
-    //   createdAt: newProject.createdAt.toISOString(),
-    //   updatedAt: newProject.updatedAt.toISOString(),
-    // };
-    console.log(sanitizedProject);
 
-    // return new Response(JSON.parse(JSON.stringify(sanitizedProject)), {
     //   status: 201,
     //   headers: { "Content-Type": "application/json" },
     // });
@@ -49,9 +39,21 @@ export async function POST(req: NextRequest, res: NextResponse) {
 // Get all projects
 export async function GET() {
   try {
-    const projects = await prisma.project.findMany();
-    return NextResponse.json(projects);
+    const projects = await prisma.project.findMany({
+      orderBy: [{ isFeatured: "desc" }, { createdAt: "desc" }],
+    });
+
+    console.log(projects);
+
+    return NextResponse.json(
+      {
+        message: "Projects fetched successfully",
+        data: projects,
+      },
+      { status: 200 }
+    );
   } catch (error) {
+    console.error("Error fetching projects:", error);
     return NextResponse.json(
       { error: "Failed to fetch projects" },
       { status: 500 }

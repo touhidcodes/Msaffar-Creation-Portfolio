@@ -16,17 +16,19 @@ export type TBlogData = {
 };
 
 export type TProjectsData = {
-  _id: string;
+  id: string;
   name: string;
   description: string;
   images: string[];
-  timeline: string;
   tags: string[];
-  category: string;
+  isFeatured: boolean;
+  isDeleted: boolean;
+  binanceProfileUrl?: string;
   tools: string[];
-  client: string;
-  status: "Completed" | "Ongoing" | "In Development";
-  binanceProfileUrl: string;
+  client?: string;
+  projectDuration?: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type TServiceData = {
