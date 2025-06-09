@@ -4,7 +4,7 @@ import { useFormContext, useWatch } from "react-hook-form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
-import { XIcon } from "lucide-react";
+import { CirclePlus, XIcon } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -65,8 +65,12 @@ const FormTagsInput = ({
             }
           }}
         />
-        <Button type="button" onClick={handleAdd}>
-          Add
+        <Button
+          onClick={handleAdd}
+          type="button"
+          className="bg-white hover:bg-secondary transition-colors p-2 rounded"
+        >
+          <CirclePlus className="w-7 h-7 text-black hover:text-white transition-colors" />
         </Button>
       </div>
 

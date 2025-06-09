@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu } from "lucide-react";
+import { PanelLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Sidebar from "@/components/Dashboard/Sidebar/Sidebar";
 import { cn } from "@/lib/utils";
@@ -29,7 +29,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="flex items-center gap-2">
             {/* Hamburger menu visible on all screen sizes */}
             <Button variant="ghost" size="icon" onClick={toggleSidebar}>
-              <Menu className="w-5 h-5" />
+              <PanelLeft className="w-7 h-7" />
             </Button>
             <span className="font-semibold text-lg">Dashboard</span>
           </div>
