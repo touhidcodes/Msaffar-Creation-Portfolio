@@ -22,9 +22,14 @@ import { TProjectsData } from "@/types";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { truncateText } from "@/lib/utils";
+import UpdateProjectModal from "@/components/Modals/updateProjectModal";
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<TProjectsData[]>([]);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<TProjectsData | null>(
+    null
+  );
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -45,9 +50,9 @@ export default function ProjectsPage() {
     fetchProjects();
   }, []);
 
-  const handleUpdate = (id: string) => {
-    console.log("Update", id);
-    // Your update logic here
+  const handleUpdate = (project: TProjectsData) => {
+    setSelectedProject(project);
+    setEditModalOpen(true);
   };
 
   const handleDelete = (id: string) => {
@@ -112,7 +117,7 @@ export default function ProjectsPage() {
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
                     <DropdownMenuItem
-                      onClick={() => handleUpdate(project.id)}
+                      onClick={() => handleUpdate(project)}
                       className="hover:bg-indigo-600 hover:text-white transition-colors px-3 py-2 cursor-pointer text-sm flex items-center gap-2"
                     >
                       <Pencil className="w-4 h-4" />
@@ -132,6 +137,16 @@ export default function ProjectsPage() {
           ))}
         </TableBody>
       </Table>
+      {selectedProject && (
+        <UpdateProjectModal
+          open={editModalOpen}
+          onClose={() => {
+            setEditModalOpen(false);
+            setSelectedProject(null);
+          }}
+          projectData={selectedProject}
+        />
+      )}
     </div>
   );
 }

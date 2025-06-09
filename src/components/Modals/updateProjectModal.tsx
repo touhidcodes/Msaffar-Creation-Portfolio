@@ -22,17 +22,17 @@ import { TProjectsData } from "@/types";
 type Props = {
   open: boolean;
   onClose: () => void;
-  projectsData: TProjectsData;
+  projectData: TProjectsData;
 };
 
 export default function UpdateProjectModal({
   open,
   onClose,
-  projectsData,
+  projectData,
 }: Props) {
   const handleUpdate = async (values: FieldValues) => {
     try {
-      const res = await fetchWithAuth(`/api/projects/${projectsData?.id}`, {
+      const res = await fetchWithAuth(`/api/projects/${projectData?.id}`, {
         method: "PATCH",
         body: JSON.stringify(values),
       });
@@ -61,15 +61,15 @@ export default function UpdateProjectModal({
           onSubmit={handleUpdate}
           resolver={zodResolver(createProjectSchema)}
           defaultValues={{
-            name: projectsData?.name,
-            description: projectsData?.description,
-            images: projectsData?.images,
-            tags: projectsData?.tags,
-            tools: projectsData?.tools,
-            isFeatured: projectsData?.isFeatured,
-            binanceProfileUrl: projectsData?.binanceProfileUrl,
-            client: projectsData?.client,
-            projectDuration: projectsData?.projectDuration,
+            name: projectData?.name,
+            description: projectData?.description,
+            images: projectData?.images,
+            tags: projectData?.tags,
+            tools: projectData?.tools,
+            isFeatured: projectData?.isFeatured,
+            binanceProfileUrl: projectData?.binanceProfileUrl,
+            client: projectData?.client,
+            projectDuration: projectData?.projectDuration,
           }}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -133,10 +133,11 @@ export default function UpdateProjectModal({
             </div>
           </div>
 
-          <div className="flex justify-center pt-6">
-            <Button type="submit" className="w-full max-w-xs">
-              Update Project
+          <div className="flex justify-end items-center gap-4 pt-6">
+            <Button variant="outline" type="button" onClick={onClose}>
+              Cancel
             </Button>
+            <Button type="submit">Update</Button>
           </div>
         </FormContainer>
       </DialogContent>
