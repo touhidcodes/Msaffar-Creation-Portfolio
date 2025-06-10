@@ -18,16 +18,18 @@ import {
 import { Button } from "@/components/ui/button";
 import { MoreHorizontal, Pencil, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
-import { TProjectsData } from "@/types";
+import { TProjectData } from "@/types";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { truncateText } from "@/lib/utils";
 import UpdateProjectModal from "@/components/Modals/updateProjectModal";
+import DeleteProjectModal from "@/components/Modals/deleteProjectModal";
 
 export default function ProjectsPage() {
-  const [projects, setProjects] = useState<TProjectsData[]>([]);
+  const [projects, setProjects] = useState<TProjectData[]>([]);
   const [editModalOpen, setEditModalOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<TProjectsData | null>(
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<TProjectData | null>(
     null
   );
 
@@ -52,14 +54,14 @@ export default function ProjectsPage() {
     fetchProjects();
   }, []);
 
-  const handleUpdate = (project: TProjectsData) => {
+  const handleUpdate = (project: TProjectData) => {
     setSelectedProject(project);
     setEditModalOpen(true);
   };
 
-  const handleDelete = (id: string) => {
-    console.log("Delete", id);
-    // Your delete logic here
+  const handleDelete = (project: TProjectData) => {
+    setSelectedProject(project);
+    setDeleteModalOpen(true);
   };
   return (
     <div className="grid w-full [&>div]:h-full [&>div]:border [&>div]:rounded">
@@ -126,7 +128,7 @@ export default function ProjectsPage() {
                       Update
                     </DropdownMenuItem>
                     <DropdownMenuItem
-                      onClick={() => handleDelete(project.id)}
+                      onClick={() => handleDelete(project)}
                       className="hover:bg-red-600 hover:text-white transition-colors px-3 py-2 cursor-pointer text-sm flex items-center gap-2"
                     >
                       <Trash className="w-4 h-4" />
@@ -140,14 +142,26 @@ export default function ProjectsPage() {
         </TableBody>
       </Table>
       {selectedProject && (
-        <UpdateProjectModal
-          open={editModalOpen}
-          onClose={() => {
-            setEditModalOpen(false);
-            setSelectedProject(null);
-          }}
-          projectData={selectedProject}
-        />
+        <div>
+          {/* Update project modal */}
+          <UpdateProjectModal
+            open={editModalOpen}
+            onClose={() => {
+              setEditModalOpen(false);
+              setSelectedProject(null);
+            }}
+            projectData={selectedProject}
+          />
+          {/* Delete project modal */}
+          <DeleteProjectModal
+            open={deleteModalOpen}
+            onClose={() => {
+              setDeleteModalOpen(false);
+              setSelectedProject(null);
+            }}
+            projectId={selectedProject?.id}
+          />
+        </div>
       )}
     </div>
   );

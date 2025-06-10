@@ -17,12 +17,12 @@ import { FieldValues } from "react-hook-form";
 import { createProjectSchema } from "@/schema/project";
 import { fetchWithAuth } from "@/service/fetchWithAuth";
 import { toast } from "sonner";
-import { TProjectsData } from "@/types";
+import { TProjectData } from "@/types";
 
 type Props = {
   open: boolean;
   onClose: () => void;
-  projectData: TProjectsData;
+  projectData: TProjectData;
 };
 
 export default function UpdateProjectModal({

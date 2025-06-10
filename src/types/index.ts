@@ -15,7 +15,7 @@ export type TBlogData = {
   content: string;
 };
 
-export type TProjectsData = {
+export type TProjectData = {
   id: string;
   name: string;
   description: string;

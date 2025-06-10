@@ -45,7 +45,6 @@ export async function PATCH(req: Request, { params }: Params) {
       data: body,
     });
 
-    // revalidate tag after update
     revalidateTag("projects");
 
     return NextResponse.json(
@@ -69,6 +68,9 @@ export async function DELETE(req: Request, { params }: Params) {
     await prisma.project.delete({
       where: { id: params.id },
     });
+
+    revalidateTag("projects");
+
     return NextResponse.json({ message: "Project deleted successfully!" });
   } catch (error) {
     return NextResponse.json(
