@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
+import { authenticateRequest } from "@/service/authMiddleware";
 import { revalidateTag } from "next/cache";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 type Params = {
   params: {
@@ -37,7 +38,13 @@ export async function GET(req: Request, { params }: Params) {
 }
 
 // Update project
-export async function PATCH(req: Request, { params }: Params) {
+export async function PATCH(req: NextRequest, { params }: Params) {
+  const user = await authenticateRequest(req);
+
+  if (!user) {
+    throw new Error("Unauthorized access!");
+  }
+
   try {
     const body = await req.json();
     const updatedProject = await prisma.project.update({
@@ -63,7 +70,13 @@ export async function PATCH(req: Request, { params }: Params) {
 }
 
 // Delete project
-export async function DELETE(req: Request, { params }: Params) {
+export async function DELETE(req: NextRequest, { params }: Params) {
+  const user = await authenticateRequest(req);
+
+  if (!user) {
+    throw new Error("Unauthorized access!");
+  }
+
   try {
     await prisma.project.delete({
       where: { id: params.id },

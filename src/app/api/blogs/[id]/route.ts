@@ -1,44 +1,91 @@
 import prisma from "@/lib/prisma";
-import type { NextApiRequest, NextApiResponse } from "next";
+import { authenticateRequest } from "@/service/authMiddleware";
+import { revalidateTag } from "next/cache";
+import { NextRequest, NextResponse } from "next/server";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const { id } = req.query;
+type Params = {
+  params: {
+    id: string;
+  };
+};
 
-  if (typeof id !== "string") {
-    return res.status(400).json({ message: "Invalid ID" });
+// Get one blogs
+export async function GET(req: Request, { params }: Params) {
+  try {
+    const blog = await prisma.blog.findUnique({
+      where: { id: params.id },
+    });
+
+    if (!blog)
+      return NextResponse.json({ error: "Blog not found!" }, { status: 404 });
+
+    return NextResponse.json(
+      {
+        message: "Blogs retrieved successfully!",
+        data: blog,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Failed to fetch blog" },
+      { status: 500 }
+    );
+  }
+}
+
+// Update blog
+export async function PATCH(req: NextRequest, { params }: Params) {
+  const user = await authenticateRequest(req);
+
+  if (!user) {
+    throw new Error("Unauthorized access!");
   }
 
-  if (req.method === "GET") {
-    const blog = await prisma.blog.findUnique({ where: { id } });
-    if (!blog) return res.status(404).json({ message: "Blog not found" });
-    return res.status(200).json(blog);
+  try {
+    const body = await req.json();
+    const updatedBlog = await prisma.blog.update({
+      where: { id: params.id },
+      data: body,
+    });
+
+    revalidateTag("blogs");
+
+    return NextResponse.json(
+      {
+        message: "Blogs updated successfully!",
+        data: updatedBlog,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Failed to update blog!" },
+      { status: 500 }
+    );
+  }
+}
+
+// Delete blog
+export async function DELETE(req: NextRequest, { params }: Params) {
+  const user = await authenticateRequest(req);
+
+  if (!user) {
+    throw new Error("Unauthorized access!");
   }
 
-  if (req.method === "PUT") {
-    const { title, description, image, isFeatured, content } = req.body;
-    try {
-      const updatedBlog = await prisma.blog.update({
-        where: { id },
-        data: { title, description, image, isFeatured, content },
-      });
-      return res.status(200).json(updatedBlog);
-    } catch (error) {
-      return res.status(500).json({ message: "Failed to update blog", error });
-    }
-  }
+  try {
+    await prisma.blog.delete({
+      where: { id: params.id },
+    });
 
-  if (req.method === "DELETE") {
-    try {
-      await prisma.blog.delete({ where: { id } });
-      return res.status(204).end();
-    } catch (error) {
-      return res.status(500).json({ message: "Failed to delete blog", error });
-    }
-  }
+    revalidateTag("blogs");
 
-  res.setHeader("Allow", ["GET", "PUT", "DELETE"]);
-  res.status(405).end(`Method ${req.method} Not Allowed`);
+    return NextResponse.json({ message: "Blog deleted successfully!" });
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Failed to delete blog!" },
+      { status: 500 }
+    );
+  }
 }

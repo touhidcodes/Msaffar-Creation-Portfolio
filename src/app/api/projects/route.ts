@@ -8,9 +8,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
   const user = await authenticateRequest(req);
 
   if (!user) {
-    return NextResponse.json({ error: "Unauthorized access" }, { status: 401 });
+    throw new Error("Unauthorized access!");
   }
-
   try {
     const body = await req.json();
 
@@ -23,13 +22,13 @@ export async function POST(req: NextRequest, res: NextResponse) {
     //   headers: { "Content-Type": "application/json" },
     // });
     return NextResponse.json(
-      { message: "Project created successfully", data: sanitizedProject },
+      { message: "Project created successfully!", data: sanitizedProject },
       { status: 201 }
     );
   } catch (error) {
-    console.error("Error creating project:", error);
+    console.error("Error creating project!", error);
     return NextResponse.json(
-      { error: "Failed to create project" },
+      { error: "Failed to create project!" },
       { status: 500 }
     );
   }
