@@ -1,5 +1,4 @@
 import prisma from "@/lib/prisma";
-import { deepSanitize } from "@/lib/utils";
 import { authenticateRequest } from "@/service/authMiddleware";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -17,10 +16,9 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const newBlog = await prisma.blog.create({
       data: body,
     });
-    // const sanitizedProject = deepSanitize(newProject);
 
     return NextResponse.json(
-      { message: "Project created successfully", data: newBlog },
+      { message: "Blog created successfully", data: newBlog },
       { status: 201 }
     );
   } catch (error) {

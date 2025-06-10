@@ -6,7 +6,7 @@ export const createProjectSchema = z.object({
   images: z.string().array().min(1, "At least one image URL is required"),
   tags: z.string().array().min(1, "At least one tag is required"),
   tools: z.string().array().min(1, "At least one tools name is required"),
-  isFeatured: z.boolean().default(false),
+  isFeatured: z.boolean().optional(),
   binanceProfileUrl: z.string().url().optional(),
   client: z.string().optional(),
   projectDuration: z.string().optional(),

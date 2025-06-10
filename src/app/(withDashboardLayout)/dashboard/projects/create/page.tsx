@@ -98,6 +98,7 @@ export default function CreateProjectPage() {
               <FormSelect
                 name="isFeatured"
                 label="Highlight Project"
+                placeholder="No"
                 options={[
                   { label: "Yes", value: true },
                   { label: "No", value: false },

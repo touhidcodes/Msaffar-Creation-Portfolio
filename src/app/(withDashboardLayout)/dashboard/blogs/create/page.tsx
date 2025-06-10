@@ -15,23 +15,22 @@ import { createBlogSchema } from "@/schema/blog";
 
 export default function CreateBlogPage() {
   const handleSubmit = async (values: FieldValues) => {
-    console.log(values);
-    // try {
-    //   const res = await fetchWithAuth("/api/projects", {
-    //     method: "POST",
-    //     body: JSON.stringify(values),
-    //   });
-    //   const data = await res.json();
+    try {
+      const res = await fetchWithAuth("/api/blogs", {
+        method: "POST",
+        body: JSON.stringify(values),
+      });
+      const data = await res.json();
 
-    //   if (!res.ok) {
-    //     toast.warning(data.error || "Something went wrong");
-    //   } else {
-    //     toast.success(data.message || "Project created successfully");
-    //   }
-    // } catch (error: any) {
-    //   // console.error("Error submitting project:", error);
-    //   toast.error(error.message || "Authentication failed");
-    // }
+      if (!res.ok) {
+        toast.warning(data.error || "Something went wrong");
+      } else {
+        toast.success(data.message || "Blogs created successfully");
+      }
+    } catch (error: any) {
+      // console.error("Error submitting project:", error);
+      toast.error(error.message || "Authentication failed");
+    }
   };
 
   return (
@@ -78,6 +77,7 @@ export default function CreateBlogPage() {
               <FormSelect
                 name="isFeatured"
                 label="Feature this blog?"
+                placeholder="No"
                 options={[
                   { label: "Yes", value: true },
                   { label: "No", value: false },
