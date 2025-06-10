@@ -13,7 +13,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
   try {
     const body = await req.json();
-    console.log(body);
 
     const newProject = await prisma.project.create({
       data: body,
@@ -40,22 +39,25 @@ export async function POST(req: NextRequest, res: NextResponse) {
 export async function GET() {
   try {
     const projects = await prisma.project.findMany({
-      orderBy: [{ isFeatured: "desc" }, { createdAt: "desc" }],
+      orderBy: [{ isFeatured: "desc" }, { updatedAt: "desc" }],
     });
-
-    console.log(projects);
 
     return NextResponse.json(
       {
-        message: "Projects fetched successfully",
+        message: "Projects fetched successfully!",
         data: projects,
       },
-      { status: 200 }
+      {
+        status: 200,
+        next: {
+          tags: ["projects"],
+        },
+      } as any
     );
   } catch (error) {
-    console.error("Error fetching projects:", error);
+    console.error("Error fetching projects!", error);
     return NextResponse.json(
-      { error: "Failed to fetch projects" },
+      { error: "Failed to fetch projects!" },
       { status: 500 }
     );
   }

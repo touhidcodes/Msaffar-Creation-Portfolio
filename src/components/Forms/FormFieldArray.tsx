@@ -68,7 +68,7 @@ const FormTagsInput = ({
         <Button
           onClick={handleAdd}
           type="button"
-          className="bg-white hover:bg-secondary transition-colors p-2 rounded"
+          className="bg-white hover:bg-secondary transition-colors p-2 rounded shadow-none"
         >
           <CirclePlus className="w-7 h-7 text-black hover:text-white transition-colors" />
         </Button>

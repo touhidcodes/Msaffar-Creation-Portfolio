@@ -34,7 +34,9 @@ export default function ProjectsPage() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await fetch("/api/projects");
+        const res = await fetch("/api/projects", {
+          next: { tags: ["projects"] },
+        });
         const data = await res.json();
 
         if (!res.ok) {
