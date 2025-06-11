@@ -1,0 +1,49 @@
+import {
+  FileText,
+  LayoutDashboard,
+  LineChart,
+  PlusCircle,
+  Settings,
+  FileStack,
+  House,
+  Notebook,
+  NotepadText,
+} from "lucide-react";
+
+export const sidebarLinks = [
+  {
+    section: "Main",
+    items: [
+      { label: "Quick Create", icon: PlusCircle, href: "#", active: true },
+      { label: "Home", icon: House, href: "/" },
+      { label: "Dashboard", icon: LayoutDashboard, href: "/dashboard" },
+      { label: "Analytics", icon: LineChart, href: "/dashboard" },
+    ],
+  },
+  {
+    section: "Projects",
+    items: [
+      { label: "Projects", icon: FileStack, href: "/dashboard/projects" },
+      {
+        label: "Create Project",
+        icon: FileText,
+        href: "/dashboard/projects/create",
+      },
+    ],
+  },
+  {
+    section: "Blogs",
+    items: [
+      { label: "Blogs", icon: Notebook, href: "/dashboard/blogs" },
+      {
+        label: "Create Blog",
+        icon: NotepadText,
+        href: "/dashboard/blogs/create",
+      },
+    ],
+  },
+  {
+    section: "Settings",
+    items: [{ label: "Settings", icon: Settings, href: "/dashboard" }],
+  },
+];

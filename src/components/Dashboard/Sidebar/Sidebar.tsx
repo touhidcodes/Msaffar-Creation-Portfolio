@@ -1,70 +1,11 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import {
-  CircleUser,
-  FileText,
-  LayoutDashboard,
-  LibraryBig,
-  LineChart,
-  Mail,
-  MoreHorizontal,
-  NotebookPen,
-  PlusCircle,
-  Settings,
-  UsersRound,
-  FileStack,
-  FolderArchive,
-  Bell,
-  X,
-} from "lucide-react";
+import { Mail, MoreHorizontal, X } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
-
-const sidebarLinks = [
-  {
-    section: "Main",
-    items: [
-      { label: "Quick Create", icon: PlusCircle, href: "#", active: true },
-      { label: "Dashboard", icon: LayoutDashboard, href: "#" },
-      { label: "Lifecycle", icon: LibraryBig, href: "#" },
-      { label: "Analytics", icon: LineChart, href: "#" },
-      { label: "Projects", icon: FileStack, href: "#" },
-      { label: "Team", icon: UsersRound, href: "#" },
-    ],
-  },
-  {
-    section: "Documents",
-    items: [
-      { label: "Data Library", icon: FolderArchive, href: "#" },
-      { label: "Reports", icon: FileText, href: "#" },
-      { label: "Word Assistant", icon: NotebookPen, href: "#" },
-      { label: "More", icon: MoreHorizontal, href: "#" },
-    ],
-  },
-  {
-    section: "Documents",
-    items: [
-      { label: "Data Library", icon: FolderArchive, href: "#" },
-      { label: "Reports", icon: FileText, href: "#" },
-      { label: "Word Assistant", icon: NotebookPen, href: "#" },
-      { label: "More", icon: MoreHorizontal, href: "#" },
-    ],
-  },
-  {
-    section: "Documents",
-    items: [
-      { label: "Data Library", icon: FolderArchive, href: "#" },
-      { label: "Reports", icon: FileText, href: "#" },
-      { label: "Word Assistant", icon: NotebookPen, href: "#" },
-      { label: "More", icon: MoreHorizontal, href: "#" },
-    ],
-  },
-  {
-    section: "Settings",
-    items: [{ label: "Settings", icon: Settings, href: "#" }],
-  },
-];
+import { sidebarLinks } from "./SidebarLinks";
+import { usePathname } from "next/navigation";
 
 type SidebarProps = {
   isOpen: boolean;
@@ -72,6 +13,7 @@ type SidebarProps = {
 };
 
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
+  const pathname = usePathname();
   const sidebarRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -97,7 +39,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         <div className="flex items-center justify-between px-6 py-4 border-b flex-shrink-0">
           <div className="text-lg font-semibold">M Saffar Creation</div>
           <div className="flex items-center gap-3">
-            <Bell className="w-5 h-5 text-muted-foreground" />
+            <Mail className="w-5 h-5 text-muted-foreground" />
             <button
               className="block lg:hidden"
               onClick={onClose}
@@ -124,7 +66,8 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                     href={item.href}
                     className={cn(
                       "flex items-center gap-3 px-6 py-2 text-sm font-medium hover:bg-muted transition",
-                      item.active && "bg-muted"
+                      pathname === item.href &&
+                        "bg-secondary text-secondary-foreground"
                     )}
                   >
                     <item.icon className="w-4 h-4" />
