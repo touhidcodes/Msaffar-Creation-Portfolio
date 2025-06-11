@@ -7,7 +7,7 @@ export type FormData = {
 };
 
 export type TBlogData = {
-  _id: string;
+  id: string;
   title: string;
   description: string;
   image: string;

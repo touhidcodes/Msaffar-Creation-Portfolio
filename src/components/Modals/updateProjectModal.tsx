@@ -133,6 +133,7 @@ export default function UpdateProjectModal({
             </div>
           </div>
 
+          {/* Submit Button */}
           <div className="flex justify-end items-center gap-4 pt-6">
             <Button variant="outline" type="button" onClick={onClose}>
               Cancel
