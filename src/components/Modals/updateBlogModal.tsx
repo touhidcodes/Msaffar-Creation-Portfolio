@@ -12,7 +12,6 @@ import FormInput from "@/components/Forms/FormInput";
 import FormContainer from "@/components/Forms/FormContainer";
 import FormSelect from "@/components/Forms/FormSelect";
 import FormTextarea from "@/components/Forms/FormTextarea";
-import FormFieldArray from "@/components/Forms/FormFieldArray";
 import { FieldValues } from "react-hook-form";
 import { createBlogSchema } from "@/schema/blog";
 import { fetchWithAuth } from "@/service/fetchWithAuth";
@@ -58,11 +57,11 @@ export default function UpdateBlogModal({ open, onClose, blogData }: Props) {
           onSubmit={handleUpdate}
           resolver={zodResolver(createBlogSchema)}
           defaultValues={{
-            title: "",
-            description: "",
-            image: "",
-            isFeatured: false,
-            content: "",
+            title: blogData?.title,
+            description: blogData?.description,
+            image: blogData?.image,
+            isFeatured: blogData?.isFeatured,
+            content: blogData?.content,
           }}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mx-auto">
@@ -101,7 +100,7 @@ export default function UpdateBlogModal({ open, onClose, blogData }: Props) {
               />
             </div>
           </div>
-          <div className="w-full mx-auto px-12">
+          <div className="w-full mx-auto">
             <FormRichTextEditor
               name="content"
               label="Main Content"

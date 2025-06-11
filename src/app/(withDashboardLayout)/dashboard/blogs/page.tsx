@@ -21,18 +21,9 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { truncateText } from "@/lib/utils";
-// import UpdateBlogModal from "@/components/Modals/updateBlogModal";
-// import DeleteBlogModal from "@/components/Modals/deleteBlogModal";
-
-type TBlogData = {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  isFeatured: boolean;
-  isDeleted: boolean;
-  content: string;
-};
+import UpdateBlogModal from "@/components/Modals/updateBlogModal";
+import DeleteBlogModal from "@/components/Modals/deleteBlogModal";
+import { TBlogData } from "@/types";
 
 export default function BlogsPage() {
   const [blogs, setBlogs] = useState<TBlogData[]>([]);
@@ -148,7 +139,7 @@ export default function BlogsPage() {
 
       {selectedBlog && (
         <div>
-          {/* <UpdateBlogModal
+          <UpdateBlogModal
             open={editModalOpen}
             onClose={() => {
               setEditModalOpen(false);
@@ -163,7 +154,7 @@ export default function BlogsPage() {
               setSelectedBlog(null);
             }}
             blogId={selectedBlog?.id}
-          /> */}
+          />
         </div>
       )}
     </div>
