@@ -3,9 +3,10 @@
 import { cn } from "@/lib/utils";
 import { Mail, MoreHorizontal, X } from "lucide-react";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { sidebarLinks } from "./SidebarLinks";
 import { usePathname } from "next/navigation";
+import { getUserInfo } from "@/hooks/useGetUserInfo";
 
 type SidebarProps = {
   isOpen: boolean;
@@ -15,7 +16,40 @@ type SidebarProps = {
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname = usePathname();
   const sidebarRef = useRef<HTMLDivElement>(null);
+  // const user = getUserInfo();
+  // console.log(user);
 
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("/api/auth/user")
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+
+    const fetchUser = async () => {
+      try {
+        const res = await fetch("/api/auth/user", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        console.log(res);
+        const data = await res.json();
+        console.log(data?.user);
+
+        if (res.ok && data.user) {
+          setUser(data.user);
+        }
+      } catch (err) {
+        console.error("Error fetching user:", err);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
+  console.log(user);
   return (
     <>
       {/* Overlay shown only on mobile when sidebar is open */}

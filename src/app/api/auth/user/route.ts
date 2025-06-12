@@ -1,7 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { getCookie } from "cookies-next";
 import { verifyToken } from "@/lib/jwt";
 import { getCookies } from "@/service/actions/getCookies";
+import { NextRequest, NextResponse } from "next/server";
 
 interface JwtPayload {
   userId: string;
@@ -9,16 +8,29 @@ interface JwtPayload {
   username: string;
 }
 
-export default async function GET(req: NextApiRequest, res: NextApiResponse) {
-  const token = await getCookies();
-  console.log(token);
-
-  if (!token) return res.status(401).json({ user: null });
-
+export default async function GET(req: NextRequest, res: NextResponse) {
   try {
+    const token = await getCookies();
+    console.log("Token:", token);
+
+    if (!token) {
+      return NextResponse.json(
+        { user: null, error: "No token!" },
+        { status: 401 }
+      );
+    }
+
     const result = verifyToken(token as string) as JwtPayload;
-    return res.status(200).json({ user: result });
+
+    return NextResponse.json(
+      { user: result, error: "User Found!" },
+      { status: 200 }
+    );
   } catch (err) {
-    return res.status(400).json({ user: null });
+    console.error("Token verification failed:", err);
+    return NextResponse.json(
+      { user: null, error: "Invalid token!" },
+      { status: 400 }
+    );
   }
 }

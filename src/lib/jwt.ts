@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken";
 
-const NEXT_PUBLIC_JWT_SECRET = process.env.NEXT_PUBLIC_JWT_SECRET!;
+const JWT_SECRET = process.env.NEXT_PUBLIC_JWT_SECRET!;
 
 export function generateToken(payload: object) {
-  return jwt.sign(payload, NEXT_PUBLIC_JWT_SECRET, { expiresIn: "1d" });
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: "1d" });
 }
 
 export function verifyToken(token: string) {
@@ -16,5 +16,5 @@ export function verifyToken(token: string) {
 }
 
 export function signJwtToken(payload: object) {
-  return jwt.sign(payload, NEXT_PUBLIC_JWT_SECRET, { expiresIn: "7d" });
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: "7d" });
 }
