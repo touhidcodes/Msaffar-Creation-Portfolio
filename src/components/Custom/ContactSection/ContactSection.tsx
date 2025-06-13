@@ -8,11 +8,31 @@ import { FieldValues } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createMessageSchema } from "@/schema/message";
+import { toast } from "sonner";
 
 export default function ContactSection() {
-  const handleSubmit = (data: FieldValues) => {
-    console.log(data);
+  const handleSubmit = async (values: FieldValues) => {
+    try {
+      const res = await fetch("/api/message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.warning(data.error || "Something went wrong!");
+      } else {
+        toast.success(data.message || "Message posted successfully");
+      }
+    } catch (error: any) {
+      console.error("Error submitting project:", error);
+      toast.error(error.message || "Something went wrong!");
+    }
   };
+
   return (
     <section className="min-h-screen flex items-center justify-center bg-white px-4 py-10">
       <div className="grid md:grid-cols-3 w-full max-w-6xl gap-10 items-center">

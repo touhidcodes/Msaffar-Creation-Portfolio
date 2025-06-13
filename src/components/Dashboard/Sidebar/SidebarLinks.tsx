@@ -44,7 +44,7 @@ export const sidebarLinks = [
     ],
   },
   {
-    section: "Massage",
+    section: "Message",
     items: [
       {
         label: "Messages",
