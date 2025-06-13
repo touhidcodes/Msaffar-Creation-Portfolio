@@ -14,13 +14,17 @@ type SidebarProps = {
   onClose: () => void;
 };
 
+type TUser = {
+  email: string;
+  username: string;
+};
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname = usePathname();
   const sidebarRef = useRef<HTMLDivElement>(null);
   // const user = getUserInfo();
   // console.log(user);
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<TUser | null>(null);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -115,8 +119,13 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             className="w-8 h-8 rounded-full"
           />
           <div className="text-sm">
-            <div className="font-medium">shadcn</div>
-            <div className="text-muted-foreground text-xs">m@example.com</div>
+            <div className="font-medium">
+              {user ? user?.username : "shadcn"}
+            </div>
+            <div className="text-muted-foreground text-xs">
+              {" "}
+              {user ? user?.email : "m@example.com"}
+            </div>
           </div>
           <MoreHorizontal className="ml-auto w-4 h-4" />
         </div>

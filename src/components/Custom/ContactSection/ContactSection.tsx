@@ -2,11 +2,12 @@
 
 import FormContainer from "@/components/Forms/FormContainer";
 import FormInput from "@/components/Forms/FormInput";
-import Button from "@/components/ui/Button/Button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import FormTextarea from "@/components/Forms/FormTextarea";
 import Image from "next/image";
 import { FieldValues } from "react-hook-form";
+import { Button } from "@/components/ui/button";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { createMessageSchema } from "@/schema/message";
 
 export default function ContactSection() {
   const handleSubmit = (data: FieldValues) => {
@@ -41,24 +42,54 @@ export default function ContactSection() {
         </div>
 
         {/* Right Section */}
-        <form className="space-y-4 w-full">
-          <Input type="text" placeholder="Name" required />
-          <FormContainer onSubmit={handleSubmit}>
+        <div className="space-y-4 w-full">
+          <FormContainer
+            onSubmit={handleSubmit}
+            resolver={zodResolver(createMessageSchema)}
+            defaultValues={{
+              name: "",
+              email: "",
+              subject: "",
+              message: "",
+            }}
+          >
+            <FormInput
+              name="name"
+              label="Name"
+              type="text"
+              placeholder="Enter your name"
+              required
+            />
             <FormInput
               name="email"
-              label="Email Address"
+              label="Email"
               type="email"
               placeholder="Enter your email"
               required
             />
+            <FormInput
+              name="subject"
+              label="Subject"
+              type="text"
+              placeholder="Enter your email"
+              required
+            />
+            <FormTextarea
+              name="message"
+              label="Description"
+              placeholder="Write a detailed description..."
+              required
+            />
+            <div>
+              <Button type="submit">Submit</Button>
+            </div>
           </FormContainer>
-          <Textarea placeholder="Message" rows={4} required />
-          <Button
+          {/* <Button
             text="Submit"
             link="/projects"
             className="w-fit bg-black border-2 border-black text-white font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-white hover:text-black transition-all duration-300"
-          />
-        </form>
+          /> */}
+        </div>
       </div>
     </section>
   );

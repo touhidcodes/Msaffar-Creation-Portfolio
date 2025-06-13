@@ -8,6 +8,7 @@ import {
   House,
   Notebook,
   NotepadText,
+  MessageCircle,
 } from "lucide-react";
 
 export const sidebarLinks = [
@@ -17,7 +18,7 @@ export const sidebarLinks = [
       { label: "Quick Create", icon: PlusCircle, href: "#", active: true },
       { label: "Home", icon: House, href: "/" },
       { label: "Dashboard", icon: LayoutDashboard, href: "/dashboard" },
-      { label: "Analytics", icon: LineChart, href: "/dashboard" },
+      { label: "Analytics", icon: LineChart, href: "#" },
     ],
   },
   {
@@ -43,7 +44,17 @@ export const sidebarLinks = [
     ],
   },
   {
+    section: "Massage",
+    items: [
+      {
+        label: "Messages",
+        icon: MessageCircle,
+        href: "/dashboard/messages",
+      },
+    ],
+  },
+  {
     section: "Settings",
-    items: [{ label: "Settings", icon: Settings, href: "/dashboard" }],
+    items: [{ label: "Settings", icon: Settings, href: "#" }],
   },
 ];

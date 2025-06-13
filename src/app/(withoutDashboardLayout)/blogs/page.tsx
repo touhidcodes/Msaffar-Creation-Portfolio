@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { blogsData } from "@/data/demoData";
-import { truncateText } from "@/utils/truncateText";
+import { truncateText } from "@/lib/utils";
 import Image from "next/image";
 
 const BlogPage = () => {
