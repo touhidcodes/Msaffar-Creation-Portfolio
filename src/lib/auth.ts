@@ -7,6 +7,7 @@ import prisma from "@/lib/prisma";
 export const getAuthUser = async () => {
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
+
   if (!token) return null;
 
   const decoded = verifyToken(token);
@@ -21,6 +22,7 @@ export const getAuthUser = async () => {
   return {
     id: user.id,
     email: user.email,
+    username: user.username,
     isAdmin: user.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL,
   };
 };

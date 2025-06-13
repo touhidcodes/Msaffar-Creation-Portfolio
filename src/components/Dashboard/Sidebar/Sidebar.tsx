@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { sidebarLinks } from "./SidebarLinks";
 import { usePathname } from "next/navigation";
 import { getUserInfo } from "@/hooks/useGetUserInfo";
+import { fetchWithAuth } from "@/service/fetchWithAuth";
 
 type SidebarProps = {
   isOpen: boolean;
@@ -22,21 +23,14 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("/api/auth/user")
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-
     const fetchUser = async () => {
       try {
-        const res = await fetch("/api/auth/user", {
+        const res = await fetchWithAuth("/api/auth/user", {
           method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
         });
-        console.log(res);
+
         const data = await res.json();
-        console.log(data?.user);
+        console.log("Fetched user data:", data);
 
         if (res.ok && data.user) {
           setUser(data.user);

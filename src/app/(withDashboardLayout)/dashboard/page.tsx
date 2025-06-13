@@ -1,7 +1,6 @@
-"use server";
+"use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getAuthUser } from "@/lib/auth";
 import { TrendingUp, Users, Activity, BarChart3 } from "lucide-react";
 
 const stats = [
@@ -31,9 +30,7 @@ const stats = [
   },
 ];
 
-export default async function DashboardPage() {
-  const user = await getAuthUser();
-  console.log(user);
+export default function DashboardPage() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {stats.map((stat, idx) => (
