@@ -9,24 +9,27 @@ import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { fetchWithAuth } from "@/service/fetchWithAuth";
 
 type DeleteConfirmModalProps = {
   open: boolean;
   onClose: () => void;
+  onSuccess?: () => void;
   projectId: string;
 };
 
 export default function DeleteProjectModal({
   open,
   onClose,
+  onSuccess,
   projectId,
 }: DeleteConfirmModalProps) {
-  const [deleting, setDeleting] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleDelete = async () => {
     try {
-      setDeleting(true);
-      const res = await fetch(`/api/projects/${projectId}`, {
+      setLoading(true);
+      const res = await fetchWithAuth(`/api/projects/${projectId}`, {
         method: "DELETE",
       });
 
@@ -37,11 +40,12 @@ export default function DeleteProjectModal({
       } else {
         toast.success(data.message || "Project deleted successfully");
         onClose();
+        onSuccess?.();
       }
     } catch (error: any) {
       toast.error(error.message || "Delete failed");
     } finally {
-      setDeleting(false);
+      setLoading(false);
     }
   };
 
@@ -56,15 +60,15 @@ export default function DeleteProjectModal({
         </p>
 
         <DialogFooter className="flex justify-end gap-2 mt-4">
-          <Button variant="outline" onClick={onClose} disabled={deleting}>
+          <Button variant="outline" onClick={onClose} disabled={loading}>
             Cancel
           </Button>
           <Button
             variant="destructive"
             onClick={handleDelete}
-            disabled={deleting}
+            disabled={loading}
           >
-            Delete
+            {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Delete"}
           </Button>
         </DialogFooter>
       </DialogContent>

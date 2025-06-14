@@ -33,24 +33,24 @@ export default function ProjectsPage() {
     null
   );
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const res = await fetch("/api/projects", {
-          next: { tags: ["projects"] },
-        });
-        const data = await res.json();
+  const fetchProjects = async () => {
+    try {
+      const res = await fetch("/api/projects", {
+        next: { tags: ["projects"] },
+      });
+      const data = await res.json();
 
-        if (!res.ok) {
-          toast.warning("Failed to fetch projects!");
-        }
-
-        setProjects(data?.data);
-      } catch (err: any) {
-        toast.error("Failed to fetch projects: " + err.message);
+      if (!res.ok) {
+        toast.warning("Failed to fetch projects!");
       }
-    };
 
+      setProjects(data?.data);
+    } catch (err: any) {
+      toast.error("Failed to fetch projects: " + err.message);
+    }
+  };
+
+  useEffect(() => {
     fetchProjects();
   }, []);
 
@@ -150,6 +150,9 @@ export default function ProjectsPage() {
               setEditModalOpen(false);
               setSelectedProject(null);
             }}
+            onSuccess={() => {
+              fetchProjects();
+            }}
             projectData={selectedProject}
           />
           {/* Delete project modal */}
@@ -158,6 +161,9 @@ export default function ProjectsPage() {
             onClose={() => {
               setDeleteModalOpen(false);
               setSelectedProject(null);
+            }}
+            onSuccess={() => {
+              fetchProjects();
             }}
             projectId={selectedProject?.id}
           />

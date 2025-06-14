@@ -18,19 +18,25 @@ import { createProjectSchema } from "@/schema/project";
 import { fetchWithAuth } from "@/service/fetchWithAuth";
 import { toast } from "sonner";
 import { TProjectData } from "@/types";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 type Props = {
   open: boolean;
   onClose: () => void;
+  onSuccess?: () => void;
   projectData: TProjectData;
 };
 
 export default function UpdateProjectModal({
   open,
   onClose,
+  onSuccess,
   projectData,
 }: Props) {
+  const [loading, setLoading] = useState(false);
   const handleUpdate = async (values: FieldValues) => {
+    setLoading(true);
     try {
       const res = await fetchWithAuth(`/api/projects/${projectData?.id}`, {
         method: "PATCH",
@@ -44,9 +50,12 @@ export default function UpdateProjectModal({
       } else {
         toast.success(data.message || "Project updated successfully");
         onClose();
+        onSuccess?.();
       }
     } catch (error: any) {
       toast.error(error.message || "Update failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -135,10 +144,21 @@ export default function UpdateProjectModal({
 
           {/* Submit Button */}
           <div className="flex justify-end items-center gap-4 pt-6">
-            <Button variant="outline" type="button" onClick={onClose}>
+            <Button
+              variant="outline"
+              type="button"
+              onClick={onClose}
+              disabled={loading}
+            >
               Cancel
             </Button>
-            <Button type="submit">Update</Button>
+            <Button type="submit" disabled={loading}>
+              {loading ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                "Update"
+              )}
+            </Button>
           </div>
         </FormContainer>
       </DialogContent>
