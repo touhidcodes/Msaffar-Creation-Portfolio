@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { deleteCookies } from "@/service/actions/deleteCookies";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -9,19 +10,12 @@ const LogoutButton = () => {
 
   const handleLogout = async () => {
     try {
-      const res = await fetch("/api/logout", {
-        method: "POST",
-      });
-      const result = await res.json();
+      await deleteCookies();
 
-      if (!res.ok) {
-        toast.warning(result.error);
-      } else {
-        toast.success(result.message);
-        router.push("/");
-      }
+      toast.success("Logout successful!");
+      router.push("/");
     } catch (error) {
-      toast.error("Failed to logout. Try again.");
+      toast.error("Failed to logout. Try again!");
     }
   };
 
