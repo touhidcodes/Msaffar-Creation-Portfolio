@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { TMessageData } from "@/types";
-import { Mail, CalendarDays, User, CornerDownRight } from "lucide-react";
+import { CalendarDays, CornerDownRight } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 
 type Props = {
@@ -46,9 +46,11 @@ export default function ViewMessageModal({ open, onClose, message }: Props) {
             </div>
           </div>
         </DialogHeader>
-
-        <div className="pt-2 space-y-2">
+        <DialogTitle>
           <h3 className="text-2xl font-semibold">{message.subject}</h3>
+        </DialogTitle>
+
+        <div className="space-y-2">
           <p className="text-gray-700 whitespace-pre-line leading-relaxed">
             {message.message}
           </p>

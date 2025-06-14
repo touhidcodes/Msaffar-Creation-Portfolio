@@ -47,13 +47,16 @@ export default function MessagesPage() {
   // Mark all messages as read
   const markAllAsRead = async () => {
     try {
-      const res = await fetch("/api/messages/mark-all-read", {
+      const res = await fetch("/api/messages", {
         method: "PATCH",
       });
-      if (!res.ok) throw new Error("Failed");
+      if (!res.ok) {
+        toast.warning("Failed to update!");
+        return;
+      }
 
       toast.success("All messages marked as read");
-      fetchMessages(); // refresh list
+      fetchMessages();
     } catch {
       toast.error("Failed to mark messages as read");
     }
@@ -61,9 +64,8 @@ export default function MessagesPage() {
 
   // View message
   const handleView = async (message: TMessageData) => {
-    // mark as read if unread
     if (!message.isRead) {
-      await fetch(`/api/messages/${message.id}/read`, {
+      await fetch(`/api/messages/${message.id}`, {
         method: "PATCH",
       });
     }
@@ -74,7 +76,7 @@ export default function MessagesPage() {
   };
 
   return (
-    <div className="grid w-full space-y-4">
+    <div className="grid w-full space-y-4 mt-2">
       <div className="flex justify-between items-center px-2">
         <h2 className="text-xl font-semibold">Messages</h2>
         <Button variant="outline" onClick={markAllAsRead}>
