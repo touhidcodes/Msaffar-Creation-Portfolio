@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
 export async function GET() {
   try {
     const messages = await prisma.message.findMany({
-      orderBy: { createdAt: "desc" },
+      orderBy: [{ isRead: "asc" }, { createdAt: "desc" }],
     });
 
     return NextResponse.json(
@@ -38,6 +38,28 @@ export async function GET() {
     // console.error("Error fetching messages!", error);
     return NextResponse.json(
       { error: "Failed to fetch messages!" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PATCH() {
+  try {
+    const updated = await prisma.message.updateMany({
+      where: { isRead: false },
+      data: { isRead: true },
+    });
+
+    return NextResponse.json(
+      {
+        message: "All unread messages marked as read!",
+        updatedCount: updated.count,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Failed to mark messages as read!" },
       { status: 500 }
     );
   }

@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createMessageSchema } from "@/schema/message";
 import { toast } from "sonner";
+import { Card, CardContent } from "@/components/ui/card";
+import { Mail, Phone } from "lucide-react";
 
 export default function ContactSection() {
   const handleSubmit = async (values: FieldValues) => {
@@ -28,7 +30,7 @@ export default function ContactSection() {
         toast.success(data.message || "Message posted successfully");
       }
     } catch (error: any) {
-      console.error("Error submitting project:", error);
+      // console.error("Error submitting project:", error);
       toast.error(error.message || "Something went wrong!");
     }
   };
@@ -37,17 +39,48 @@ export default function ContactSection() {
     <section className="min-h-screen flex items-center justify-center bg-white px-4 py-10">
       <div className="grid md:grid-cols-3 w-full max-w-6xl gap-10 items-center">
         {/* Left Section */}
-        <div className="text-center md:text-left space-y-6">
+        <div className="text-center md:text-left space-y-8 max-w-xl mx-auto p-6">
           <h1 className="text-3xl md:text-4xl font-bold leading-tight">
             Let’s connect and start the conversations!
           </h1>
+
           <p className="text-gray-600">
             Whether you have questions, want to discuss a project, or simply
-            want to chat about design feel free to reach out. <br />
-            <a href="#" className="text-black underline font-semibold">
-              Drop me a message
+            want to chat about design, feel free to{" "}
+            <a
+              href="mailto:youremail@example.com"
+              className="underline font-semibold text-black"
+            >
+              mail me
             </a>
+            .
           </p>
+
+          <Card className="bg-gray-100">
+            <CardContent className="p-6 space-y-4">
+              {/* Email */}
+              <div className="flex items-center gap-4">
+                <div className="bg-white p-3 rounded-full shadow">
+                  <Mail className="w-6 h-6 text-black" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600">Email</p>
+                  <p className="font-semibold">youremail@example.com</p>
+                </div>
+              </div>
+
+              {/* Phone */}
+              <div className="flex items-center gap-4">
+                <div className="bg-white p-3 rounded-full shadow">
+                  <Phone className="w-6 h-6 text-black" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600">Phone</p>
+                  <p className="font-semibold">+880 1234-567890</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Middle Section - Plug Illustration */}

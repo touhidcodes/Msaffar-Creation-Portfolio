@@ -36,3 +36,13 @@ export type TServiceData = {
   description: string;
   icon: LucideIcon;
 };
+
+export type TMessageData = {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  content: string;
+  isRead: boolean;
+  createdAt: string;
+};
