@@ -13,8 +13,8 @@ import { Badge } from "@/components/ui/badge";
 import { Eye } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-// import MessageViewModal from "@/components/Modals/MessageViewModal";
 import { TMessageData } from "@/types";
+import ViewMessageModal from "@/components/Modals/viewMessageModal";
 
 export default function MessagesPage() {
   const [messages, setMessages] = useState<TMessageData[]>([]);
@@ -81,48 +81,49 @@ export default function MessagesPage() {
           Mark All as Read
         </Button>
       </div>
-
-      <Table>
-        <TableHeader>
-          <TableRow className="text-sm">
-            <TableHead className="pl-6">Sender</TableHead>
-            <TableHead>Subject</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Action</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {messages.map((msg) => (
-            <TableRow key={msg.id} className="odd:bg-muted/50">
-              <TableCell className="pl-6">{msg.name}</TableCell>
-              <TableCell>{msg.subject}</TableCell>
-              <TableCell>
-                <Badge variant={msg.isRead ? "default" : "destructive"}>
-                  {msg.isRead ? "Read" : "Unread"}
-                </Badge>
-              </TableCell>
-              <TableCell>
-                <Button
-                  variant="ghost"
-                  className="hover:bg-accent/40 transition px-2"
-                  onClick={() => handleView(msg)}
-                >
-                  <Eye className="w-4 h-4 mr-1" />
-                  View
-                </Button>
-              </TableCell>
+      <div className="grid w-full [&>div]:h-full [&>div]:border [&>div]:rounded">
+        <Table>
+          <TableHeader>
+            <TableRow className="[&>*]:whitespace-nowrap sticky top-0 bg-background after:content-[''] after:inset-x-0 after:h-px after:bg-border after:absolute after:bottom-0 z-10">
+              <TableHead className="pl-6">Sender</TableHead>
+              <TableHead>Subject</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Action</TableHead>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {messages.map((msg) => (
+              <TableRow key={msg.id} className="odd:bg-muted/50">
+                <TableCell className="pl-6">{msg.name}</TableCell>
+                <TableCell>{msg.subject}</TableCell>
+                <TableCell>
+                  <Badge variant={msg.isRead ? "default" : "destructive"}>
+                    {msg.isRead ? "Read" : "Unread"}
+                  </Badge>
+                </TableCell>
+                <TableCell>
+                  <Button
+                    variant="ghost"
+                    className="hover:bg-accent/40 transition px-2"
+                    onClick={() => handleView(msg)}
+                  >
+                    <Eye className="w-4 h-4 mr-1" />
+                    View
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
 
-      {/* {selectedMessage && (
-        <MessageViewModal
+      {selectedMessage && (
+        <ViewMessageModal
           open={modalOpen}
           onClose={() => setModalOpen(false)}
           message={selectedMessage}
         />
-      )} */}
+      )}
     </div>
   );
 }

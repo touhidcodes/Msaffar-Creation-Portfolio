@@ -14,8 +14,9 @@ import { Mail, Phone } from "lucide-react";
 
 export default function ContactSection() {
   const handleSubmit = async (values: FieldValues) => {
+    console.log(values);
     try {
-      const res = await fetch("/api/message", {
+      const res = await fetch("/api/messages", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

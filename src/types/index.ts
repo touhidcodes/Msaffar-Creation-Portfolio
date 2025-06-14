@@ -42,7 +42,7 @@ export type TMessageData = {
   name: string;
   email: string;
   subject: string;
-  content: string;
+  message: string;
   isRead: boolean;
   createdAt: string;
 };
