@@ -87,7 +87,7 @@ export default function ContactSection() {
         {/* Middle Section - Plug Illustration */}
         <div className="flex justify-center">
           <Image
-            src="/assets/images/connect.png"
+            src="/assets/images/notFound.png"
             alt="Connection Illustration"
             width={100}
             height={300}

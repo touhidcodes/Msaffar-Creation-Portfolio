@@ -14,11 +14,15 @@ import { loginValidationSchema } from "@/schema/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 export default function LoginPage() {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const handleSubmit = async (data: FieldValues) => {
     try {
+      setLoading(true);
       const res = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -36,6 +40,8 @@ export default function LoginPage() {
     } catch (error) {
       // console.error("Login error:", error);
       toast.error("Something went wrong.");
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -70,8 +76,8 @@ export default function LoginPage() {
               placeholder="your password"
               required
             />
-            <Button type="submit" className="w-full">
-              Login
+            <Button type="submit" disabled={loading} className="w-full">
+              {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Login"}
             </Button>
           </FormContainer>
         </CardContent>
