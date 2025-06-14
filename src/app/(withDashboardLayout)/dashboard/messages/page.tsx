@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Eye } from "lucide-react";
+import { Eye, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { TMessageData } from "@/types";
@@ -22,9 +22,11 @@ export default function MessagesPage() {
     null
   );
   const [modalOpen, setModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // Fetch messages
   const fetchMessages = async () => {
+    setLoading(true);
     try {
       const res = await fetch("/api/messages");
       const data = await res.json();
@@ -37,6 +39,8 @@ export default function MessagesPage() {
       setMessages(data?.data);
     } catch (err: any) {
       toast.error("Error fetching messages: " + err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -76,8 +80,8 @@ export default function MessagesPage() {
   };
 
   return (
-    <div className="grid w-full space-y-4 mt-2">
-      <div className="flex justify-between items-center px-2">
+    <div className="grid w-full space-y-2 mt-2">
+      <div className="flex justify-between items-center px-6">
         <h2 className="text-xl font-semibold">Messages</h2>
         <Button variant="outline" onClick={markAllAsRead}>
           Mark All as Read
@@ -125,6 +129,11 @@ export default function MessagesPage() {
           onClose={() => setModalOpen(false)}
           message={selectedMessage}
         />
+      )}
+      {loading && (
+        <div className="flex justify-center items-center h-[300px]">
+          <Loader2 className="w-10 h-10 animate-spin" />
+        </div>
       )}
     </div>
   );

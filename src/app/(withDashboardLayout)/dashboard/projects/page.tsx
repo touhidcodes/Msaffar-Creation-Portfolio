@@ -16,7 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { MoreHorizontal, Pencil, Trash } from "lucide-react";
+import { Loader2, MoreHorizontal, Pencil, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 import { TProjectData } from "@/types";
 import { toast } from "sonner";
@@ -24,9 +24,11 @@ import { Badge } from "@/components/ui/badge";
 import { truncateText } from "@/lib/utils";
 import UpdateProjectModal from "@/components/Modals/updateProjectModal";
 import DeleteProjectModal from "@/components/Modals/deleteProjectModal";
+import Link from "next/link";
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<TProjectData[]>([]);
+  const [loading, setLoading] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<TProjectData | null>(
@@ -34,6 +36,7 @@ export default function ProjectsPage() {
   );
 
   const fetchProjects = async () => {
+    setLoading(true);
     try {
       const res = await fetch("/api/projects", {
         next: { tags: ["projects"] },
@@ -47,6 +50,8 @@ export default function ProjectsPage() {
       setProjects(data?.data);
     } catch (err: any) {
       toast.error("Failed to fetch projects: " + err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -64,109 +69,126 @@ export default function ProjectsPage() {
     setDeleteModalOpen(true);
   };
   return (
-    <div className="grid w-full [&>div]:h-full [&>div]:border [&>div]:rounded">
-      <Table>
-        <TableHeader>
-          <TableRow className="[&>*]:whitespace-nowrap sticky top-0 bg-background after:content-[''] after:inset-x-0 after:h-px after:bg-border after:absolute after:bottom-0 z-10">
-            <TableHead className="pl-6">Project Name</TableHead>
-            <TableHead>Description</TableHead>
-            <TableHead>Client</TableHead>
-            <TableHead>Duration</TableHead>
-            <TableHead>Featured</TableHead>
-            <TableHead>Action</TableHead>
-          </TableRow>
-        </TableHeader>
+    <div className="space-y-2 mt-2">
+      <div className="flex justify-between items-center px-6">
+        <h2 className="text-xl font-semibold">My Projects</h2>
+        <Button variant="outline">
+          <Link href="/dashboard/projects/create">Create A New Project</Link>
+        </Button>
+      </div>
 
-        <TableBody className="overflow-hidden">
-          {projects?.map((project) => (
-            <TableRow
-              key={project.id}
-              className="odd:bg-muted/50 [&>*]:whitespace-nowrap"
-            >
-              <TableCell className="font-medium pl-6">{project.name}</TableCell>
-              <TableCell className="max-w-[200px] truncate">
-                {truncateText(project.description, 40)}
-              </TableCell>
-              <TableCell>{project.client || "N/A"}</TableCell>
-              <TableCell>{project.projectDuration}</TableCell>
-              <TableCell>
-                <Badge
-                  variant={project.isFeatured ? "default" : "destructive"}
-                  className={
-                    project.isFeatured
-                      ? "bg-green-500 hover:bg-green-600 text-white"
-                      : ""
-                  }
-                >
-                  {project.isFeatured ? "Yes" : "No"}
-                </Badge>
-              </TableCell>
-
-              <TableCell>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      className="h-8 w-8 p-0 hover:bg-accent/40 transition"
-                    >
-                      <span className="sr-only">Open menu</span>
-                      <MoreHorizontal className="w-5 h-5" />
-                    </Button>
-                  </DropdownMenuTrigger>
-
-                  <DropdownMenuContent
-                    align="end"
-                    className="w-44 bg-background border border-border rounded-md shadow-xl animate-in fade-in-0 zoom-in-95"
-                  >
-                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
-
-                    <DropdownMenuItem
-                      onClick={() => handleUpdate(project)}
-                      className="hover:bg-indigo-600 hover:text-white transition-colors px-3 py-2 cursor-pointer text-sm flex items-center gap-2"
-                    >
-                      <Pencil className="w-4 h-4" />
-                      Update
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                      onClick={() => handleDelete(project)}
-                      className="hover:bg-red-600 hover:text-white transition-colors px-3 py-2 cursor-pointer text-sm flex items-center gap-2"
-                    >
-                      <Trash className="w-4 h-4" />
-                      Delete
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </TableCell>
+      <div className="grid w-full [&>div]:h-full [&>div]:border [&>div]:rounded">
+        <Table>
+          <TableHeader>
+            <TableRow className="[&>*]:whitespace-nowrap sticky top-0 bg-background after:content-[''] after:inset-x-0 after:h-px after:bg-border after:absolute after:bottom-0 z-10">
+              <TableHead className="pl-6">Project Name</TableHead>
+              <TableHead>Description</TableHead>
+              <TableHead>Client</TableHead>
+              <TableHead>Duration</TableHead>
+              <TableHead>Featured</TableHead>
+              <TableHead>Action</TableHead>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      {selectedProject && (
-        <div>
-          {/* Update project modal */}
-          <UpdateProjectModal
-            open={editModalOpen}
-            onClose={() => {
-              setEditModalOpen(false);
-              setSelectedProject(null);
-            }}
-            onSuccess={() => {
-              fetchProjects();
-            }}
-            projectData={selectedProject}
-          />
-          {/* Delete project modal */}
-          <DeleteProjectModal
-            open={deleteModalOpen}
-            onClose={() => {
-              setDeleteModalOpen(false);
-              setSelectedProject(null);
-            }}
-            onSuccess={() => {
-              fetchProjects();
-            }}
-            projectId={selectedProject?.id}
-          />
+          </TableHeader>
+
+          <TableBody className="overflow-hidden">
+            {projects?.map((project) => (
+              <TableRow
+                key={project.id}
+                className="odd:bg-muted/50 [&>*]:whitespace-nowrap"
+              >
+                <TableCell className="font-medium pl-6">
+                  {project.name}
+                </TableCell>
+                <TableCell className="max-w-[200px] truncate">
+                  {truncateText(project.description, 40)}
+                </TableCell>
+                <TableCell>{project.client || "N/A"}</TableCell>
+                <TableCell>{project.projectDuration}</TableCell>
+                <TableCell>
+                  <Badge
+                    variant={project.isFeatured ? "default" : "destructive"}
+                    className={
+                      project.isFeatured
+                        ? "bg-green-500 hover:bg-green-600 text-white"
+                        : ""
+                    }
+                  >
+                    {project.isFeatured ? "Yes" : "No"}
+                  </Badge>
+                </TableCell>
+
+                <TableCell>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        className="h-8 w-8 p-0 hover:bg-accent/40 transition"
+                      >
+                        <span className="sr-only">Open menu</span>
+                        <MoreHorizontal className="w-5 h-5" />
+                      </Button>
+                    </DropdownMenuTrigger>
+
+                    <DropdownMenuContent
+                      align="end"
+                      className="w-44 bg-background border border-border rounded-md shadow-xl animate-in fade-in-0 zoom-in-95"
+                    >
+                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
+
+                      <DropdownMenuItem
+                        onClick={() => handleUpdate(project)}
+                        className="hover:bg-indigo-600 hover:text-white transition-colors px-3 py-2 cursor-pointer text-sm flex items-center gap-2"
+                      >
+                        <Pencil className="w-4 h-4" />
+                        Update
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
+                        onClick={() => handleDelete(project)}
+                        className="hover:bg-red-600 hover:text-white transition-colors px-3 py-2 cursor-pointer text-sm flex items-center gap-2"
+                      >
+                        <Trash className="w-4 h-4" />
+                        Delete
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+
+        {selectedProject && (
+          <div>
+            {/* Update project modal */}
+            <UpdateProjectModal
+              open={editModalOpen}
+              onClose={() => {
+                setEditModalOpen(false);
+                setSelectedProject(null);
+              }}
+              onSuccess={() => {
+                fetchProjects();
+              }}
+              projectData={selectedProject}
+            />
+            {/* Delete project modal */}
+            <DeleteProjectModal
+              open={deleteModalOpen}
+              onClose={() => {
+                setDeleteModalOpen(false);
+                setSelectedProject(null);
+              }}
+              onSuccess={() => {
+                fetchProjects();
+              }}
+              projectId={selectedProject?.id}
+            />
+          </div>
+        )}
+      </div>
+      {loading && (
+        <div className="flex justify-center items-center h-[300px]">
+          <Loader2 className="w-10 h-10 animate-spin" />
         </div>
       )}
     </div>

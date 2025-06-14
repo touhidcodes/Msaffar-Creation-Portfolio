@@ -18,6 +18,8 @@ import { fetchWithAuth } from "@/service/fetchWithAuth";
 import { toast } from "sonner";
 import { TBlogData } from "@/types";
 import FormRichTextEditor from "../Forms/FormTextEditor";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 type Props = {
   open: boolean;
@@ -26,8 +28,11 @@ type Props = {
 };
 
 export default function UpdateBlogModal({ open, onClose, blogData }: Props) {
+  const [loading, setLoading] = useState(false);
+
   const handleUpdate = async (values: FieldValues) => {
     try {
+      setLoading(true);
       const res = await fetchWithAuth(`/api/blogs/${blogData?.id}`, {
         method: "PATCH",
         body: JSON.stringify(values),
@@ -43,6 +48,8 @@ export default function UpdateBlogModal({ open, onClose, blogData }: Props) {
       }
     } catch (error: any) {
       toast.error(error.message || "Update failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -111,10 +118,21 @@ export default function UpdateBlogModal({ open, onClose, blogData }: Props) {
 
           {/* Submit Button */}
           <div className="flex justify-end items-center gap-4 pt-6">
-            <Button variant="outline" type="button" onClick={onClose}>
+            <Button
+              variant="outline"
+              type="button"
+              onClick={onClose}
+              disabled={loading}
+            >
               Cancel
             </Button>
-            <Button type="submit">Update</Button>
+            <Button type="submit" disabled={loading}>
+              {loading ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                "Update"
+              )}
+            </Button>
           </div>
         </FormContainer>
       </DialogContent>

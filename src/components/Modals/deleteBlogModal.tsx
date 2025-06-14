@@ -13,19 +13,21 @@ import { toast } from "sonner";
 type DeleteConfirmModalProps = {
   open: boolean;
   onClose: () => void;
+  onSuccess?: () => void;
   blogId: string;
 };
 
 export default function DeleteBlogModal({
   open,
   onClose,
+  onSuccess,
   blogId,
 }: DeleteConfirmModalProps) {
-  const [deleting, setDeleting] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleDelete = async () => {
     try {
-      setDeleting(true);
+      setLoading(true);
       const res = await fetch(`/api/blogs/${blogId}`, {
         method: "DELETE",
       });
@@ -37,11 +39,12 @@ export default function DeleteBlogModal({
       } else {
         toast.success(data.message || "Blog deleted successfully");
         onClose();
+        onSuccess?.();
       }
     } catch (error: any) {
       toast.error(error.message || "Delete failed");
     } finally {
-      setDeleting(false);
+      setLoading(false);
     }
   };
 
@@ -56,15 +59,15 @@ export default function DeleteBlogModal({
         </p>
 
         <DialogFooter className="flex justify-end gap-2 mt-4">
-          <Button variant="outline" onClick={onClose} disabled={deleting}>
+          <Button variant="outline" onClick={onClose} disabled={loading}>
             Cancel
           </Button>
           <Button
             variant="destructive"
             onClick={handleDelete}
-            disabled={deleting}
+            disabled={loading}
           >
-            Delete
+            {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Delete"}
           </Button>
         </DialogFooter>
       </DialogContent>

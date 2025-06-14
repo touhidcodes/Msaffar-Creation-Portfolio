@@ -11,9 +11,14 @@ import { FieldValues } from "react-hook-form";
 import { createProjectSchema } from "@/schema/project";
 import { toast } from "sonner";
 import { fetchWithAuth } from "@/service/fetchWithAuth";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 export default function CreateProjectPage() {
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (values: FieldValues) => {
+    setLoading(true);
     try {
       const res = await fetchWithAuth("/api/projects", {
         method: "POST",
@@ -22,13 +27,15 @@ export default function CreateProjectPage() {
       const data = await res.json();
 
       if (!res.ok) {
-        toast.warning(data.error || "Something went wrong");
+        toast.warning(data.error || "Something went wrong!");
       } else {
-        toast.success(data.message || "Project created successfully");
+        toast.success(data.message || "Project created successfully!");
       }
     } catch (error: any) {
       // console.error("Error submitting project:", error);
-      toast.error(error.message || "Authentication failed");
+      toast.error(error.message || "Authentication failed!");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -121,7 +128,11 @@ export default function CreateProjectPage() {
           {/* Submit Button */}
           <div className="flex justify-center pt-4">
             <Button type="submit" className="w-full max-w-xs">
-              Create Project
+              {loading ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                "Create Project"
+              )}
             </Button>
           </div>
         </FormContainer>
