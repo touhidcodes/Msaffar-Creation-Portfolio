@@ -1,39 +1,64 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { TrendingUp, Users, Activity, BarChart3 } from "lucide-react";
-
-const stats = [
-  {
-    icon: <TrendingUp className="w-5 h-5 text-green-600" />,
-    label: "Total Revenue",
-    value: "$1,250.00",
-    description: "Trending up this month",
-  },
-  {
-    icon: <Users className="w-5 h-5 text-red-600" />,
-    label: "New Customers",
-    value: "1,234",
-    description: "Down 20% this period",
-  },
-  {
-    icon: <Activity className="w-5 h-5 text-blue-600" />,
-    label: "Active Accounts",
-    value: "45,678",
-    description: "Strong user retention",
-  },
-  {
-    icon: <BarChart3 className="w-5 h-5 text-purple-600" />,
-    label: "Growth Rate",
-    value: "4.5%",
-    description: "Steady performance increase",
-  },
-];
+import { BookText, FolderGit2, Mail, MailWarning } from "lucide-react";
 
 export default function DashboardPage() {
+  const [stats, setStats] = useState<{
+    totalBlogs: number;
+    totalProjects: number;
+    totalMessages: number;
+    totalUnreadMessages: number;
+  } | null>(null);
+
+  const fetchStats = async () => {
+    try {
+      const res = await fetch("/api/stats");
+      const data = await res.json();
+
+      if (res.ok) {
+        setStats(data.data);
+      }
+    } catch (error) {
+      console.error("Failed to fetch dashboard stats", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchStats();
+  }, []);
+
+  const cards = [
+    {
+      icon: <BookText className="w-5 h-5 text-blue-600" />,
+      label: "Total Blogs",
+      value: stats?.totalBlogs ?? "...",
+      description: "Published blog articles",
+    },
+    {
+      icon: <FolderGit2 className="w-5 h-5 text-green-600" />,
+      label: "Total Projects",
+      value: stats?.totalProjects ?? "...",
+      description: "Live and completed projects",
+    },
+    {
+      icon: <Mail className="w-5 h-5 text-purple-600" />,
+      label: "Total Messages",
+      value: stats?.totalMessages ?? "...",
+      description: "All contact messages",
+    },
+    {
+      icon: <MailWarning className="w-5 h-5 text-red-600" />,
+      label: "Unread Messages",
+      value: stats?.totalUnreadMessages ?? "...",
+      description: "Messages awaiting review",
+    },
+  ];
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {stats.map((stat, idx) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
+      {cards.map((stat, idx) => (
         <Card key={idx}>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">{stat.label}</CardTitle>

@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { sidebarLinks } from "./SidebarLinks";
 import { usePathname } from "next/navigation";
-import { getUserInfo } from "@/hooks/useGetUserInfo";
 import { fetchWithAuth } from "@/service/fetchWithAuth";
 
 type SidebarProps = {
@@ -21,33 +20,47 @@ type TUser = {
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname = usePathname();
   const sidebarRef = useRef<HTMLDivElement>(null);
-  // const user = getUserInfo();
-  // console.log(user);
-
   const [user, setUser] = useState<TUser | null>(null);
+  const [unreadCount, setUnreadCount] = useState<number>(0);
+
+  const fetchUnreadCount = async () => {
+    try {
+      const res = await fetchWithAuth("/api/messages/unread", {
+        method: "GET",
+      });
+
+      const data = await res.json();
+      console.log(data);
+
+      if (res.ok && Array.isArray(data.data)) {
+        setUnreadCount(data.data.length);
+      }
+    } catch (err) {
+      console.error("Error fetching unread message count:", err);
+    }
+  };
+
+  const fetchUser = async () => {
+    try {
+      const res = await fetchWithAuth("/api/auth/user", {
+        method: "GET",
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.user) {
+        setUser(data.user);
+      }
+    } catch (err) {
+      console.error("Error fetching user:", err);
+    }
+  };
 
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await fetchWithAuth("/api/auth/user", {
-          method: "GET",
-        });
-
-        const data = await res.json();
-        console.log("Fetched user data:", data);
-
-        if (res.ok && data.user) {
-          setUser(data.user);
-        }
-      } catch (err) {
-        console.error("Error fetching user:", err);
-      }
-    };
-
+    fetchUnreadCount();
     fetchUser();
   }, []);
 
-  console.log(user);
   return (
     <>
       {/* Overlay shown only on mobile when sidebar is open */}
@@ -63,15 +76,23 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         ref={sidebarRef}
         className={cn(
           "w-64 z-50 bg-white h-full shadow-md transition-transform duration-300 transform flex flex-col",
-          // isOpen ? "translate-x-0" : "-translate-x-full"
           isOpen ? "fixed inset-y-0 left-0 w-64 z-50 flex flex-col" : "hidden"
         )}
       >
         {/* Top header */}
         <div className="flex items-center justify-between px-6 py-4 border-b flex-shrink-0">
-          <div className="text-lg font-semibold">M Saffar Creation</div>
-          <div className="flex items-center gap-3">
-            <Mail className="w-5 h-5 text-muted-foreground" />
+          <Link href="/" className="text-lg font-semibold">
+            M Saffar Creation
+          </Link>
+          <div className="relative flex items-center gap-3">
+            <Link href="/dashboard/messages">
+              <Mail className="w-5 h-5" />
+              {unreadCount > 0 && (
+                <span className="absolute -top-1 -right-2 text-xs bg-red-600 text-white rounded-full px-1.5">
+                  {unreadCount}
+                </span>
+              )}
+            </Link>
             <button
               className="block lg:hidden"
               onClick={onClose}
