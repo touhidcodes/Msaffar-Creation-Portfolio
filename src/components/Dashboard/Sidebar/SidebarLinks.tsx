@@ -9,6 +9,7 @@ import {
   Notebook,
   NotepadText,
   MessageCircle,
+  FileUp,
 } from "lucide-react";
 
 export const sidebarLinks = [
@@ -27,7 +28,7 @@ export const sidebarLinks = [
       { label: "Projects", icon: FileStack, href: "/dashboard/projects" },
       {
         label: "Create Project",
-        icon: FileText,
+        icon: FileUp,
         href: "/dashboard/projects/create",
       },
     ],
@@ -50,6 +51,16 @@ export const sidebarLinks = [
         label: "Messages",
         icon: MessageCircle,
         href: "/dashboard/messages",
+      },
+    ],
+  },
+  {
+    section: "Resume",
+    items: [
+      {
+        label: "Update",
+        icon: FileText,
+        href: "/dashboard/resume",
       },
     ],
   },
