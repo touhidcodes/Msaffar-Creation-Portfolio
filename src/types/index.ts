@@ -46,3 +46,11 @@ export type TMessageData = {
   isRead: boolean;
   createdAt: string;
 };
+
+export type TResumeData = {
+  id: string;
+  title: string;
+  url: string;
+  downloadUrl: string;
+  updatedAt: string;
+};
