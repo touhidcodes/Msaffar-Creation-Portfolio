@@ -68,18 +68,18 @@ const ResumePage = () => {
 
       {/* Current Resume Info Display */}
       <div className="flex items-center justify-center">
-        <div className="rounded-lg border p-5 shadow-sm space-y-2 bg-muted max-w-md w-full">
-          <h3 className="text-lg font-semibold">Current Resume Info</h3>
+        <div className="rounded-lg border p-5 shadow-sm space-y-2 bg-muted max-w-md w-full text-sm text-muted-foreground">
+          <h3 className="text-base font-semibold text-foreground mb-2">
+            Current Resume Info
+          </h3>
 
           <div>
-            <strong>Title:</strong>{" "}
-            <span className="text-muted-foreground">
-              {resume?.title || "N/A"}
-            </span>
+            <span className="font-semibold">Title: </span>
+            <span className="text-foreground">{resume?.title || "N/A"}</span>
           </div>
 
           <div>
-            <strong>View Link:</strong>{" "}
+            <span className="font-semibold">View URL: </span>
             {resume?.url ? (
               <a
                 href={resume.url}
@@ -90,12 +90,12 @@ const ResumePage = () => {
                 {resume.url}
               </a>
             ) : (
-              <span className="text-muted-foreground">N/A</span>
+              "N/A"
             )}
           </div>
 
           <div>
-            <strong>Download Link:</strong>{" "}
+            <span className="font-semibold">Download URL: </span>
             {resume?.downloadUrl ? (
               <a
                 href={resume.downloadUrl}
@@ -106,15 +106,15 @@ const ResumePage = () => {
                 {resume.downloadUrl}
               </a>
             ) : (
-              <span className="text-muted-foreground">N/A</span>
+              "N/A"
             )}
           </div>
         </div>
       </div>
 
+      {/* Resume Form */}
       <div className="flex items-center justify-center">
         <div className="max-w-sm w-full">
-          {/* Resume Form */}
           <FormContainer
             onSubmit={handleSubmit}
             resolver={zodResolver(createResumeSchema)}
