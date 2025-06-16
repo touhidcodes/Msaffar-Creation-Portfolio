@@ -68,44 +68,50 @@ const ResumePage = () => {
 
       {/* Current Resume Info Display */}
       <div className="flex items-center justify-center">
-        <div className="rounded-lg border p-5 shadow-sm space-y-2 bg-muted">
+        <div className="rounded-lg border p-5 shadow-sm space-y-2 bg-muted max-w-md w-full">
           <h3 className="text-lg font-semibold">Current Resume Info</h3>
+
           <div>
             <strong>Title:</strong>{" "}
             <span className="text-muted-foreground">
-              {resume ? resume.title : "N/A"}
+              {resume?.title || "N/A"}
             </span>
           </div>
-          {/* <div>
-          <strong>View Link:</strong>{" "}
-          {resume.url ? (
-            <a
-              href={initialValues.url}
-              target="_blank"
-              className="text-blue-600 underline"
-            >
-              View Resume
-            </a>
-          ) : (
-            <span className="text-muted-foreground">N/A</span>
-          )}
-        </div>
-        <div>
-          <strong>Download Link:</strong>{" "}
-          {initialValues.downloadUrl ? (
-            <a
-              href={initialValues.downloadUrl}
-              target="_blank"
-              className="text-blue-600 underline"
-            >
-              Download Resume
-            </a>
-          ) : (
-            <span className="text-muted-foreground">N/A</span>
-          )}
-        </div> */}
+
+          <div>
+            <strong>View Link:</strong>{" "}
+            {resume?.url ? (
+              <a
+                href={resume.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 underline break-words"
+              >
+                {resume.url}
+              </a>
+            ) : (
+              <span className="text-muted-foreground">N/A</span>
+            )}
+          </div>
+
+          <div>
+            <strong>Download Link:</strong>{" "}
+            {resume?.downloadUrl ? (
+              <a
+                href={resume.downloadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 underline break-words"
+              >
+                {resume.downloadUrl}
+              </a>
+            ) : (
+              <span className="text-muted-foreground">N/A</span>
+            )}
+          </div>
         </div>
       </div>
+
       <div className="flex items-center justify-center">
         <div className="max-w-sm w-full">
           {/* Resume Form */}
