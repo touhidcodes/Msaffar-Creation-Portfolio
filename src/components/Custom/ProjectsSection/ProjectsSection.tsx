@@ -5,9 +5,9 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import "swiper/css";
 import "swiper/css/pagination";
-import Button from "@/components/ui/Button/Button";
 import { recentProjects } from "@/data/demoData";
 import Masonry from "react-masonry-css";
+import { Button } from "@/components/ui/button";
 
 const ProjectsSection = () => {
   const columnBreakpoints = {
@@ -18,10 +18,13 @@ const ProjectsSection = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen py-8 px-4 md:px-16">
-      <div className="px-6 py-6 lg:py-10 lg:px-0">
+    <section
+      className="bg-gray-100 min-h-screen py-8 px-4 md:px-16"
+      id="projects"
+    >
+      <div className="px-6 lg:py-10 lg:px-0">
         {/* Hero Section */}
-        <section className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <h1 className="text-4xl font-bold text-gray-900">
             My Works: Highlighted Branding Projects
           </h1>
@@ -29,7 +32,7 @@ const ProjectsSection = () => {
             Explore my top Logo & Branding projects highlighting innovative
             designs and intuitive solutions crafted for renowned brands
           </p>
-        </section>
+        </div>
 
         {/* Masonry Gallery */}
         <Masonry
@@ -78,14 +81,12 @@ const ProjectsSection = () => {
 
         {/* More Button */}
         <div className="mt-10 mb-5 lg:mb-0 flex justify-center">
-          <Button
-            text="Explore More"
-            link="/projects"
-            className="w-fit bg-black border-2 border-black text-white font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-white hover:text-black transition-all duration-300"
-          />
+          <Button>
+            <Link href="/projects">Explore More</Link>
+          </Button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

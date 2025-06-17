@@ -1,6 +1,7 @@
 import Image from "next/image";
 import growth from "../../../../public/assets/images/growth.png";
-import Button from "@/components/ui/Button/Button";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const GrowthSection = () => {
   return (
@@ -19,11 +20,9 @@ const GrowthSection = () => {
               across various sectors. Im currently based in Dubai!
             </p>
             <div className="mt-10 justify-end">
-              <Button
-                text="Let's Talk"
-                link="/contact"
-                className="w-fit bg-black border-2 border-black text-white font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-white hover:text-black transition-all duration-300"
-              />
+              <Button>
+                <Link href="#contact">Let's Talk</Link>
+              </Button>
             </div>
           </div>
 

@@ -6,13 +6,13 @@ const ToolsSkills: React.FC = () => {
     <section className="py-12 relative">
       <div className="container mx-auto text-center">
         {/* Header Section */}
-        <h2 className="text-3xl font-bold text-gray-900">
-          Tools & Skills for crafting intuitive designs
+        <h2 className="text-4xl font-bold text-gray-900">
+          Tools & Skills for Crafting Intuitive Designs
         </h2>
         <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
           I specialize in creating user-centric solutions that align with
           business objectives, drawing from a decade of industry expertise
-          across various sectors. I’m currently based in Dubai!
+          across various sectors. I’m currently based in Bangladesh!
         </p>
 
         {/* Tools and Skills Layout */}

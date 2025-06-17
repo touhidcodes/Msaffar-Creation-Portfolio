@@ -1,6 +1,7 @@
 import Image from "next/image";
 import centric from "../../../../public/assets/images/centric.png";
-import Button from "@/components/ui/Button/Button";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const CentricSection = () => {
   return (
@@ -31,11 +32,9 @@ const CentricSection = () => {
             </p>
           </div>
           <div className="mt-10 justify-end mb-5 lg:mb-0">
-            <Button
-              text="Let's Talk"
-              link="/contact"
-              className="w-fit bg-black border-2 border-black text-white font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-white hover:text-black transition-all duration-300"
-            />
+            <Button>
+              <Link href="#contact">Let's Talk</Link>
+            </Button>
           </div>
         </div>
       </div>

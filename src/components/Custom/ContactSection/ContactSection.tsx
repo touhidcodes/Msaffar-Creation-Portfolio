@@ -52,7 +52,7 @@ export default function ContactSection() {
             Whether you have questions, want to discuss a project, or simply
             want to chat about design, feel free to{" "}
             <a
-              href="mailto:youremail@example.com"
+              href="mailto:saffarulislam@gmail.com"
               className="underline font-semibold text-black"
             >
               mail me
@@ -69,7 +69,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-600">Email</p>
-                  <p className="font-semibold">youremail@example.com</p>
+                  <p className="font-semibold">saffarulislam@gmail.com</p>
                 </div>
               </div>
 
@@ -80,7 +80,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-600">Phone</p>
-                  <p className="font-semibold">+880 1234-567890</p>
+                  <p className="font-semibold">+880 1953-735955</p>
                 </div>
               </div>
             </CardContent>

@@ -27,6 +27,9 @@ const HeroSection = () => {
               <Button>
                 <Link href="#contact">Let's Talk</Link>
               </Button>
+              <Button>
+                <Link href="#projects">Projects</Link>
+              </Button>
               {loading ? (
                 <Button>Loading...</Button>
               ) : (

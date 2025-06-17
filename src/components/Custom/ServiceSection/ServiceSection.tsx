@@ -5,10 +5,10 @@ import { servicesData } from "@/data/serviceData";
 
 export default function ServiceSection() {
   return (
-    <div className="min-h-screen py-12 px-6 lg:px-16">
-      <div className="px-6 py-6 lg:py-10 lg:px-20">
+    <section className="min-h-screen py-8 px-6 lg:px-16" id="services">
+      <div className="px-6 lg:py-10 lg:px-20">
         {/* Hero Section */}
-        <section className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <h1 className="text-4xl font-bold text-gray-900">
             Comprehensive Services You Will Get
           </h1>
@@ -16,7 +16,7 @@ export default function ServiceSection() {
             Explore a range of services tailored to elevate your project. From
             Logo Design to Branding and research to information.
           </p>
-        </section>
+        </div>
 
         {/* Service Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -43,6 +43,6 @@ export default function ServiceSection() {
           })}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

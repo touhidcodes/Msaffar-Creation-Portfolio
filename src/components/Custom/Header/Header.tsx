@@ -20,9 +20,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const navigationOptions: { title: string; href: string }[] = [
-  { title: "My Work", href: "/work" },
-  { title: "Services", href: "/services" },
-  { title: "Resume", href: "/resume" },
+  { title: "Projects", href: "/projects" },
+  { title: "Services", href: "#services" },
+  { title: "Blogs", href: "/blogs" },
 ];
 
 export default function Header() {
@@ -123,7 +123,7 @@ export default function Header() {
       {/* Start Project Button */}
       <div className="hidden md:block">
         <Button
-          text="Start a new project 🚀"
+          text="Start a New Project 🚀"
           link="/start"
           className="w-fit bg-white border-2 border-black text-black font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-black hover:text-white transition-all duration-300"
         />
