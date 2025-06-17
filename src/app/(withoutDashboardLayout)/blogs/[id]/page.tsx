@@ -1,20 +1,61 @@
 "use client";
 
-import { blogsData } from "@/data/demoData";
-import { ArrowLeft, Badge } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowLeft, Badge, Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound, useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import { TBlogData } from "@/types";
 
 const BlogDetailsPage = () => {
   const params = useParams();
+  const router = useRouter();
   const slug = params.id;
-  console.log(slug);
 
-  const blog = blogsData.find((p) => p.id === slug);
+  const [blog, setBlog] = useState<TBlogData | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  // if (!blog) return notFound();
+  useEffect(() => {
+    async function fetchBlog() {
+      try {
+        const res = await fetch(`/api/blogs/${slug}`);
+        console.log(res);
+        if (!res.ok) {
+          if (res.status === 500) {
+            router.replace("/404");
+            return;
+          }
+        }
+        const data = await res.json();
 
+        if (data?.data) {
+          setBlog(data.data);
+        } else {
+          router.replace("/404");
+        }
+      } catch (err: any) {
+        console.log(err.message || "An error occurred");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (slug) {
+      fetchBlog();
+    }
+  }, [slug, router]);
+
+  if (loading)
+    return (
+      <div className="flex justify-center items-center h-[300px]">
+        <Loader2 className="w-10 h-10 animate-spin" />
+      </div>
+    );
+
+  if (!blog) {
+    return null;
+    router.replace("/404");
+  }
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="mb-6 flex items-center gap-4">
@@ -43,7 +84,6 @@ const BlogDetailsPage = () => {
       </div>
 
       <div className="prose prose-neutral dark:prose-invert max-w-none">
-        {/* If content is markdown, parse it. Otherwise render as HTML/text */}
         <div dangerouslySetInnerHTML={{ __html: blog.content }} />
       </div>
     </div>
