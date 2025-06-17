@@ -10,7 +10,7 @@ const BlogDetailsPage = () => {
   const params = useParams();
   const slug = params.id;
 
-  const blog = blogsData.find((p) => p._id === slug);
+  const blog = blogsData.find((p) => p.id === slug);
 
   if (!blog) return notFound();
 

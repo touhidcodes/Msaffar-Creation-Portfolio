@@ -29,7 +29,7 @@ const ProjectPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {recentProjects.map((project) => (
           <Card
-            key={project._id}
+            key={project.id}
             className="bg-white rounded-2xl overflow-hidden p-4 shadow-lg relative"
           >
             <div className="relative w-full h-64 rounded-xl overflow-hidden">
@@ -41,7 +41,7 @@ const ProjectPage = () => {
                 className="h-full"
                 pagination={{ clickable: true }}
               >
-                {project?.images.map((image, index) => (
+                {project?.images.map((image: string, index: number) => (
                   <SwiperSlide key={index}>
                     <div className="relative w-full h-64">
                       <Image
@@ -62,7 +62,7 @@ const ProjectPage = () => {
                   {project.name}
                 </h2>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tags.map((tag, index) => (
+                  {project.tags.map((tag: string, index: number) => (
                     <span
                       key={index}
                       className="text-sm bg-blue-50 text-blue-800 py-1 px-2 rounded"
