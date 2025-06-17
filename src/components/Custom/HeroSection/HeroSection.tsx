@@ -1,8 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import hero from "../../../../public/assets/logo/image.png";
-import Button from "@/components/ui/Button/Button";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { useResume } from "@/hooks/useResume";
 
 const HeroSection = () => {
+  const { resume, loading } = useResume();
+
   return (
     <div className="max-w-screen-xl mx-auto flex items-center">
       <div className="px-6 py-6 lg:py-10 lg:px-20">
@@ -15,23 +21,27 @@ const HeroSection = () => {
             <p className="py-4 text-base lg:text-lg leading-relaxed">
               I specialize in creating user-centric solutions that align with
               business objectives, drawing from a decade of industry expertise
-              across various sectors. I'm currently based in Dubai!
+              across various sectors. I'm currently based in Bangladesh!
             </p>
-            <div className="flex justify-between">
-              <div className="mt-4 ">
-                <Button
-                  text="Let's Talk"
-                  link="/contact"
-                  className="w-fit bg-black border-2 border-black text-white font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-white hover:text-black transition-all duration-300"
-                />
-              </div>
-              <div className="mt-4 justify-end">
-                <Button
-                  text="Resume"
-                  link="/contact"
-                  className="w-fit bg-black border-2 border-black text-white font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-white hover:text-black transition-all duration-300"
-                />
-              </div>
+            <div className="flex mt-4 space-x-20">
+              <Button>
+                <Link href="#contact">Let's Talk</Link>
+              </Button>
+              {loading ? (
+                <Button>Loading...</Button>
+              ) : (
+                resume?.url && (
+                  <Button asChild>
+                    <Link
+                      href={resume.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Resume
+                    </Link>
+                  </Button>
+                )
+              )}
             </div>
           </div>
           {/* Left Side - Text */}

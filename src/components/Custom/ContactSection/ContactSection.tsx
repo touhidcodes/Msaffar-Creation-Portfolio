@@ -37,7 +37,10 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-white px-4 py-10">
+    <section
+      className="min-h-screen flex items-center justify-center bg-white px-4 py-10"
+      id="contact"
+    >
       <div className="grid md:grid-cols-3 w-full max-w-6xl gap-10 items-center">
         {/* Left Section */}
         <div className="text-center md:text-left space-y-8 max-w-xl mx-auto p-6">
