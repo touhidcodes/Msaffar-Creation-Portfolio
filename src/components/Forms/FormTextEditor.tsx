@@ -25,7 +25,7 @@ const FormRichTextEditor = ({
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true); // Avoid hydration mismatch
+    setMounted(true);
   }, []);
 
   if (!mounted) return null;
@@ -50,13 +50,12 @@ const FormRichTextEditor = ({
               error && "border-destructive"
             )}
           >
-            <RichTextEditor {...field} />
+            <RichTextEditor value={field.value} onChange={field.onChange} />
           </div>
 
           {description && (
             <p className="text-muted-foreground text-sm">{description}</p>
           )}
-
           {error?.message && (
             <p className="text-[0.8rem] text-destructive">{error.message}</p>
           )}

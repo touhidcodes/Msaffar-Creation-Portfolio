@@ -84,8 +84,8 @@ export default function NavBar() {
       {/* Start Project Button */}
       <div className="hidden md:block">
         <Button
-          text="Start a new project 🚀"
-          link="/start"
+          text="Start a New Project 🚀"
+          link="/#contact"
           className="w-fit bg-white border-2 border-black text-black font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-black hover:text-white transition-all duration-300"
         />
       </div>

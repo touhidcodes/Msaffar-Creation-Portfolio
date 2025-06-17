@@ -9,10 +9,11 @@ import { notFound, useParams } from "next/navigation";
 const BlogDetailsPage = () => {
   const params = useParams();
   const slug = params.id;
+  console.log(slug);
 
   const blog = blogsData.find((p) => p.id === slug);
 
-  if (!blog) return notFound();
+  // if (!blog) return notFound();
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
