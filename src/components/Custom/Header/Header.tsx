@@ -32,7 +32,9 @@ export default function Header() {
     <header className="max-w-screen-xl mx-auto flex justify-between items-center px-3 md:px-0">
       {/* Logo (Hidden on Mobile) */}
       <div className="hidden md:block">
-        <Image src={logo} alt="Logo" width={180} height={50} />
+        <Link href="/">
+          <Image src={logo} alt="Logo" width={180} height={50} />
+        </Link>
       </div>
 
       {/* Desktop Navigation */}

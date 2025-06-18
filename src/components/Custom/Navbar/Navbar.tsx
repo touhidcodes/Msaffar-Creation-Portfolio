@@ -21,8 +21,8 @@ import {
 
 const navigationOptions: { title: string; href: string }[] = [
   { title: "My Work", href: "/projects" },
-  { title: "Services", href: "/services" },
-  { title: "Resume", href: "/resume" },
+  { title: "Services", href: "/#services" },
+  { title: "Blogs", href: "/blogs" },
 ];
 
 export default function NavBar() {
@@ -32,7 +32,9 @@ export default function NavBar() {
     <header className="max-w-screen-xl mx-auto flex justify-between items-center px-3 md:px-0 sticky top-0 z-50 bg-white">
       {/* Logo (Hidden on Mobile) */}
       <div className="hidden md:block">
-        <Image src={logo} alt="Logo" width={180} height={50} />
+        <Link href="/">
+          <Image src={logo} alt="Logo" width={180} height={50} />
+        </Link>
       </div>
 
       {/* Desktop Navigation */}
