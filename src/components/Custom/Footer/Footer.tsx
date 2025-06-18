@@ -102,7 +102,7 @@ export default function Footer() {
 
           {/* Site Map */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Site Map</h3>
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
                 <Link href="/" className="hover:text-white">
@@ -110,32 +110,27 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white">
-                  Technology
+                <Link href="/#services" className="hover:text-white">
+                  Services
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white">
-                  Ataraxis Breast
+                <Link href="/projects" className="hover:text-white">
+                  Projects
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white">
-                  Resources & News
+                <Link href="/blogs" className="hover:text-white">
+                  Blogs
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white">
-                  Careers
+                <Link href="/#contact" className="hover:text-white">
+                  Contact Me
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-white">
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-white">
+                <Link href="/dashboard" className="hover:text-white">
                   Portal
                 </Link>
               </li>
@@ -158,7 +153,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="#" className="hover:text-white">
-                  Lawyer’s Corners
+                  Cookie Policy
                 </Link>
               </li>
             </ul>
@@ -166,7 +161,18 @@ export default function Footer() {
         </div>
 
         <div className="text-center mt-10 text-xs text-gray-500 border-t border-white/10 pt-6">
-          &copy; {new Date().getFullYear()} ATARAXIS. All rights reserved.
+          &copy; {new Date().getFullYear()} MS CREATION
+          <br />
+          This site developed by{" "}
+          <a
+            href="https://www.linkedin.com/in/touhidur-zaman"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-gray-200 underline"
+          >
+            touhidcodes
+          </a>
+          . All rights reserved.
         </div>
       </div>
     </footer>
