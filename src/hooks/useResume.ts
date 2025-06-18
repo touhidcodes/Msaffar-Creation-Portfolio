@@ -11,7 +11,10 @@ export const useResume = () => {
     const fetchResume = async () => {
       try {
         setLoading(true);
-        const res = await fetch("/api/resume");
+        const res = await fetch("/api/resume", {
+          cache: "force-cache",
+          next: { revalidate: 300 },
+        });
         const data = await res.json();
         if (data) {
           setResume(data);

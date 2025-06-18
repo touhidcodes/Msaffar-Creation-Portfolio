@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ArrowUpRight, Loader2 } from "lucide-react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { recentProjects } from "@/data/demoData";
 import Masonry from "react-masonry-css";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";

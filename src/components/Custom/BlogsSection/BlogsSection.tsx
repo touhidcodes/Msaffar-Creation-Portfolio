@@ -23,7 +23,10 @@ const BlogsSection = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await fetch("/api/blogs");
+        const res = await fetch("/api/blogs", {
+          cache: "force-cache",
+          next: { revalidate: 300 },
+        });
         const result = await res.json();
 
         setBlogs(result.data);
