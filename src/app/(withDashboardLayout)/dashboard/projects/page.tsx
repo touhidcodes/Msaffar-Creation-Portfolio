@@ -69,7 +69,7 @@ export default function ProjectsPage() {
     setDeleteModalOpen(true);
   };
   return (
-    <div className="space-y-2 mt-2">
+    <div className="space-y-2 my-4 mb-10">
       <div className="flex justify-between items-center px-6">
         <h2 className="text-xl font-semibold">My Projects</h2>
         <Button variant="outline">

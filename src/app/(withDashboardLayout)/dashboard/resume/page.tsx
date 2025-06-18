@@ -56,7 +56,7 @@ const ResumePage = () => {
   };
 
   return (
-    <div className="space-y-4 mt-2">
+    <div className="space-y-4 my-2 mb-10">
       <div className="flex justify-between items-center px-6">
         <h2 className="text-xl font-semibold">My Resume</h2>
         {loading ? (
@@ -128,7 +128,7 @@ const ResumePage = () => {
               <FormInput
                 label="Resume Title"
                 name="title"
-                placeholder="e.g. Senior Developer Resume"
+                placeholder="e.g. Graphics Designer Resume"
                 required
               />
               <FormInput
