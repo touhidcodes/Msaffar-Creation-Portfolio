@@ -97,7 +97,7 @@ const ProjectDetailsPage = () => {
         </div>
 
         {/* Right: Project Details */}
-        <div className="overflow-y-auto h-full bg-white rounded-xl shadow-sm p-6 flex flex-col justify-between">
+        <div className="h-full bg-white rounded-xl shadow-sm p-6 flex flex-col justify-between">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
               {project.name}

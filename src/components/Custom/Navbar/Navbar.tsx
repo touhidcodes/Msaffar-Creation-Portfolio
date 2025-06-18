@@ -20,8 +20,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const navigationOptions: { title: string; href: string }[] = [
-  { title: "My Work", href: "/projects" },
   { title: "Services", href: "/#services" },
+  { title: "My Work", href: "/projects" },
   { title: "Blogs", href: "/blogs" },
 ];
 
