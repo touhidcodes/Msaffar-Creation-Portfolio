@@ -74,16 +74,32 @@ export default function Footer() {
               +880 1953-735955
             </p>
             <div className="flex space-x-4 mt-6 text-white/80 text-xl">
-              <a href="#" aria-label="Twitter" className="hover:text-white">
+              <a
+                href="https://twitter.com/saffarul"
+                aria-label="Twitter"
+                className="hover:text-white"
+              >
                 <Twitter />
               </a>
-              <a href="#" aria-label="LinkedIn" className="hover:text-white">
+              <a
+                href="https://www.linkedin.com/in/msaffar"
+                aria-label="LinkedIn"
+                className="hover:text-white"
+              >
                 <Linkedin />
               </a>
-              <a href="#" aria-label="Instagram" className="hover:text-white">
+              <a
+                href="https://instagram.com/saffarul"
+                aria-label="Instagram"
+                className="hover:text-white"
+              >
                 <Instagram />
               </a>
-              <a href="#" aria-label="Facebook" className="hover:text-white">
+              <a
+                href="https://www.facebook.com/saffarul"
+                aria-label="Facebook"
+                className="hover:text-white"
+              >
                 <Facebook />
               </a>
             </div>

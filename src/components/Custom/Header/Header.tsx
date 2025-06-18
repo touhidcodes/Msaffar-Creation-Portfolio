@@ -85,7 +85,7 @@ export default function Header() {
 
       {/* Social Links (Hidden on Mobile) */}
       <div className="hidden md:flex items-center gap-4">
-        <Link href="https://t.me/yourhandle" target="_blank">
+        <Link href="https://t.me/saffarul" target="_blank">
           <Image
             src="/assets/icons/telegram.png"
             alt="Telegram"
@@ -93,7 +93,7 @@ export default function Header() {
             height={50}
           />
         </Link>
-        <Link href="https://wa.me/yourphonenumber" target="_blank">
+        <Link href="https://wa.me/01953735955" target="_blank">
           <Image
             src="/assets/icons/whatsapp.png"
             alt="WhatsApp"
@@ -101,7 +101,7 @@ export default function Header() {
             height={50}
           />
         </Link>
-        <Link href="https://www.behance.net/yourhandle" target="_blank">
+        <Link href="https://www.behance.net/msaffar" target="_blank">
           <Image
             src="/assets/icons/behance.png"
             alt="Behance"
