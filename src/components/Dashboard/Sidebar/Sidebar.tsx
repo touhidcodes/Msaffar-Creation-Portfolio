@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { sidebarLinks } from "./SidebarLinks";
 import { usePathname } from "next/navigation";
 import { fetchWithAuth } from "@/service/fetchWithAuth";
+import Image from "next/image";
 
 type SidebarProps = {
   isOpen: boolean;
@@ -134,9 +135,11 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
         {/* Footer */}
         <div className="px-6 py-4 border-t flex items-center gap-3 shrink-0 bg-white">
-          <img
+          <Image
             src="https://github.com/shadcn.png"
             alt="user"
+            width={32}
+            height={32}
             className="w-8 h-8 rounded-full"
           />
           <div className="text-sm">
