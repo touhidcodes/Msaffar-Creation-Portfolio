@@ -18,7 +18,7 @@ const ToolsSkills: React.FC = () => {
         {/* Tools and Skills Layout */}
         <div className="flex flex-col md:flex-row justify-center items-start gap-12 mt-10 relative">
           {/* Left: Tools List */}
-          <div className="w-full md:w-1/3 text-right pr-6 self-end">
+          <div className="hidden md:block w-full md:w-1/3 text-right pr-6 self-end">
             <h3 className="text-lg font-semibold border-b-2 border-gray-800 inline-block">
               Tools
             </h3>
@@ -45,7 +45,7 @@ const ToolsSkills: React.FC = () => {
           </div>
 
           {/* Right: Skills List (Lower Position) */}
-          <div className="w-full md:w-1/3 text-left pl-6 self-end">
+          <div className="hidden md:block w-full md:w-1/3 text-left pl-6 self-end">
             <h3 className="text-lg font-semibold border-b-2 border-gray-800 inline-block">
               Skills
             </h3>

@@ -36,7 +36,7 @@ const CentricSection = () => {
               across various sectors. I&apos;m currently based in Dubai!
             </p>
           </div>
-          <div className="mt-10 mb-5 lg:mb-0 flex space-x-20">
+          <div className="mt-10 mb-5 lg:mb-0 flex space-x-10 md:space-x-20 justify-center md:justify-start">
             <Button>
               <Link href="#contact">Let&apos;s Talk</Link>
             </Button>

@@ -23,7 +23,7 @@ const HeroSection = () => {
               business objectives, drawing from a decade of industry expertise
               across various sectors. I&apos;m currently based in Bangladesh!
             </p>
-            <div className="flex mt-4 space-x-20">
+            <div className="flex mt-4 space-x-10 md:space-x-20 justify-center md:justify-start">
               <Button>
                 <Link href="#contact">Let&apos;s Talk</Link>
               </Button>

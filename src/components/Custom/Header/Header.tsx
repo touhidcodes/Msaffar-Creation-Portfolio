@@ -67,12 +67,12 @@ export default function Header() {
             <DropdownMenuTrigger className="p-2 rounded-lg hover:bg-gray-200 transition">
               <Menu size={28} />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-48 bg-white shadow-lg rounded-lg">
+            <DropdownMenuContent className="w-40 bg-white shadow-lg rounded-lg">
               {navigationOptions.map((nav) => (
                 <DropdownMenuItem key={nav.title}>
                   <Link
                     href={nav.href}
-                    className="block w-full px-4 py-2 hover:bg-gray-100 rounded-md"
+                    className="block w-full px-4 py-2 hover:bg-gray-100 rounded-md font-bold"
                   >
                     {nav.title}
                   </Link>

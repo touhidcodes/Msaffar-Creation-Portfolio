@@ -16,7 +16,7 @@ export default function Footer() {
   return (
     <footer className="relative bg-black text-white py-12 overflow-hidden">
       {/* Right-aligned V-shape lines using absolute positioned divs */}
-      <div className="absolute left-0 top-0 bottom-0 w-1/2 pointer-events-none z-0">
+      <div className="hidden md:block absolute left-0 top-0 bottom-0 w-1/2 pointer-events-none z-0">
         <svg
           width="100%"
           height="100%"
@@ -117,7 +117,7 @@ export default function Footer() {
           </div>
 
           {/* Site Map */}
-          <div>
+          <div className="hidden md:block">
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
@@ -176,18 +176,19 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="text-center mt-10 text-xs text-gray-500 border-t border-white/10 pt-6">
+        <div className="text-center mt-10 text-xs text-gray-500 pt-6">
+          <hr className="border-white/20 mb-4" />
           &copy; {new Date().getFullYear()} MS CREATION
           <br />
           This site developed by{" "}
-          <a
+          <Link
             href="https://www.linkedin.com/in/touhidur-zaman"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-gray-200 underline"
           >
             touhidcodes
-          </a>
+          </Link>
           . All rights reserved.
         </div>
       </div>

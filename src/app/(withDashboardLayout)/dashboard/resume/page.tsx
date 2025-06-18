@@ -60,19 +60,26 @@ const ResumePage = () => {
   };
 
   return (
-    <div className="space-y-4 my-2 mb-10">
-      <div className="flex justify-between items-center px-6">
-        <h2 className="text-xl font-semibold">My Resume</h2>
+    <div className="space-y-6 my-4 md:my-6 mb-12 px-4 md:px-0">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 sm:gap-0">
+        <h2 className="text-xl font-semibold text-center sm:text-left">
+          My Resume
+        </h2>
         {loading ? (
-          <Loader2 className="w-4 h-4 animate-spin" />
+          <div className="flex justify-center sm:justify-end">
+            <Loader2 className="w-4 h-4 animate-spin" />
+          </div>
         ) : (
-          <Button variant="outline">Update Resume</Button>
+          <div className="flex justify-center sm:justify-end">
+            <Button variant="outline">Update Resume</Button>
+          </div>
         )}
       </div>
 
-      {/* Current Resume Info Display */}
-      <div className="flex items-center justify-center">
-        <div className="rounded-lg border p-5 shadow-sm space-y-2 bg-muted max-w-md w-full text-sm text-muted-foreground">
+      {/* Resume Info Display */}
+      <div className="flex justify-center">
+        <div className="rounded-lg border p-5 shadow-sm space-y-3 bg-muted max-w-md w-full text-sm text-muted-foreground">
           <h3 className="text-base font-semibold text-foreground mb-2">
             Current Resume Info
           </h3>
@@ -81,7 +88,7 @@ const ResumePage = () => {
             <span className="font-semibold">Title: </span>
             <span className="text-foreground">{resume?.title || "N/A"}</span>
           </div>
-
+          {/* View Resume Link */}
           <div>
             <span className="font-semibold">View URL: </span>
             {resume?.url ? (
@@ -89,15 +96,16 @@ const ResumePage = () => {
                 href={resume.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 underline break-words"
+                className="text-blue-600 hover:underline"
               >
-                {resume.url}
+                View Resume
               </a>
             ) : (
               "N/A"
             )}
           </div>
 
+          {/* Download Resume Link */}
           <div>
             <span className="font-semibold">Download URL: </span>
             {resume?.downloadUrl ? (
@@ -105,9 +113,9 @@ const ResumePage = () => {
                 href={resume.downloadUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 underline break-words"
+                className="text-blue-600 hover:underline"
               >
-                {resume.downloadUrl}
+                Download Resume
               </a>
             ) : (
               "N/A"
@@ -117,8 +125,8 @@ const ResumePage = () => {
       </div>
 
       {/* Resume Form */}
-      <div className="flex items-center justify-center">
-        <div className="max-w-sm w-full">
+      <div className="flex justify-center">
+        <div className="w-full max-w-sm">
           <FormContainer
             onSubmit={handleSubmit}
             resolver={zodResolver(createResumeSchema)}
@@ -149,7 +157,7 @@ const ResumePage = () => {
               />
             </div>
 
-            <div className="flex justify-center pt-4">
+            <div className="pt-4">
               <Button type="submit" className="w-full" disabled={loading}>
                 {loading ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -159,8 +167,9 @@ const ResumePage = () => {
               </Button>
             </div>
           </FormContainer>
+
           {loading && (
-            <div className="flex justify-center items-center h-[300px]">
+            <div className="flex justify-center items-center h-48">
               <Loader2 className="w-10 h-10 animate-spin" />
             </div>
           )}

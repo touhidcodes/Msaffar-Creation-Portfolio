@@ -94,14 +94,14 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 </span>
               )}
             </Link>
-            <button
-              className="block lg:hidden"
-              onClick={onClose}
-              aria-label="Close sidebar"
-            >
-              <X className="w-6 h-6" />
-            </button>
           </div>
+          <button
+            className="block lg:hidden"
+            onClick={onClose}
+            aria-label="Close sidebar"
+          >
+            <X className="w-6 h-6" />
+          </button>
         </div>
 
         {/* Scrollable Nav */}

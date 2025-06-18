@@ -42,7 +42,7 @@ const BlogsSection = () => {
 
   return (
     <div className="min-h-screen pb-8 px-6 lg:px-16 mx-auto">
-      <div className="px-6 py-6 lg:py-10 lg:px-20">
+      <div className="px-4 py-6 lg:py-10 md:px-10">
         {/* Blog Section Header */}
         <section className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-4xl font-bold text-gray-900">Latest Blogs</h2>

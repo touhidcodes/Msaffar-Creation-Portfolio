@@ -93,7 +93,7 @@ export default function CreateBlogPage() {
               />
             </div>
           </div>
-          <div className="w-full mx-auto px-12">
+          <div className="w-full mx-auto px-4 md:px-12">
             <FormRichTextEditor
               name="content"
               label="Main Content"

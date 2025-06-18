@@ -48,7 +48,7 @@ export default function ContactSection() {
         {/* Left Section */}
         <div className="text-center md:text-left space-y-8 max-w-xl mx-auto p-6">
           <h1 className="text-3xl md:text-4xl font-bold leading-tight">
-            Let’s connect and start the conversations!
+            Let&apos;s connect and start the conversations!
           </h1>
 
           <p className="text-gray-600">
@@ -91,7 +91,7 @@ export default function ContactSection() {
         </div>
 
         {/* Middle Section - Plug Illustration */}
-        <div className="flex justify-center">
+        <div className="hidden md:flex justify-center">
           <Image
             src="/assets/images/connect.png"
             alt="Connection Illustration"
@@ -102,7 +102,7 @@ export default function ContactSection() {
         </div>
 
         {/* Right Section */}
-        <div className="space-y-4 w-full">
+        <div className="space-y-4 w-full px-6 md:px-0">
           <FormContainer
             onSubmit={handleSubmit}
             resolver={zodResolver(createMessageSchema)}
@@ -140,15 +140,10 @@ export default function ContactSection() {
               placeholder="Write a detailed description..."
               required
             />
-            <div>
+            <div className="flex justify-center md:justify-start">
               <Button type="submit">Submit</Button>
             </div>
           </FormContainer>
-          {/* <Button
-            text="Submit"
-            link="/projects"
-            className="w-fit bg-black border-2 border-black text-white font-bold py-3 px-5 rounded-lg hover:border-2 hover:border-black hover:bg-white hover:text-black transition-all duration-300"
-          /> */}
         </div>
       </div>
     </section>
