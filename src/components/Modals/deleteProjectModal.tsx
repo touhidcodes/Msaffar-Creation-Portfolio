@@ -42,8 +42,12 @@ export default function DeleteProjectModal({
         onClose();
         onSuccess?.();
       }
-    } catch (error: any) {
-      toast.error(error.message || "Delete failed");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("Something went wrong!");
+      }
     } finally {
       setLoading(false);
     }

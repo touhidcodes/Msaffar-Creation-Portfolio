@@ -8,7 +8,7 @@ import {
 
 type TFormConfig = {
   resolver?: Resolver<FieldValues>;
-  defaultValues?: Record<string, any>;
+  defaultValues?: Record<string, unknown>;
 };
 
 type TFormProps = {

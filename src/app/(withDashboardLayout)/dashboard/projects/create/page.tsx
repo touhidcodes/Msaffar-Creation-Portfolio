@@ -31,9 +31,12 @@ export default function CreateProjectPage() {
       } else {
         toast.success(data.message || "Project created successfully!");
       }
-    } catch (error: any) {
-      // console.error("Error submitting project:", error);
-      toast.error(error.message || "Authentication failed!");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("Something went wrong!");
+      }
     } finally {
       setLoading(false);
     }

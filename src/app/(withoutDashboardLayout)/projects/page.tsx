@@ -11,6 +11,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { useEffect, useState } from "react";
 import { TProjectData } from "@/types";
+import { toast } from "sonner";
 
 const ProjectPage = () => {
   const [projects, setProjects] = useState<TProjectData[]>([]);
@@ -25,8 +26,12 @@ const ProjectPage = () => {
         });
         const result = await res.json();
         setProjects(result.data);
-      } catch (err: any) {
-        console.log(err.message || "Something went wrong");
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          toast.error(error.message);
+        } else {
+          toast.error("Something went wrong!");
+        }
       } finally {
         setLoading(false);
       }

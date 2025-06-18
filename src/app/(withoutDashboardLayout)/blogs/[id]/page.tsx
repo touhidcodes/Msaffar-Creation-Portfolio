@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { TBlogData } from "@/types";
+import { toast } from "sonner";
 
 const BlogDetailsPage = () => {
   const params = useParams();
@@ -33,8 +34,12 @@ const BlogDetailsPage = () => {
         } else {
           router.replace("/404");
         }
-      } catch (err: any) {
-        console.log(err.message || "An error occurred");
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          toast.error(error.message);
+        } else {
+          toast.error("Something went wrong!");
+        }
       } finally {
         setLoading(false);
       }

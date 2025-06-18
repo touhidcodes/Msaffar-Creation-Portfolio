@@ -3,7 +3,7 @@ import { authenticateRequest } from "@/service/authMiddleware";
 import { NextRequest, NextResponse } from "next/server";
 
 // Create new blogs
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   const user = await authenticateRequest(req);
 
   if (!user) {
@@ -37,18 +37,10 @@ export async function GET() {
       orderBy: [{ isFeatured: "desc" }, { updatedAt: "desc" }],
     });
 
-    return NextResponse.json(
-      {
-        message: "Blogs fetched successfully!",
-        data: blogs,
-      },
-      {
-        status: 200,
-        next: {
-          tags: ["blogs"],
-        },
-      } as any
-    );
+    return NextResponse.json({
+      message: "Blogs fetched successfully!",
+      data: blogs,
+    });
   } catch (error) {
     console.error("Error fetching blogs!", error);
     return NextResponse.json(

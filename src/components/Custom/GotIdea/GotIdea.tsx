@@ -27,14 +27,14 @@ const GotIdea = () => {
 
       {/* Supporting Text */}
       <p className="text-gray-500 max-w-md mx-auto">
-        Let’s collaborate and bring your ideas to life! I’ll transform concepts
-        into tangible success.
+        Let&apos;s collaborate and bring your ideas to life! I&apos;ll transform
+        concepts into tangible success.
       </p>
 
       {/* CTA Button */}
       <div className="mt-6 mb-5 lg:mb-0">
         <Button>
-          <Link href="#contact">Let's Talk</Link>
+          <Link href="#contact">Let&apos;s Talk</Link>
         </Button>
       </div>
     </section>

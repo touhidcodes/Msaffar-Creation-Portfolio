@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { TProjectData } from "@/types";
 import { truncateText } from "@/lib/utils";
+import { toast } from "sonner";
 
 const columnBreakpoints = {
   default: 4,
@@ -31,8 +32,12 @@ const ProjectsSection = () => {
         });
         const result = await res.json();
         setProjects(result.data);
-      } catch (err: any) {
-        console.log(err.message || "Something went wrong");
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          toast.error(error.message);
+        } else {
+          toast.error("Something went wrong!");
+        }
       } finally {
         setLoading(false);
       }

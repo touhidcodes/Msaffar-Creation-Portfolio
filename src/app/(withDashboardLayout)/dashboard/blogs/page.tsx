@@ -46,8 +46,12 @@ export default function BlogsPage() {
       }
 
       setBlogs(data?.data);
-    } catch (err: any) {
-      toast.error("Failed to fetch blogs: " + err.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("Something went wrong!");
+      }
     } finally {
       setLoading(false);
     }

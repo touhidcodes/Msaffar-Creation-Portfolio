@@ -2,7 +2,6 @@ import { signJwtToken } from "@/lib/jwt";
 import prisma from "@/lib/prisma";
 import { setCookies } from "@/service/actions/setCookies";
 import bcrypt from "bcrypt";
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {

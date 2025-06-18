@@ -21,11 +21,11 @@ const HeroSection = () => {
             <p className="py-4 text-base lg:text-lg leading-relaxed">
               I specialize in creating user-centric solutions that align with
               business objectives, drawing from a decade of industry expertise
-              across various sectors. I'm currently based in Bangladesh!
+              across various sectors. I&apos;m currently based in Bangladesh!
             </p>
             <div className="flex mt-4 space-x-20">
               <Button>
-                <Link href="#contact">Let's Talk</Link>
+                <Link href="#contact">Let&apos;s Talk</Link>
               </Button>
               <Button>
                 <Link href="/projects">Projects</Link>

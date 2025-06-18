@@ -48,8 +48,12 @@ const ResumePage = () => {
         toast.success("Resume updated successfully!");
         fetchResume();
       }
-    } catch (error: any) {
-      toast.error(error.message || "Authentication failed!");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("Something went wrong!");
+      }
     } finally {
       setLoading(false);
     }

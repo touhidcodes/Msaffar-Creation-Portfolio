@@ -6,32 +6,39 @@ export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
 
-// Function to truncate description text if it's too long
+// Function to truncate description text if its too long
 export const truncateText = (text: string, maxLength: number = 100): string => {
   if (text.length <= maxLength) return text;
   return text.slice(0, maxLength) + "...";
 };
 
-export function deepSanitize(obj: any): any {
+export function deepSanitize<T>(obj: T): T {
   if (obj === null || obj === undefined) return obj;
 
-  if (obj instanceof Date) return obj.toISOString();
+  if (obj instanceof Date) {
+    return obj.toISOString() as unknown as T;
+  }
 
   if (Array.isArray(obj)) {
-    return obj.map(deepSanitize);
+    return obj.map((item) => deepSanitize(item)) as unknown as T;
   }
 
   if (typeof obj === "object") {
-    const cleanObj: any = {};
-    for (const key in obj) {
-      // convert _id or id to string explicitly
-      if ((key === "id" || key === "_id") && obj[key]?.toString) {
-        cleanObj[key] = obj[key].toString();
+    const cleanObj: Record<string, unknown> = {};
+    for (const key in obj as Record<string, unknown>) {
+      const value = (obj as Record<string, unknown>)[key];
+
+      // Convert _id or id to string explicitly
+      if (
+        (key === "id" || key === "_id") &&
+        typeof value?.toString === "function"
+      ) {
+        cleanObj[key] = value.toString();
       } else {
-        cleanObj[key] = deepSanitize(obj[key]);
+        cleanObj[key] = deepSanitize(value);
       }
     }
-    return cleanObj;
+    return cleanObj as T;
   }
 
   // primitive type (string, number, boolean)

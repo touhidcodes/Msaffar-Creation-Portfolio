@@ -20,8 +20,8 @@ export default function NotFoundPage() {
           404 - Page Not Found
         </h1>
         <p className="text-muted-foreground text-base">
-          Oops! The page you're looking for doesn't exist, was moved, or never
-          existed in the first place.
+          Oops! The page you&apos;re looking for doesn&apos;t exist, was moved,
+          or never existed in the first place.
         </p>
 
         {/* Centered button */}

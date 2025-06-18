@@ -21,7 +21,7 @@ const GrowthSection = () => {
             </p>
             <div className="mt-10 justify-end">
               <Button>
-                <Link href="#contact">Let's Talk</Link>
+                <Link href="#contact">Let&apos;s Talk</Link>
               </Button>
             </div>
           </div>

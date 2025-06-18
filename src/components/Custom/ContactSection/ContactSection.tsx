@@ -30,9 +30,12 @@ export default function ContactSection() {
       } else {
         toast.success(data.message || "Message posted successfully");
       }
-    } catch (error: any) {
-      // console.error("Error submitting project:", error);
-      toast.error(error.message || "Something went wrong!");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("Something went wrong!");
+      }
     }
   };
 

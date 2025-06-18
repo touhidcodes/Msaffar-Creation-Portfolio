@@ -33,12 +33,12 @@ const CentricSection = () => {
             <p className="text-gray-600 mt-4">
               I specialize in creating user-centric solutions that align with
               business objectives, drawing from a decade of industry expertise
-              across various sectors. I'm currently based in Dubai!
+              across various sectors. I&apos;m currently based in Dubai!
             </p>
           </div>
           <div className="mt-10 mb-5 lg:mb-0 flex space-x-20">
             <Button>
-              <Link href="#contact">Let's Talk</Link>
+              <Link href="#contact">Let&apos;s Talk</Link>
             </Button>
             {loading ? (
               <Button>Loading...</Button>

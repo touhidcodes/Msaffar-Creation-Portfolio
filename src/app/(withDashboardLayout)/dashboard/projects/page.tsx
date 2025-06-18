@@ -48,8 +48,12 @@ export default function ProjectsPage() {
       }
 
       setProjects(data?.data);
-    } catch (err: any) {
-      toast.error("Failed to fetch projects: " + err.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("Something went wrong!");
+      }
     } finally {
       setLoading(false);
     }

@@ -1,7 +1,7 @@
 import { authenticateRequest } from "@/service/authMiddleware";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET(req: NextRequest) {
   try {
     const user = await authenticateRequest(req);
 

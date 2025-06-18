@@ -4,7 +4,7 @@ import { authenticateRequest } from "@/service/authMiddleware";
 import { NextRequest, NextResponse } from "next/server";
 
 // Create new project
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   const user = await authenticateRequest(req);
 
   if (!user) {

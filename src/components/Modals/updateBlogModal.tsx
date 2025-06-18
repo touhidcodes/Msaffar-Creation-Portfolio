@@ -46,8 +46,12 @@ export default function UpdateBlogModal({ open, onClose, blogData }: Props) {
         toast.success(data.message || "Blog updated successfully");
         onClose();
       }
-    } catch (error: any) {
-      toast.error(error.message || "Update failed");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("Something went wrong!");
+      }
     } finally {
       setLoading(false);
     }

@@ -23,9 +23,9 @@ export default function Connect() {
               Connect With Us
             </h2>
             <p className="text-gray-600 mb-6">
-              We'd love to hear from you! Reach out to us for any inquiries,
-              feedback, or just to say hello. Fill out the contact form or drop
-              us a message at our email below.
+              We&apos;d love to hear from you! Reach out to us for any
+              inquiries, feedback, or just to say hello. Fill out the contact
+              form or drop us a message at our email below.
             </p>
             <ul className="text-gray-600 mb-6">
               <li>

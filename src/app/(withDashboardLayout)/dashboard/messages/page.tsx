@@ -37,8 +37,12 @@ export default function MessagesPage() {
       }
 
       setMessages(data?.data);
-    } catch (err: any) {
-      toast.error("Error fetching messages: " + err.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("Something went wrong!");
+      }
     } finally {
       setLoading(false);
     }

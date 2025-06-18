@@ -4,7 +4,7 @@ import { verifyToken } from "@/lib/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
 interface JwtPayload {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export async function authenticateRequest(
