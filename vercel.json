@@ -1,4 +1,3 @@
 {
-  "buildCommand": "npm ci && npm run build",
-  "includeFiles": ["tsconfig.json"]
+  "buildCommand": "npm ci && npm run build"
 }
