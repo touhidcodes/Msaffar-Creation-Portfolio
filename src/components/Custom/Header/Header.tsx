@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Menu } from "lucide-react";
-import logo from "../../../../public/assets/logo/black.png";
+
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -33,7 +33,12 @@ export default function Header() {
       {/* Logo (Hidden on Mobile) */}
       <div className="hidden md:block">
         <Link href="/">
-          <Image src={logo} alt="Logo" width={180} height={50} />
+          <Image
+            src="/assets/logo/black.png"
+            alt="Logo"
+            width={180}
+            height={50}
+          />
         </Link>
       </div>
 
@@ -58,7 +63,12 @@ export default function Header() {
       <div className="md:hidden flex justify-between items-center w-full">
         {/* Logo on the Left Side */}
         <div>
-          <Image src={logo} alt="Logo" width={180} height={50} />
+          <Image
+            src="/assets/logo/black.png"
+            alt="Logo"
+            width={180}
+            height={50}
+          />
         </div>
 
         {/* Mobile Dropdown on the Right Side */}
