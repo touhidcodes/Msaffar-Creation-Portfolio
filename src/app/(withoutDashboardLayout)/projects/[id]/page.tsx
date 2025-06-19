@@ -5,7 +5,7 @@ import { notFound, useParams } from "next/navigation";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { LucideArrowLeft } from "lucide-react";
+import { Loader2, LucideArrowLeft } from "lucide-react";
 import { TProjectData } from "@/types";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -43,7 +43,11 @@ const ProjectDetailsPage = () => {
   }, [slug]);
 
   if (loading)
-    return <div className="text-center mt-10 text-lg">Loading project...</div>;
+    return (
+      <div className="flex justify-center items-center h-[300px]">
+        <Loader2 className="w-10 h-10 animate-spin" />
+      </div>
+    );
 
   if (!project) return notFound();
 

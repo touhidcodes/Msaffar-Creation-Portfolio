@@ -1,17 +1,17 @@
 "use client";
-import { useEditor, EditorContent, type Editor } from "@tiptap/react";
+
+import { useEditor, EditorContent, Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { Bold, Strikethrough, Italic, List, ListOrdered } from "lucide-react";
 import { Toggle } from "@/components/ui/toggle";
 import { Separator } from "@/components/ui/separator";
 
-const RichTextEditor = ({
-  value,
-  onChange,
-}: {
+interface RichTextEditorProps {
   value: string;
   onChange: (value: string) => void;
-}) => {
+}
+
+const RichTextEditor = ({ value, onChange }: RichTextEditorProps) => {
   const editor = useEditor({
     editorProps: {
       attributes: {
@@ -33,16 +33,16 @@ const RichTextEditor = ({
         },
       }),
     ],
-    content: value, // Set the initial content with the provided value
-    onUpdate: ({ editor }: any) => {
-      onChange(editor.getHTML()); // Call the onChange callback with the updated HTML content
+    content: value,
+    onUpdate: ({ editor }: { editor: Editor }) => {
+      onChange(editor.getHTML());
     },
   });
 
   return (
     <>
       <EditorContent editor={editor} />
-      {editor ? <RichTextEditorToolbar editor={editor} /> : null}
+      {editor && <RichTextEditorToolbar editor={editor} />}
     </>
   );
 };
@@ -71,7 +71,9 @@ const RichTextEditorToolbar = ({ editor }: { editor: Editor }) => {
       >
         <Strikethrough className="h-4 w-4" />
       </Toggle>
+
       <Separator orientation="vertical" className="w-[1px] h-8" />
+
       <Toggle
         size="sm"
         pressed={editor.isActive("bulletList")}

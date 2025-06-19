@@ -4,13 +4,11 @@ import { useEffect, useState } from "react";
 import { ArrowLeft, Badge, Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import { TBlogData } from "@/types";
-import { toast } from "sonner";
 
 const BlogDetailsPage = () => {
   const params = useParams();
-  const router = useRouter();
   const slug = params.id;
 
   const [blog, setBlog] = useState<TBlogData | null>(null);
@@ -20,11 +18,9 @@ const BlogDetailsPage = () => {
     async function fetchBlog() {
       try {
         const res = await fetch(`/api/blogs/${slug}`);
-        console.log(res);
         if (!res.ok) {
           if (res.status === 500) {
-            router.replace("/404");
-            return;
+            notFound();
           }
         }
         const data = await res.json();
@@ -32,14 +28,10 @@ const BlogDetailsPage = () => {
         if (data?.data) {
           setBlog(data.data);
         } else {
-          router.replace("/404");
+          notFound();
         }
-      } catch (error: unknown) {
-        if (error instanceof Error) {
-          toast.error(error.message);
-        } else {
-          toast.error("Something went wrong!");
-        }
+      } catch (error) {
+        notFound();
       } finally {
         setLoading(false);
       }
@@ -48,7 +40,7 @@ const BlogDetailsPage = () => {
     if (slug) {
       fetchBlog();
     }
-  }, [slug, router]);
+  }, [slug]);
 
   if (loading)
     return (
@@ -58,8 +50,7 @@ const BlogDetailsPage = () => {
     );
 
   if (!blog) {
-    return null;
-    router.replace("/404");
+    notFound();
   }
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">

@@ -1,29 +1,26 @@
+import { NextRequest, NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import prisma from "@/lib/prisma";
 import { authenticateRequest } from "@/service/authMiddleware";
-import { revalidateTag } from "next/cache";
-import { NextRequest, NextResponse } from "next/server";
 
-type Params = {
-  params: {
-    id: string;
-  };
-};
+// GET one blog
+export async function GET(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
 
-// Get one blogs
-export async function GET(req: Request, { params }: Params) {
   try {
     const blog = await prisma.blog.findUnique({
-      where: { id: params.id },
+      where: { id },
     });
 
-    if (!blog)
+    if (!blog) {
       return NextResponse.json({ error: "Blog not found!" }, { status: 404 });
+    }
 
     return NextResponse.json(
-      {
-        message: "Blogs retrieved successfully!",
-        data: blog,
-      },
+      { message: "Blog retrieved successfully!", data: blog },
       { status: 200 }
     );
   } catch (error) {
@@ -34,57 +31,62 @@ export async function GET(req: Request, { params }: Params) {
   }
 }
 
-// Update blog
-export async function PATCH(req: NextRequest, { params }: Params) {
+// PATCH to update blog
+export async function PATCH(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
   const user = await authenticateRequest(req);
 
   if (!user) {
-    throw new Error("Unauthorized access!");
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
     const body = await req.json();
-    const updatedBlog = await prisma.blog.update({
-      where: { id: params.id },
+    const updated = await prisma.blog.update({
+      where: { id },
       data: body,
     });
 
     revalidateTag("blogs");
 
     return NextResponse.json(
-      {
-        message: "Blogs updated successfully!",
-        data: updatedBlog,
-      },
+      { message: "Blog updated", data: updated },
       { status: 200 }
     );
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to update blog!" },
+      { error: "Failed to update blog" },
       { status: 500 }
     );
   }
 }
 
-// Delete blog
-export async function DELETE(req: NextRequest, { params }: Params) {
+// DELETE blog
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
   const user = await authenticateRequest(req);
 
   if (!user) {
-    throw new Error("Unauthorized access!");
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
     await prisma.blog.delete({
-      where: { id: params.id },
+      where: { id },
     });
 
     revalidateTag("blogs");
 
-    return NextResponse.json({ message: "Blog deleted successfully!" });
+    return NextResponse.json({ message: "Blog deleted" }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to delete blog!" },
+      { error: "Failed to delete blog" },
       { status: 500 }
     );
   }

@@ -3,17 +3,15 @@ import { authenticateRequest } from "@/service/authMiddleware";
 import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
-type Params = {
-  params: {
-    id: string;
-  };
-};
-
 // Get one project
-export async function GET(req: Request, { params }: Params) {
+export async function GET(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
   try {
     const project = await prisma.project.findUnique({
-      where: { id: params.id },
+      where: { id },
     });
 
     if (!project)
@@ -38,7 +36,11 @@ export async function GET(req: Request, { params }: Params) {
 }
 
 // Update project
-export async function PATCH(req: NextRequest, { params }: Params) {
+export async function PATCH(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
   const user = await authenticateRequest(req);
 
   if (!user) {
@@ -48,7 +50,7 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   try {
     const body = await req.json();
     const updatedProject = await prisma.project.update({
-      where: { id: params.id },
+      where: { id },
       data: body,
     });
 
@@ -70,7 +72,11 @@ export async function PATCH(req: NextRequest, { params }: Params) {
 }
 
 // Delete project
-export async function DELETE(req: NextRequest, { params }: Params) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
   const user = await authenticateRequest(req);
 
   if (!user) {
@@ -79,7 +85,7 @@ export async function DELETE(req: NextRequest, { params }: Params) {
 
   try {
     await prisma.project.delete({
-      where: { id: params.id },
+      where: { id },
     });
 
     revalidateTag("projects");

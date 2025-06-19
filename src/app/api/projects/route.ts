@@ -41,18 +41,10 @@ export async function GET() {
       orderBy: [{ isFeatured: "desc" }, { updatedAt: "desc" }],
     });
 
-    return NextResponse.json(
-      {
-        message: "Projects fetched successfully!",
-        data: projects,
-      },
-      {
-        status: 200,
-        next: {
-          tags: ["projects"],
-        },
-      } as any
-    );
+    return NextResponse.json({
+      message: "Projects fetched successfully!",
+      data: projects,
+    });
   } catch (error) {
     console.error("Error fetching projects!", error);
     return NextResponse.json(
