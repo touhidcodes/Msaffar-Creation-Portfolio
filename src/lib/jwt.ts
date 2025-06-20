@@ -9,10 +9,10 @@ export function generateToken(payload: object) {
 export function verifyToken(token: string) {
   try {
     const decoded = jwt.verify(token, process.env.NEXT_PUBLIC_JWT_SECRET!);
-    console.log("decoded", decoded);
+    // console.log("decoded", decoded);
     return decoded;
   } catch (error) {
-    return { error: "Invalid or expired token" };
+    return { error: "Invalid or expired token!" };
   }
 }
 

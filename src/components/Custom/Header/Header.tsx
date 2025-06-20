@@ -48,8 +48,15 @@ export default function Header() {
           <NavigationMenuList className="flex gap-6">
             {navigationOptions.map((nav) => (
               <NavigationMenuItem key={nav.title}>
-                <Link href={nav.href} passHref legacyBehavior>
-                  <NavigationMenuLink className="text-xl font-semibold px-4 py-3 rounded-lg transition-all duration-300 hover:bg-gray-100">
+                <Link
+                  href={nav.href}
+                  passHref
+                  className="text-xl font-semibold px-4 py-3 rounded-lg transition-all duration-300 hover:bg-gray-100"
+                >
+                  <NavigationMenuLink
+                    asChild
+                    className="text-xl font-semibold px-4 py-3 rounded-lg transition-all duration-300 hover:bg-gray-100"
+                  >
                     {nav.title}
                   </NavigationMenuLink>
                 </Link>

@@ -88,3 +88,12 @@ Add commentMore actions body {
   padding-left: 16px; /* gutter size */
   background-clip: padding-box;
 }
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
