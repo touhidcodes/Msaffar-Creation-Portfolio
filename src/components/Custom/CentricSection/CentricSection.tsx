@@ -33,7 +33,7 @@ const CentricSection = () => {
             <p className="text-gray-600 mt-4">
               I specialize in creating user-centric solutions that align with
               business objectives, drawing from a decade of industry expertise
-              across various sectors. I&apos;m currently based in Dubai!
+              across various sectors. I&apos;m currently based in Bangladesh!
             </p>
           </div>
           <div className="mt-10 mb-5 lg:mb-0 flex space-x-10 md:space-x-20 justify-center md:justify-start">

@@ -147,7 +147,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/dashboard" className="hover:text-white">
-                  Portal
+                  Login
                 </Link>
               </li>
             </ul>
